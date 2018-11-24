@@ -1,3 +1,4 @@
+`include "defines.v"
 `default_nettype none
 
 module thinpad_top(
@@ -80,12 +81,64 @@ module thinpad_top(
     output wire video_de           //行数据有效信号，用于区分消隐区
 );
 
+//�м�����
+wire[`RegBus] dwishbone_data_i_m;
+wire 			dwishbone_ack_i_m;
+wire[`RegBus] dwishbone_addr_o_m;
+wire[`RegBus] dwishbone_data_o_m;
+wire 			dwishbone_we_o_m;
+wire[3:0]      dwishbone_sel_o_m;
+wire           dwishbone_stb_o_m;
+wire           dwishbone_cyc_o_m;
+
+
+//ʵ����cpu
+openmips openmips0(
+    .clk(clk_11M0592),
+	.rst(reset_btn),
+	.int_i(6'b000000),
+
+	.dwishbone_data_i(dwishbone_data_i_m),
+	.dwishbone_ack_i(dwishbone_ack_i_m),
+	.dwishbone_addr_o(dwishbone_addr_o_m),
+	.dwishbone_data_o(dwishbone_data_o_m),
+	.dwishbone_we_o(dwishbone_we_o_m),
+	.dwishbone_sel_o(dwishbone_sel_o_m),
+	.dwishbone_stb_o(dwishbone_stb_o_m),
+	.dwishbone_cyc_o(dwishbone_cyc_o_m),
+	.timer_int_o(),
+
+	.counter_high(dpy1),
+	.counter_low(dpy0)
+);
+
+//ʵ����data_sram
+sram base_ram(
+    .Hclock(clk_11M0592),
+	.Hreset(reset_btn),
+	.Hwrite(dwishbone_we_o_m),
+	.ready(dwishbone_stb_o_m),
+	.H_be_n(dwishbone_sel_o_m),
+	.Hselect(dwishbone_cyc_o_m),
+	.Haddress(dwishbone_addr_o_m[19:0]),
+	.Hwritedata(dwishbone_data_o_m),
+	.Hready(dwishbone_ack_i_m),
+	.Hreaddata(dwishbone_data_i_m),
+
+	.Ram1OE(base_ram_oe_n),
+	.Ram1WE(base_ram_we_n),
+	.Ram1EN(base_ram_ce_n),
+	.Ram1BE(base_ram_be_n),
+	.Ram1Address(base_ram_addr),
+	.Ram1data(base_ram_data)
+);
+
 
 /* =========== Demo code begin =========== */
 
 // PLL分频示例
 wire locked, clk_10M, clk_20M;
-pll_example clock_gen 
+pll_example clock_gen
  (
   // Clock out ports
   .clk_out1(clk_10M), // 时钟输出1，频率在IP配置界面中设置
@@ -157,20 +210,20 @@ async_receiver #(.ClkFrequency(50000000),.Baud(9600)) //接收模块，9600无�
         .RxD_clear(ext_uart_ready),       //清除接收标志
         .RxD_data(ext_uart_rx)             //接收到的一字节数据
     );
-    
+
 always @(posedge clk_50M) begin //接收到缓冲区ext_uart_buffer
     if(ext_uart_ready)begin
         ext_uart_buffer <= ext_uart_rx;
         ext_uart_avai <= 1;
-    end else if(!ext_uart_busy && ext_uart_avai)begin 
+    end else if(!ext_uart_busy && ext_uart_avai)begin
         ext_uart_avai <= 0;
     end
 end
 always @(posedge clk_50M) begin //将缓冲区ext_uart_buffer发送出去
-    if(!ext_uart_busy && ext_uart_avai)begin 
+    if(!ext_uart_busy && ext_uart_avai)begin
         ext_uart_tx <= ext_uart_buffer;
         ext_uart_start <= 1;
-    end else begin 
+    end else begin
         ext_uart_start <= 0;
     end
 end
@@ -191,7 +244,7 @@ assign video_green = hdata < 532 && hdata >= 266 ? 3'b111 : 0; //绿色竖条
 assign video_blue = hdata >= 532 ? 2'b11 : 0; //蓝色竖条
 assign video_clk = clk_50M;
 vga #(12, 800, 856, 976, 1040, 600, 637, 643, 666, 1, 1) vga800x600at75 (
-    .clk(clk_50M), 
+    .clk(clk_50M),
     .hdata(hdata), //横坐标
     .vdata(),      //纵坐标
     .hsync(video_hsync),

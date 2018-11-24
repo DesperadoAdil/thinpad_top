@@ -1,4 +1,5 @@
 `timescale 1ns / 1ps
+`include "defines.v"
 module tb;
 
 wire clk_50M, clk_11M0592;
@@ -40,13 +41,13 @@ wire flash_we_n;         //Flash写使能信号，低有效
 wire flash_byte_n;       //Flash 8bit模式选择，低有效。在使用flash的16位模式时请设为1
 
 //Windows需要注意路径分隔符的转义，例如"D:\\foo\\bar.bin"
-parameter BASE_RAM_INIT_FILE = "/tmp/main.bin"; //BaseRAM初始化文件，请修改为实际的绝对路径
+parameter BASE_RAM_INIT_FILE = "D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sim_1/new/main.bin"; //BaseRAM初始化文件，请修改为实际的绝对路径
 parameter EXT_RAM_INIT_FILE = "/tmp/eram.bin";    //ExtRAM初始化文件，请修改为实际的绝对路径
 parameter FLASH_INIT_FILE = "/tmp/kernel.elf";    //Flash初始化文件，请修改为实际的绝对路径
 
 assign rxd = 1'b1; //idle state
 
-initial begin 
+initial begin
     //在这里可以自定义测试输入序列，例如：
     dip_sw = 32'h2;
     touch_btn = 0;
@@ -128,32 +129,32 @@ sram_model ext2(/*autoinst*/
             .LB_n(ext_ram_be_n[2]),
             .UB_n(ext_ram_be_n[3]));
 x28fxxxp30 #(.FILENAME_MEM(FLASH_INIT_FILE)) flash(
-    .A(flash_a[1+:22]), 
-    .DQ(flash_d), 
-    .W_N(flash_we_n),    // Write Enable 
+    .A(flash_a[1+:22]),
+    .DQ(flash_d),
+    .W_N(flash_we_n),    // Write Enable
     .G_N(flash_oe_n),    // Output Enable
     .E_N(flash_ce_n),    // Chip Enable
     .L_N(1'b0),    // Latch Enable
     .K(1'b0),      // Clock
     .WP_N(flash_vpen),   // Write Protect
     .RP_N(flash_rp_n),   // Reset/Power-Down
-    .VDD('d3300), 
-    .VDDQ('d3300), 
-    .VPP('d1800), 
+    .VDD('d3300),
+    .VDDQ('d3300),
+    .VPP('d1800),
     .Info(1'b1));
 
-initial begin 
+initial begin
     wait(flash_byte_n == 1'b0);
     $display("8-bit Flash interface is not supported in simulation!");
     $display("Please tie flash_byte_n to high");
     $stop;
 end
 
-initial begin 
+initial begin
     reg [31:0] tmp_array[0:1048575];
     integer n_File_ID, n_Init_Size;
     n_File_ID = $fopen(BASE_RAM_INIT_FILE, "rb");
-    if(!n_File_ID)begin 
+    if(!n_File_ID)begin
         n_Init_Size = 0;
         $display("Failed to open BaseRAM init file");
     end else begin
@@ -170,11 +171,11 @@ initial begin
     end
 end
 
-initial begin 
+initial begin
     reg [31:0] tmp_array[0:1048575];
     integer n_File_ID, n_Init_Size;
     n_File_ID = $fopen(EXT_RAM_INIT_FILE, "rb");
-    if(!n_File_ID)begin 
+    if(!n_File_ID)begin
         n_Init_Size = 0;
         $display("Failed to open ExtRAM init file");
     end else begin

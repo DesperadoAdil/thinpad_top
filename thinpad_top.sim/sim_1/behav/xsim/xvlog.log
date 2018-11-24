@@ -1,0 +1,99 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/defines.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/ip/pll_example/pll_example_sim_netlist.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module pll_example
+INFO: [VRFC 10-311] analyzing module pll_example_pll_example_clk_wiz
+INFO: [VRFC 10-311] analyzing module glbl
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sim_1/new/28F640P30.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module BankLib
+INFO: [VRFC 10-311] analyzing module TimingDataModule
+INFO: [VRFC 10-311] analyzing module TimingLibModule
+INFO: [VRFC 10-311] analyzing module BlockLockModule
+INFO: [VRFC 10-311] analyzing module CFIqueryModule
+INFO: [VRFC 10-311] analyzing module DataErrorModule
+INFO: [VRFC 10-311] analyzing module ConfigRegModule
+INFO: [VRFC 10-311] analyzing module SignatureModule
+INFO: [VRFC 10-311] analyzing module CUIdecoder1
+INFO: [VRFC 10-311] analyzing module CUIdecoder2
+INFO: [VRFC 10-311] analyzing module CUIdecoder_Busy1
+INFO: [VRFC 10-311] analyzing module EraseModule
+INFO: [VRFC 10-311] analyzing module MemoryModule
+INFO: [VRFC 10-311] analyzing module OutputBufferModule
+INFO: [VRFC 10-311] analyzing module ProgramModule
+INFO: [VRFC 10-311] analyzing module BuffEnhancedFactProgramModule
+INFO: [VRFC 10-311] analyzing module ProtectRegModule
+INFO: [VRFC 10-311] analyzing module ReadModule
+INFO: [VRFC 10-311] analyzing module StatusRegModule
+INFO: [VRFC 10-311] analyzing module KernelModule
+INFO: [VRFC 10-311] analyzing module x28fxxxp30
+INFO: [VRFC 10-311] analyzing module BurstModule
+INFO: [VRFC 10-311] analyzing module BlankCheckModule
+INFO: [VRFC 10-311] analyzing module ProgramBufferModule
+INFO: [VRFC 10-311] analyzing module DebugModule
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/LLbit_reg.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module LLbit_reg
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/SEG7_LUT.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module SEG7_LUT
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/async.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module async_transmitter
+INFO: [VRFC 10-311] analyzing module async_receiver
+INFO: [VRFC 10-311] analyzing module ASSERTION_ERROR
+INFO: [VRFC 10-311] analyzing module BaudTickGen
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sim_1/new/clock.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock
+WARNING: [VRFC 10-1315] redeclaration of ansi port clk_50M is not allowed [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sim_1/new/clock.v:8]
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/ctrl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ctrl
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/div.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module div
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/ex.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ex
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/ex_mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ex_mem
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/hilo_reg.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module hilo_reg
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/id.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module id
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/id_ex.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module id_ex
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/if_id.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module if_id
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/mem.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mem
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/mem_wb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mem_wb
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/openmips.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module openmips
+INFO: [VRFC 10-2458] undeclared symbol rom_ce_o, assumed default net type wire [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/openmips.v:155]
+INFO: [VRFC 10-2458] undeclared symbol rom_addr_o, assumed default net type wire [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/openmips.v:159]
+INFO: [VRFC 10-2458] undeclared symbol rom_data_i, assumed default net type wire [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/openmips.v:167]
+INFO: [VRFC 10-2458] undeclared symbol ram_data_i, assumed default net type wire [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/openmips.v:381]
+INFO: [VRFC 10-2458] undeclared symbol ram_addr_o, assumed default net type wire [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/openmips.v:401]
+INFO: [VRFC 10-2458] undeclared symbol ram_we_o, assumed default net type wire [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/openmips.v:402]
+INFO: [VRFC 10-2458] undeclared symbol ram_sel_o, assumed default net type wire [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/openmips.v:403]
+INFO: [VRFC 10-2458] undeclared symbol ram_data_o, assumed default net type wire [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/openmips.v:404]
+INFO: [VRFC 10-2458] undeclared symbol ram_ce_o, assumed default net type wire [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/openmips.v:405]
+INFO: [VRFC 10-2458] undeclared symbol flush, assumed default net type wire [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/openmips.v:498]
+INFO: [VRFC 10-2458] undeclared symbol stallreq_from_mem, assumed default net type wire [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/openmips.v:519]
+INFO: [VRFC 10-2458] undeclared symbol rom_ce, assumed default net type wire [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/openmips.v:532]
+INFO: [VRFC 10-2458] undeclared symbol inst_i, assumed default net type wire [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/openmips.v:537]
+INFO: [VRFC 10-2458] undeclared symbol stallreq_from_if, assumed default net type wire [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/openmips.v:549]
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/pc_reg.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module pc_reg
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/regfile.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module regfile
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/sram.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sram
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sim_1/new/sram_model.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sram_model
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/thinpad_top.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module thinpad_top
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/vga.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module vga
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/wishbone_bus_if.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module wishbone_bus_if
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/defines.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sim_1/new/tb.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tb
+INFO: [VRFC 10-2263] Analyzing Verilog file "D:/MIPS32CPU/thinpad_top/thinpad_top.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+WARNING: [VRFC 10-2845] overwriting previous definition of module glbl [D:/MIPS32CPU/thinpad_top/thinpad_top.sim/sim_1/behav/xsim/glbl.v:6]
