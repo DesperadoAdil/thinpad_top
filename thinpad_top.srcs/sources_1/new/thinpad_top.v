@@ -149,19 +149,19 @@ sram dsram(
 	.Hready(dwishbone_ack_i_m),
 	.Hreaddata(dwishbone_data_i_m),
 
-	.base_Ram1OE(base_ram_oe_n),
-	.base_Ram1WE(base_ram_we_n),
-	.base_Ram1EN(base_ram_ce_n),
-	.base_Ram1BE(base_ram_be_n),
-	.base_Ram1Address(base_ram_addr),
-	.base_Ram1data(base_ram_data),
+	.Ram1OE(base_ram_oe_n),
+	.Ram1WE(base_ram_we_n),
+	.Ram1EN(base_ram_ce_n),
+	.Ram1BE(base_ram_be_n),
+	.Ram1Address(base_ram_addr),
+	.Ram1data(base_ram_data)
 	
-	.ext_Ram1OE(ext_ram_oe_n),
+	/*.ext_Ram1OE(ext_ram_oe_n),
     .ext_Ram1WE(ext_ram_we_n),
     .ext_Ram1EN(ext_ram_ce_n),
     .ext_Ram1BE(ext_ram_be_n),
     .ext_Ram1Address(ext_ram_addr),
-	.ext_Ram1data(ext_ram_data)
+	.ext_Ram1data(ext_ram_data)*/
 );
 
 sram isram (
@@ -176,19 +176,19 @@ sram isram (
     .Hready(iwishbone_ack_i_m),
     .Hreaddata(iwishbone_data_i_m),
     
-    .base_Ram1OE(base_ram_oe_n),
+    /*.base_Ram1OE(base_ram_oe_n),
     .base_Ram1WE(base_ram_we_n),
     .base_Ram1EN(base_ram_ce_n),
     .base_Ram1BE(base_ram_be_n),
     .base_Ram1Address(base_ram_addr),
-    .base_Ram1data(base_ram_data),
+    .base_Ram1data(base_ram_data),*/
     
-    .ext_Ram1OE(ext_ram_oe_n),
-    .ext_Ram1WE(ext_ram_we_n),
-    .ext_Ram1EN(ext_ram_ce_n),
-    .ext_Ram1BE(ext_ram_be_n),
-    .ext_Ram1Address(ext_ram_addr),
-    .ext_Ram1data(ext_ram_data)
+    .Ram1OE(ext_ram_oe_n),
+    .Ram1WE(ext_ram_we_n),
+    .Ram1EN(ext_ram_ce_n),
+    .Ram1BE(ext_ram_be_n),
+    .Ram1Address(ext_ram_addr),
+    .Ram1data(ext_ram_data)
 );
 
 
