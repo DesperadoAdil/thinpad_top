@@ -35,7 +35,7 @@ module sram(
     localparam WriteWord1 = 4'd1, WriteWord2 = 4'd2, ReadWord = 4'd3, idle = 4'd4, WriteWord3 = 4'd5;
     assign Hready = (state != WriteWord1) & (state != WriteWord2);
     always @(posedge Hclock or negedge Hreset) begin
-        if (Hreset == 0) begin
+        if (Hreset == 1) begin
             state <= idle;
             Haddress_temp <= 31'b0;
             Hwritedata_temp <= 32'b0;
@@ -67,7 +67,7 @@ module sram(
         end
     end
     always @(*) begin
-        if (Hreset == 1'b0) begin
+        if (Hreset == 1'b1) begin
             Hreaddata = 32'b0;
             base_Ram1OE = 1'b1;
             base_Ram1WE = 1'b1;
