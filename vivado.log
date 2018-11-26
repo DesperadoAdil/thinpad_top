@@ -432,3 +432,4 @@ WARNING: file /tmp/kernel.elf could not be opened
 INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_behav' loaded.
 INFO: [USF-XSim-97] XSim simulation ran for 1000ns
 launch_simulation: Time (s): cpu = 00:00:05 ; elapsed = 00:00:23 . Memory (MB): peak = 1851.367 ; gain = 0.000
+The simulator has terminated in an unexpected manner with exit code 1073807364.  Please review the simulation log (xsim.log) for details.
