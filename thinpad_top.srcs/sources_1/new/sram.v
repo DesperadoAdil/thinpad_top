@@ -23,7 +23,7 @@ module sram(
     reg[19:0] Haddress_temp;
     reg[3:0] H_be_n_temp;
     reg control;
-    assign Ram1data = (control == 1'b1)?data_temp:{32{1'bz}};
+    assign Ram1data = (control == 1'b1)?{data_temp[7:0], data_temp[15:8], data_temp[23:16], data_temp[31:24]}:{32{1'bz}};
     localparam WriteWord1 = 4'd1, WriteWord2 = 4'd2, ReadWord = 4'd3, idle = 4'd4, WriteWord3 = 4'd5;
     assign Hready = (state != WriteWord1) & (state != WriteWord2);
     always @(posedge Hclock or negedge Hreset) begin
@@ -108,7 +108,7 @@ module sram(
                     Ram1BE = ~H_be_n_temp;
                     data_temp = 32'b0;
                     Ram1Address = Haddress_temp;
-                    Hreaddata = Ram1data;
+                    Hreaddata = {Ram1data[7:0], Ram1data[15:8], Ram1data[23:16], Ram1data[31:24]};
                 end
                 default: begin
                     Ram1Address = Haddress_temp;

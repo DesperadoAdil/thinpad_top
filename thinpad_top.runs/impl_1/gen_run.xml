@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="impl_1" LaunchPart="xc7a100tfgg676-2L" LaunchTime="1543041831">
+  <File Type="BITSTR-BMM" Name="thinpad_top_bd.bmm"/>
   <File Type="ROUTE-PWR" Name="thinpad_top_power_routed.rpt"/>
   <File Type="PA-TCL" Name="thinpad_top.tcl"/>
-  <File Type="BITSTR-BMM" Name="thinpad_top_bd.bmm"/>
+  <File Type="OPT-DCP" Name="thinpad_top_opt.dcp"/>
   <File Type="ROUTE-PWR-SUM" Name="thinpad_top_power_summary_routed.pb"/>
   <File Type="REPORTS-TCL" Name="thinpad_top_reports.tcl"/>
-  <File Type="OPT-DCP" Name="thinpad_top_opt.dcp"/>
   <File Type="OPT-DRC" Name="thinpad_top_drc_opted.rpt"/>
   <File Type="OPT-HWDEF" Name="thinpad_top.hwdef"/>
   <File Type="PWROPT-DCP" Name="thinpad_top_pwropt.dcp"/>
@@ -25,19 +25,20 @@
   <File Type="ROUTE-BLACKBOX-DCP" Name="thinpad_top_routed_bb.dcp"/>
   <File Type="ROUTE-DRC" Name="thinpad_top_drc_routed.rpt"/>
   <File Type="ROUTE-DRC-PB" Name="thinpad_top_drc_routed.pb"/>
-  <File Type="ROUTE-DRC-RPX" Name="thinpad_top_drc_routed.rpx"/>
   <File Type="BITSTR-LTX" Name="thinpad_top.ltx"/>
-  <File Type="ROUTE-METHODOLOGY-DRC" Name="thinpad_top_methodology_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-RPX" Name="thinpad_top_drc_routed.rpx"/>
   <File Type="BITSTR-MMI" Name="thinpad_top.mmi"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="thinpad_top_methodology_drc_routed.rpt"/>
   <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="thinpad_top_methodology_drc_routed.rpx"/>
-  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="thinpad_top_methodology_drc_routed.pb"/>
   <File Type="BITSTR-SYSDEF" Name="thinpad_top.sysdef"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="thinpad_top_methodology_drc_routed.pb"/>
   <File Type="ROUTE-PWR-RPX" Name="thinpad_top_power_routed.rpx"/>
   <File Type="ROUTE-STATUS" Name="thinpad_top_route_status.rpt"/>
   <File Type="ROUTE-STATUS-PB" Name="thinpad_top_route_status.pb"/>
   <File Type="ROUTE-TIMINGSUMMARY" Name="thinpad_top_timing_summary_routed.rpt"/>
   <File Type="ROUTE-TIMING-PB" Name="thinpad_top_timing_summary_routed.pb"/>
   <File Type="ROUTE-TIMING-RPX" Name="thinpad_top_timing_summary_routed.rpx"/>
+  <File Type="RDI-RDI" Name="thinpad_top.vdi"/>
   <File Type="ROUTE-CLK" Name="thinpad_top_clock_utilization_routed.rpt"/>
   <File Type="ROUTE-BUS-SKEW" Name="thinpad_top_bus_skew_routed.rpt"/>
   <File Type="ROUTE-BUS-SKEW-PB" Name="thinpad_top_bus_skew_routed.pb"/>
@@ -48,7 +49,6 @@
   <File Type="BITSTR-RBT" Name="thinpad_top.rbt"/>
   <File Type="BITSTR-NKY" Name="thinpad_top.nky"/>
   <File Type="BG-DRC" Name="thinpad_top.drc"/>
-  <File Type="RDI-RDI" Name="thinpad_top.vdi"/>
   <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>

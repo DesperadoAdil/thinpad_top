@@ -25,10 +25,10 @@ Compiling module xil_defaultlib.cp0_reg
 Compiling module xil_defaultlib.wishbone_bus_if
 Compiling module xil_defaultlib.openmips
 Compiling module xil_defaultlib.sram
-Compiling module unisims_ver.BUFG
 Compiling module unisims_ver.IBUF
 Compiling module unisims_ver.MMCME2_ADV(CLKFBOUT_MULT_F=20.0,...
-Compiling module xil_defaultlib.pll_example_pll_example_clk_wiz
+Compiling module unisims_ver.BUFG
+Compiling module xil_defaultlib.pll_example_clk_wiz
 Compiling module xil_defaultlib.pll_example
 Compiling module xil_defaultlib.SEG7_LUT
 Compiling module xil_defaultlib.BaudTickGen(ClkFrequency=5000000...

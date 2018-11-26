@@ -4,24 +4,24 @@ module wishbone_bus_if(
 
 	input	wire										clk,
 	input wire										rst,
-	
+
 	//来自ctrl的输入，流水线暂停和清除信号
 	input wire[5:0]               stall_i,
 	input wire                    flush_i,
-	
-	//来自cpu的输入信�?
+
+	//来自cpu的输入信��?
 	input wire                    cpu_ce_i,
 	input wire[`RegBus]           cpu_data_i,
 	input wire[`RegBus]           cpu_addr_i,
 	input wire                    cpu_we_i,
 	input wire[3:0]               cpu_sel_i,
 	output reg[`RegBus]           cpu_data_o,
-	
+
 	//总线的输入数据和响应信号
 	input wire[`RegBus]           wishbone_data_i,
 	input wire                    wishbone_ack_i,
 
-	//总线的输出信�?
+	//总线的输出信��?
 	output reg[`RegBus]           wishbone_addr_o,
 	output reg[`RegBus]           wishbone_data_o,
 	output reg                    wishbone_we_o,
@@ -29,14 +29,24 @@ module wishbone_bus_if(
 	output reg                    wishbone_stb_o,
 	output reg                    wishbone_cyc_o,
 
-	output reg                    stallreq	       
-	
+	output reg                    stallreq
+
 );
 
   reg[1:0] wishbone_state;
   reg[`RegBus] rd_buf;
 
-  	//总线三�?�之间转�?
+	/*always @ (negedge clk) begin
+		if (wishbone_state == `WB_IDLE && wishbone_ack_i == 1'b1) begin
+			if(wishbone_we_o == `WriteDisable) begin
+				cpu_data_o <= wishbone_data_i;
+			end else begin
+				cpu_data_o <= `ZeroWord;
+			end
+		end
+	end*/
+
+  	//总线三�?�之间转��?
 	always @ (posedge clk) begin
 		if(rst == `RstEnable) begin
 			wishbone_state <= `WB_IDLE;
@@ -57,8 +67,8 @@ module wishbone_bus_if(
 						wishbone_data_o <= cpu_data_i;
 						wishbone_we_o <= cpu_we_i;
 						wishbone_sel_o <=  cpu_sel_i;
-						wishbone_state <= `WB_BUSY;			
-					end							
+						wishbone_state <= `WB_BUSY;
+					end
 				end
 				`WB_BUSY:		begin
 					if(wishbone_ack_i == 1'b1) begin
@@ -72,13 +82,13 @@ module wishbone_bus_if(
 						if(cpu_we_i == `WriteDisable) begin
 							rd_buf <= wishbone_data_i;
 						end
-						
+
 						if(stall_i != 6'b000000) begin
-							//根据来自ctrl模块的信号，进等待状�?
+							//根据来自ctrl模块的信号，进等待状��?
 							wishbone_state <= `WB_WAIT_FOR_STALL;
-						end					
+						end
 					end else if(flush_i == `True_v) begin
-						//flush之后将�?�线复原
+						//flush之后将�?�线复原
 					  wishbone_stb_o <= 1'b0;
 						wishbone_cyc_o <= 1'b0;
 						wishbone_addr_o <= `ZeroWord;
@@ -95,11 +105,11 @@ module wishbone_bus_if(
 					end
 				end
 				default: begin
-				end 
+				end
 			endcase
-		end 
-	end 
-			
+		end
+	end
+
 
 	always @ (*) begin
 		if(rst == `RstEnable) begin
@@ -111,20 +121,20 @@ module wishbone_bus_if(
 				`WB_IDLE:		begin
 					if((cpu_ce_i == 1'b1) && (flush_i == `False_v)) begin
 						stallreq <= `Stop;
-						cpu_data_o <= `ZeroWord;				
+						cpu_data_o <= `ZeroWord;
 					end
 				end
 				`WB_BUSY:		begin
 					if(wishbone_ack_i == 1'b1) begin
 						stallreq <= `NoStop;
 						if(wishbone_we_o == `WriteDisable) begin
-							cpu_data_o <= wishbone_data_i; 
+							cpu_data_o <= wishbone_data_i;
 						end else begin
 						  cpu_data_o <= `ZeroWord;
-						end							
+						end
 					end else begin
-						stallreq <= `Stop;	
-						cpu_data_o <= `ZeroWord;				
+						stallreq <= `Stop;
+						cpu_data_o <= `ZeroWord;
 					end
 				end
 				`WB_WAIT_FOR_STALL:		begin
@@ -132,9 +142,9 @@ module wishbone_bus_if(
 					cpu_data_o <= rd_buf;
 				end
 				default: begin
-				end 
+				end
 			endcase
-		end 
-	end   
+		end
+	end
 
 endmodule

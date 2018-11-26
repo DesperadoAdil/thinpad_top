@@ -108,7 +108,7 @@ assign int = {5'b00000, timer_int};
 
 //ʵ����cpu
 openmips openmips0(
-    .clk(clk_11M0592),
+    .clk(clk_10M),
 	.rst(reset_btn),
 	.int_i(int),
 
@@ -138,7 +138,7 @@ openmips openmips0(
 
 //ʵ����data_sram
 sram dsram(
-    .Hclock(clk_11M0592),
+    .Hclock(clk_20M),
 	.Hreset(reset_btn),
 	.Hwrite(dwishbone_we_o_m),
 	.ready(dwishbone_stb_o_m),
@@ -165,7 +165,7 @@ sram dsram(
 );
 
 sram isram (
-    .Hclock(clk_11M0592),
+    .Hclock(clk_20M),
     .Hreset(reset_btn),
     .Hwrite(iwishbone_we_o_m),
     .ready(iwishbone_stb_o_m),
