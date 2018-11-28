@@ -4,46 +4,46 @@ module regfile(
 
 	input wire clk,
 	input wire rst,
-	
-	//Ð´¶Ë¿Ú
+
+	//Ð´ï¿½Ë¿ï¿½
 	input wire we,
 	input wire[`RegAddrBus] waddr,
 	input wire[`RegBus] wdata,
-	
-	//¶Á¶Ë¿Ú1
+
+	//ï¿½ï¿½ï¿½Ë¿ï¿½1
 	input wire re1,
 	input wire[`RegAddrBus] raddr1,
 	output reg[`RegBus] rdata1,
-	
-	//¶Á¶Ë¿Ú2
+
+	//ï¿½ï¿½ï¿½Ë¿ï¿½2
 	input wire re2,
 	input wire[`RegAddrBus] raddr2,
 	output reg[`RegBus] rdata2,
-	
-	//±©Â¶³ö19ºÅ¼Ä´æÆ÷
-    output wire[15:0]     counter_reg
-	
+
+	//ï¿½ï¿½Â¶ï¿½ï¿½19ï¿½Å¼Ä´ï¿½ï¿½ï¿½
+    output reg[15:0]     counter_reg
+
 );
 
 	reg[`RegBus]  regs[0:`RegNum-1];
-	
-	//Í¨¹ýassign½«19ºÅ¼Ä´æÆ÷ÊµÊ±¸üÐÂµ½counter_reg
-    assign counter_reg = regs[19][15:0];
 
 	always @ (posedge clk) begin
 		if (rst == `RstDisable) begin
 			if((we == `WriteEnable) && (waddr != `RegNumLog2'h0)) begin
 				regs[waddr] <= wdata;
+				if (waddr == 5'b10011) begin
+					counter_reg <= wdata[15:0];
+				end
 			end
 		end
 	end
-	
+
 	always @ (*) begin
         if(rst == `RstEnable) begin
           rdata1 <= `ZeroWord;
         end else if(raddr1 == `RegNumLog2'h0) begin
           rdata1 <= `ZeroWord;
-        end else if((raddr1 == waddr) && (we == `WriteEnable) 
+        end else if((raddr1 == waddr) && (we == `WriteEnable)
                     && (re1 == `ReadEnable)) begin
           rdata1 <= wdata;
         end else if(re1 == `ReadEnable) begin
@@ -58,7 +58,7 @@ module regfile(
 			  rdata2 <= `ZeroWord;
 	  end else if(raddr2 == `RegNumLog2'h0) begin
 	  		rdata2 <= `ZeroWord;
-	  end else if((raddr2 == waddr) && (we == `WriteEnable) 
+	  end else if((raddr2 == waddr) && (we == `WriteEnable)
 	  	            && (re2 == `ReadEnable)) begin
 	  	  rdata2 <= wdata;
 	  end else if(re2 == `ReadEnable) begin

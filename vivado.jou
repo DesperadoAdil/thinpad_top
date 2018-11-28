@@ -50,3 +50,5 @@ run all
 relaunch_sim
 run all
 run all
+run all
+close_sim

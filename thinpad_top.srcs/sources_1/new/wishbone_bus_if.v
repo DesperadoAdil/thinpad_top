@@ -71,9 +71,9 @@ module wishbone_bus_if(
 					end
 				end
 				`WB_BUSY:		begin
+				wishbone_stb_o <= 1'b0;
+				wishbone_cyc_o <= 1'b0;
 					if(wishbone_ack_i == 1'b1) begin
-						wishbone_stb_o <= 1'b0;
-						wishbone_cyc_o <= 1'b0;
 						wishbone_addr_o <= `ZeroWord;
 						wishbone_data_o <= `ZeroWord;
 						wishbone_we_o <= `WriteDisable;
@@ -89,8 +89,6 @@ module wishbone_bus_if(
 						end
 					end else if(flush_i == `True_v) begin
 						//flush之后将�?�线复原
-					  wishbone_stb_o <= 1'b0;
-						wishbone_cyc_o <= 1'b0;
 						wishbone_addr_o <= `ZeroWord;
 						wishbone_data_o <= `ZeroWord;
 						wishbone_we_o <= `WriteDisable;
