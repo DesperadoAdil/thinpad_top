@@ -109,7 +109,6 @@ wire[15:0] counter;
 assign dpy0 = counter[7:0];
 assign dpy1 = counter[15:8];
 
-
 //ʵ����cpu
 openmips openmips0(
     .clk(clk_10M),
