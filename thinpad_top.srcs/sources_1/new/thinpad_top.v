@@ -106,8 +106,9 @@ wire timer_int;
 assign int = {5'b00000, timer_int};
 
 wire[15:0] counter;
-assign dpy0 = counter[7:0];
-assign dpy1 = counter[15:8];
+wire[31:0] current;
+//assign dpy0 = counter[7:0];
+//assign dpy1 = counter[15:8];
 
 //ʵ����cpu
 openmips openmips0(
@@ -135,7 +136,8 @@ openmips openmips0(
 
 	.timer_int_o(timer_int),
 
-	.counter_reg(counter)
+	.counter_reg(counter),
+	.current_reg(current)
 );
 
 //ʵ����data_sram
@@ -251,8 +253,8 @@ always@(posedge clock_btn or posedge reset_btn) begin
         led_bits <= 16'h1;
     end
     else begin //每次按下时钟按钮，数码管显示值加1，LED循环左移
-        number <= number+1;
-        led_bits <= {led_bits[14:0],led_bits[15]};
+        number <= counter[7:0];
+        led_bits <= ~current[15:0];
     end
 end
 

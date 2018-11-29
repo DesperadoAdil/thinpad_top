@@ -62,7 +62,7 @@ end
 initial begin
     reset_btn = `RstEnable;
     #195 reset_btn= `RstDisable;
-  end
+end
 
 thinpad_top dut(
     .clk_50M(clk_50M),

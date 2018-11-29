@@ -21,11 +21,14 @@ module regfile(
 	output reg[`RegBus] rdata2,
 
 	//��¶��19�żĴ���
-    output reg[15:0]     counter_reg
+    output reg[15:0]     counter_reg,
+    output wire[31:0]    current_reg
 
 );
 
 	reg[`RegBus]  regs[0:`RegNum-1];
+	
+	assign current_reg = regs[4];
 
 	always @ (posedge clk) begin
 		if (rst == `RstDisable) begin

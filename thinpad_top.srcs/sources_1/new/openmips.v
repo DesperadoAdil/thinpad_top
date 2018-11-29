@@ -29,8 +29,8 @@ module openmips(
 
 	output wire                    timer_int_o,
 
-	output wire[15:0]               counter_reg
-
+	output wire[15:0]               counter_reg,
+	output wire[31:0]              current_reg
 );
 
 	wire[`InstAddrBus] pc;
@@ -291,7 +291,8 @@ module openmips(
 		.re2 (reg2_read),
 		.raddr2 (reg2_addr),
 		.rdata2 (reg2_data),
-		.counter_reg(counter_reg)
+		.counter_reg(counter_reg),
+		.current_reg(current_reg)
 	);
 
 	//ID/EXģ��
