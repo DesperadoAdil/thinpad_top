@@ -108,7 +108,17 @@ module sram(
                     Ram1BE = ~H_be_n_temp;
                     data_temp = 32'b0;
                     Ram1Address = Haddress_temp;
-                    Hreaddata = {Ram1data[7:0], Ram1data[15:8], Ram1data[23:16], Ram1data[31:24]};
+                    if (H_be_n == 4'b0001) begin
+                        Hreaddata = {{24{Ram1data[7]}}, Ram1data[7:0]};
+                    end else if (H_be_n == 4'b0010) begin
+                        Hreaddata = {{24{Ram1data[15]}}, Ram1data[15:8]};
+                    end else if (H_be_n == 4'b0100) begin
+                        Hreaddata = {{24{Ram1data[23]}}, Ram1data[23:16]};
+                    end else if (H_be_n == 4'b1000) begin
+                        Hreaddata = {{24{Ram1data[31]}}, Ram1data[31:24]};
+                    end else begin
+                        Hreaddata = {Ram1data[7:0], Ram1data[15:8], Ram1data[23:16], Ram1data[31:24]};
+                    end
                 end
                 default: begin
                     Ram1Address = Haddress_temp;

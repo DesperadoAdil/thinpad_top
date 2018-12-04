@@ -1,0 +1,919 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_time_impl.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="7832080990fs"></ZoomStartTime>
+      <ZoomEndTime time="9040080991fs"></ZoomEndTime>
+      <Cursor1Time time="8460978000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="230"></NameColumnWidth>
+      <ValueColumnWidth column_width="77"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="224" />
+   <wvobject fp_name="/tb/clk_50M" type="logic">
+      <obj_property name="ElementShortName">clk_50M</obj_property>
+      <obj_property name="ObjectShortName">clk_50M</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/clk_11M0592" type="logic">
+      <obj_property name="ElementShortName">clk_11M0592</obj_property>
+      <obj_property name="ObjectShortName">clk_11M0592</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/clock_btn" type="logic">
+      <obj_property name="ElementShortName">clock_btn</obj_property>
+      <obj_property name="ObjectShortName">clock_btn</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/reset_btn" type="logic">
+      <obj_property name="ElementShortName">reset_btn</obj_property>
+      <obj_property name="ObjectShortName">reset_btn</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/touch_btn" type="array">
+      <obj_property name="ElementShortName">touch_btn[3:0]</obj_property>
+      <obj_property name="ObjectShortName">touch_btn[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dip_sw" type="array">
+      <obj_property name="ElementShortName">dip_sw[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dip_sw[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/leds" type="array">
+      <obj_property name="ElementShortName">leds[15:0]</obj_property>
+      <obj_property name="ObjectShortName">leds[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dpy0" type="array">
+      <obj_property name="ElementShortName">dpy0[7:0]</obj_property>
+      <obj_property name="ObjectShortName">dpy0[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dpy1" type="array">
+      <obj_property name="ElementShortName">dpy1[7:0]</obj_property>
+      <obj_property name="ObjectShortName">dpy1[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/txd" type="logic">
+      <obj_property name="ElementShortName">txd</obj_property>
+      <obj_property name="ObjectShortName">txd</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/rxd" type="logic">
+      <obj_property name="ElementShortName">rxd</obj_property>
+      <obj_property name="ObjectShortName">rxd</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/base_ram_data" type="array">
+      <obj_property name="ElementShortName">base_ram_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">base_ram_data[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/base_ram_addr" type="array">
+      <obj_property name="ElementShortName">base_ram_addr[19:0]</obj_property>
+      <obj_property name="ObjectShortName">base_ram_addr[19:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/base_ram_be_n" type="array">
+      <obj_property name="ElementShortName">base_ram_be_n[3:0]</obj_property>
+      <obj_property name="ObjectShortName">base_ram_be_n[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/base_ram_ce_n" type="logic">
+      <obj_property name="ElementShortName">base_ram_ce_n</obj_property>
+      <obj_property name="ObjectShortName">base_ram_ce_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/base_ram_oe_n" type="logic">
+      <obj_property name="ElementShortName">base_ram_oe_n</obj_property>
+      <obj_property name="ObjectShortName">base_ram_oe_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/base_ram_we_n" type="logic">
+      <obj_property name="ElementShortName">base_ram_we_n</obj_property>
+      <obj_property name="ObjectShortName">base_ram_we_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/ext_ram_data" type="array">
+      <obj_property name="ElementShortName">ext_ram_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ext_ram_data[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/ext_ram_addr" type="array">
+      <obj_property name="ElementShortName">ext_ram_addr[19:0]</obj_property>
+      <obj_property name="ObjectShortName">ext_ram_addr[19:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/ext_ram_be_n" type="array">
+      <obj_property name="ElementShortName">ext_ram_be_n[3:0]</obj_property>
+      <obj_property name="ObjectShortName">ext_ram_be_n[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/ext_ram_ce_n" type="logic">
+      <obj_property name="ElementShortName">ext_ram_ce_n</obj_property>
+      <obj_property name="ObjectShortName">ext_ram_ce_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/ext_ram_oe_n" type="logic">
+      <obj_property name="ElementShortName">ext_ram_oe_n</obj_property>
+      <obj_property name="ObjectShortName">ext_ram_oe_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/ext_ram_we_n" type="logic">
+      <obj_property name="ElementShortName">ext_ram_we_n</obj_property>
+      <obj_property name="ObjectShortName">ext_ram_we_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/flash_a" type="array">
+      <obj_property name="ElementShortName">flash_a[22:0]</obj_property>
+      <obj_property name="ObjectShortName">flash_a[22:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/flash_d" type="array">
+      <obj_property name="ElementShortName">flash_d[15:0]</obj_property>
+      <obj_property name="ObjectShortName">flash_d[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/flash_rp_n" type="logic">
+      <obj_property name="ElementShortName">flash_rp_n</obj_property>
+      <obj_property name="ObjectShortName">flash_rp_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/flash_vpen" type="logic">
+      <obj_property name="ElementShortName">flash_vpen</obj_property>
+      <obj_property name="ObjectShortName">flash_vpen</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/flash_ce_n" type="logic">
+      <obj_property name="ElementShortName">flash_ce_n</obj_property>
+      <obj_property name="ObjectShortName">flash_ce_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/flash_oe_n" type="logic">
+      <obj_property name="ElementShortName">flash_oe_n</obj_property>
+      <obj_property name="ObjectShortName">flash_oe_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/flash_we_n" type="logic">
+      <obj_property name="ElementShortName">flash_we_n</obj_property>
+      <obj_property name="ObjectShortName">flash_we_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/flash_byte_n" type="logic">
+      <obj_property name="ElementShortName">flash_byte_n</obj_property>
+      <obj_property name="ObjectShortName">flash_byte_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/BASE_RAM_INIT_FILE" type="array">
+      <obj_property name="ElementShortName">BASE_RAM_INIT_FILE[479:0]</obj_property>
+      <obj_property name="ObjectShortName">BASE_RAM_INIT_FILE[479:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/EXT_RAM_INIT_FILE" type="array">
+      <obj_property name="ElementShortName">EXT_RAM_INIT_FILE[479:0]</obj_property>
+      <obj_property name="ObjectShortName">EXT_RAM_INIT_FILE[479:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/FLASH_INIT_FILE" type="array">
+      <obj_property name="ElementShortName">FLASH_INIT_FILE[119:0]</obj_property>
+      <obj_property name="ObjectShortName">FLASH_INIT_FILE[119:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/pc_reg0/pc0" type="array">
+      <obj_property name="ElementShortName">pc0[30:0]</obj_property>
+      <obj_property name="ObjectShortName">pc0[30:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/iwishbone_bus_if/D" type="array">
+      <obj_property name="ElementShortName">D[31:0]</obj_property>
+      <obj_property name="ObjectShortName">D[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/iwishbone_bus_if/E" type="array">
+      <obj_property name="ElementShortName">E[0:0]</obj_property>
+      <obj_property name="ObjectShortName">E[0:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/iwishbone_bus_if/\FSM_sequential_wishbone_state[0]_i_1__0_n_8 " type="logic">
+      <obj_property name="ElementShortName">\FSM_sequential_wishbone_state[0]_i_1__0_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\FSM_sequential_wishbone_state[0]_i_1__0_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/iwishbone_bus_if/\FSM_sequential_wishbone_state[1]_i_1__0_n_8 " type="logic">
+      <obj_property name="ElementShortName">\FSM_sequential_wishbone_state[1]_i_1__0_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\FSM_sequential_wishbone_state[1]_i_1__0_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/iwishbone_bus_if/\FSM_sequential_wishbone_state[1]_i_2_n_8 " type="logic">
+      <obj_property name="ElementShortName">\FSM_sequential_wishbone_state[1]_i_2_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\FSM_sequential_wishbone_state[1]_i_2_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/iwishbone_bus_if/\FSM_sequential_wishbone_state[1]_i_3__0_n_8 " type="logic">
+      <obj_property name="ElementShortName">\FSM_sequential_wishbone_state[1]_i_3__0_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\FSM_sequential_wishbone_state[1]_i_3__0_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/iwishbone_bus_if/\FSM_sequential_wishbone_state[1]_i_4__0_n_8 " type="logic">
+      <obj_property name="ElementShortName">\FSM_sequential_wishbone_state[1]_i_4__0_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\FSM_sequential_wishbone_state[1]_i_4__0_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/iwishbone_bus_if/\FSM_sequential_wishbone_state[1]_i_5__0_n_8 " type="logic">
+      <obj_property name="ElementShortName">\FSM_sequential_wishbone_state[1]_i_5__0_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\FSM_sequential_wishbone_state[1]_i_5__0_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/iwishbone_bus_if/\FSM_sequential_wishbone_state_reg[1]_0 " type="logic">
+      <obj_property name="ElementShortName">\FSM_sequential_wishbone_state_reg[1]_0 </obj_property>
+      <obj_property name="ObjectShortName">\FSM_sequential_wishbone_state_reg[1]_0 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/iwishbone_bus_if/Q" type="array">
+      <obj_property name="ElementShortName">Q[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Q[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/iwishbone_bus_if/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/iwishbone_bus_if/flush" type="logic">
+      <obj_property name="ElementShortName">flush</obj_property>
+      <obj_property name="ObjectShortName">flush</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/iwishbone_bus_if/\id_inst_reg[19] " type="logic">
+      <obj_property name="ElementShortName">\id_inst_reg[19] </obj_property>
+      <obj_property name="ObjectShortName">\id_inst_reg[19] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/iwishbone_bus_if/in14" type="array">
+      <obj_property name="ElementShortName">in14[31:0]</obj_property>
+      <obj_property name="ObjectShortName">in14[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/iwishbone_bus_if/iwishbone_ack_i" type="logic">
+      <obj_property name="ElementShortName">iwishbone_ack_i</obj_property>
+      <obj_property name="ObjectShortName">iwishbone_ack_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/iwishbone_bus_if/iwishbone_addr_o" type="array">
+      <obj_property name="ElementShortName">iwishbone_addr_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">iwishbone_addr_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/iwishbone_bus_if/iwishbone_data_i" type="array">
+      <obj_property name="ElementShortName">iwishbone_data_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">iwishbone_data_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/iwishbone_bus_if/iwishbone_sel_o" type="array">
+      <obj_property name="ElementShortName">iwishbone_sel_o[0:0]</obj_property>
+      <obj_property name="ObjectShortName">iwishbone_sel_o[0:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/iwishbone_bus_if/iwishbone_stb_o" type="logic">
+      <obj_property name="ElementShortName">iwishbone_stb_o</obj_property>
+      <obj_property name="ObjectShortName">iwishbone_stb_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/iwishbone_bus_if/\mem_excepttype_reg[13] " type="logic">
+      <obj_property name="ElementShortName">\mem_excepttype_reg[13] </obj_property>
+      <obj_property name="ObjectShortName">\mem_excepttype_reg[13] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/iwishbone_bus_if/n_6_4812_BUFG_inst_n_7" type="logic">
+      <obj_property name="ElementShortName">n_6_4812_BUFG_inst_n_7</obj_property>
+      <obj_property name="ObjectShortName">n_6_4812_BUFG_inst_n_7</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/iwishbone_bus_if/out" type="array">
+      <obj_property name="ElementShortName">out[0:0]</obj_property>
+      <obj_property name="ObjectShortName">out[0:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/iwishbone_bus_if/rd_buf" type="logic">
+      <obj_property name="ElementShortName">rd_buf</obj_property>
+      <obj_property name="ObjectShortName">rd_buf</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/iwishbone_bus_if/rom_ce" type="logic">
+      <obj_property name="ElementShortName">rom_ce</obj_property>
+      <obj_property name="ObjectShortName">rom_ce</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/iwishbone_bus_if/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/iwishbone_bus_if/stall" type="array">
+      <obj_property name="ElementShortName">stall[1:0]</obj_property>
+      <obj_property name="ObjectShortName">stall[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/iwishbone_bus_if/stallreq_from_ex" type="logic">
+      <obj_property name="ElementShortName">stallreq_from_ex</obj_property>
+      <obj_property name="ObjectShortName">stallreq_from_ex</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/iwishbone_bus_if/stallreq_from_if" type="logic">
+      <obj_property name="ElementShortName">stallreq_from_if</obj_property>
+      <obj_property name="ObjectShortName">stallreq_from_if</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/iwishbone_bus_if/stallreq_from_mem" type="logic">
+      <obj_property name="ElementShortName">stallreq_from_mem</obj_property>
+      <obj_property name="ObjectShortName">stallreq_from_mem</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/iwishbone_bus_if/wb_cp0_reg_we_reg" type="array">
+      <obj_property name="ElementShortName">wb_cp0_reg_we_reg[0:0]</obj_property>
+      <obj_property name="ObjectShortName">wb_cp0_reg_we_reg[0:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/iwishbone_bus_if/wb_cp0_reg_we_reg_0" type="logic">
+      <obj_property name="ElementShortName">wb_cp0_reg_we_reg_0</obj_property>
+      <obj_property name="ObjectShortName">wb_cp0_reg_we_reg_0</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/iwishbone_bus_if/\wishbone_addr_o[31]_i_1__0_n_8 " type="logic">
+      <obj_property name="ElementShortName">\wishbone_addr_o[31]_i_1__0_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\wishbone_addr_o[31]_i_1__0_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/iwishbone_bus_if/\wishbone_sel_o[3]_i_1_n_8 " type="logic">
+      <obj_property name="ElementShortName">\wishbone_sel_o[3]_i_1_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\wishbone_sel_o[3]_i_1_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/iwishbone_bus_if/wishbone_state" type="array">
+      <obj_property name="ElementShortName">wishbone_state[1:1]</obj_property>
+      <obj_property name="ObjectShortName">wishbone_state[1:1]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/iwishbone_bus_if/wishbone_stb_o_i_1__0_n_8" type="logic">
+      <obj_property name="ElementShortName">wishbone_stb_o_i_1__0_n_8</obj_property>
+      <obj_property name="ObjectShortName">wishbone_stb_o_i_1__0_n_8</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/isram/Hwrite" type="logic">
+      <obj_property name="ElementShortName">Hwrite</obj_property>
+      <obj_property name="ObjectShortName">Hwrite</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/isram/Hwritedata" type="array">
+      <obj_property name="ElementShortName">Hwritedata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Hwritedata[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/isram/H_be_n" type="array">
+      <obj_property name="ElementShortName">H_be_n[3:0]</obj_property>
+      <obj_property name="ObjectShortName">H_be_n[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/isram/H_be_n_temp" type="array">
+      <obj_property name="ElementShortName">H_be_n_temp[3:0]</obj_property>
+      <obj_property name="ObjectShortName">H_be_n_temp[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/isram/Haddress" type="array">
+      <obj_property name="ElementShortName">Haddress[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Haddress[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/isram/Haddress_temp" type="logic">
+      <obj_property name="ElementShortName">Haddress_temp</obj_property>
+      <obj_property name="ObjectShortName">Haddress_temp</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/isram/\Haddress_temp_reg_n_8_[0] " type="logic">
+      <obj_property name="ElementShortName">\Haddress_temp_reg_n_8_[0] </obj_property>
+      <obj_property name="ObjectShortName">\Haddress_temp_reg_n_8_[0] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/isram/\Haddress_temp_reg_n_8_[10] " type="logic">
+      <obj_property name="ElementShortName">\Haddress_temp_reg_n_8_[10] </obj_property>
+      <obj_property name="ObjectShortName">\Haddress_temp_reg_n_8_[10] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/isram/\Haddress_temp_reg_n_8_[11] " type="logic">
+      <obj_property name="ElementShortName">\Haddress_temp_reg_n_8_[11] </obj_property>
+      <obj_property name="ObjectShortName">\Haddress_temp_reg_n_8_[11] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/isram/\Haddress_temp_reg_n_8_[12] " type="logic">
+      <obj_property name="ElementShortName">\Haddress_temp_reg_n_8_[12] </obj_property>
+      <obj_property name="ObjectShortName">\Haddress_temp_reg_n_8_[12] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/isram/\Haddress_temp_reg_n_8_[13] " type="logic">
+      <obj_property name="ElementShortName">\Haddress_temp_reg_n_8_[13] </obj_property>
+      <obj_property name="ObjectShortName">\Haddress_temp_reg_n_8_[13] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/isram/\Haddress_temp_reg_n_8_[14] " type="logic">
+      <obj_property name="ElementShortName">\Haddress_temp_reg_n_8_[14] </obj_property>
+      <obj_property name="ObjectShortName">\Haddress_temp_reg_n_8_[14] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/isram/\Haddress_temp_reg_n_8_[15] " type="logic">
+      <obj_property name="ElementShortName">\Haddress_temp_reg_n_8_[15] </obj_property>
+      <obj_property name="ObjectShortName">\Haddress_temp_reg_n_8_[15] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/isram/\Haddress_temp_reg_n_8_[16] " type="logic">
+      <obj_property name="ElementShortName">\Haddress_temp_reg_n_8_[16] </obj_property>
+      <obj_property name="ObjectShortName">\Haddress_temp_reg_n_8_[16] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/isram/\Haddress_temp_reg_n_8_[17] " type="logic">
+      <obj_property name="ElementShortName">\Haddress_temp_reg_n_8_[17] </obj_property>
+      <obj_property name="ObjectShortName">\Haddress_temp_reg_n_8_[17] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/isram/\Haddress_temp_reg_n_8_[18] " type="logic">
+      <obj_property name="ElementShortName">\Haddress_temp_reg_n_8_[18] </obj_property>
+      <obj_property name="ObjectShortName">\Haddress_temp_reg_n_8_[18] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/isram/\Haddress_temp_reg_n_8_[19] " type="logic">
+      <obj_property name="ElementShortName">\Haddress_temp_reg_n_8_[19] </obj_property>
+      <obj_property name="ObjectShortName">\Haddress_temp_reg_n_8_[19] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/isram/\Haddress_temp_reg_n_8_[1] " type="logic">
+      <obj_property name="ElementShortName">\Haddress_temp_reg_n_8_[1] </obj_property>
+      <obj_property name="ObjectShortName">\Haddress_temp_reg_n_8_[1] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/isram/\Haddress_temp_reg_n_8_[2] " type="logic">
+      <obj_property name="ElementShortName">\Haddress_temp_reg_n_8_[2] </obj_property>
+      <obj_property name="ObjectShortName">\Haddress_temp_reg_n_8_[2] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/isram/\Haddress_temp_reg_n_8_[3] " type="logic">
+      <obj_property name="ElementShortName">\Haddress_temp_reg_n_8_[3] </obj_property>
+      <obj_property name="ObjectShortName">\Haddress_temp_reg_n_8_[3] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/isram/\Haddress_temp_reg_n_8_[4] " type="logic">
+      <obj_property name="ElementShortName">\Haddress_temp_reg_n_8_[4] </obj_property>
+      <obj_property name="ObjectShortName">\Haddress_temp_reg_n_8_[4] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/isram/\Haddress_temp_reg_n_8_[5] " type="logic">
+      <obj_property name="ElementShortName">\Haddress_temp_reg_n_8_[5] </obj_property>
+      <obj_property name="ObjectShortName">\Haddress_temp_reg_n_8_[5] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/isram/\Haddress_temp_reg_n_8_[6] " type="logic">
+      <obj_property name="ElementShortName">\Haddress_temp_reg_n_8_[6] </obj_property>
+      <obj_property name="ObjectShortName">\Haddress_temp_reg_n_8_[6] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/isram/\Haddress_temp_reg_n_8_[7] " type="logic">
+      <obj_property name="ElementShortName">\Haddress_temp_reg_n_8_[7] </obj_property>
+      <obj_property name="ObjectShortName">\Haddress_temp_reg_n_8_[7] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/isram/\Haddress_temp_reg_n_8_[8] " type="logic">
+      <obj_property name="ElementShortName">\Haddress_temp_reg_n_8_[8] </obj_property>
+      <obj_property name="ObjectShortName">\Haddress_temp_reg_n_8_[8] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/isram/\Haddress_temp_reg_n_8_[9] " type="logic">
+      <obj_property name="ElementShortName">\Haddress_temp_reg_n_8_[9] </obj_property>
+      <obj_property name="ObjectShortName">\Haddress_temp_reg_n_8_[9] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/isram/Hclock" type="logic">
+      <obj_property name="ElementShortName">Hclock</obj_property>
+      <obj_property name="ObjectShortName">Hclock</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/isram/Hreaddata" type="array">
+      <obj_property name="ElementShortName">Hreaddata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Hreaddata[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/isram/Hready" type="logic">
+      <obj_property name="ElementShortName">Hready</obj_property>
+      <obj_property name="ObjectShortName">Hready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/isram/Hreset" type="logic">
+      <obj_property name="ElementShortName">Hreset</obj_property>
+      <obj_property name="ObjectShortName">Hreset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/isram/Hselect" type="logic">
+      <obj_property name="ElementShortName">Hselect</obj_property>
+      <obj_property name="ObjectShortName">Hselect</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/isram/Ram1Address" type="array">
+      <obj_property name="ElementShortName">Ram1Address[19:0]</obj_property>
+      <obj_property name="ObjectShortName">Ram1Address[19:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/isram/Ram1BE" type="array">
+      <obj_property name="ElementShortName">Ram1BE[3:0]</obj_property>
+      <obj_property name="ObjectShortName">Ram1BE[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/isram/Ram1EN" type="logic">
+      <obj_property name="ElementShortName">Ram1EN</obj_property>
+      <obj_property name="ObjectShortName">Ram1EN</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/isram/Ram1OE" type="logic">
+      <obj_property name="ElementShortName">Ram1OE</obj_property>
+      <obj_property name="ObjectShortName">Ram1OE</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/isram/Ram1WE" type="logic">
+      <obj_property name="ElementShortName">Ram1WE</obj_property>
+      <obj_property name="ObjectShortName">Ram1WE</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/isram/Ram1data" type="array">
+      <obj_property name="ElementShortName">Ram1data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Ram1data[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/isram/ready" type="logic">
+      <obj_property name="ElementShortName">ready</obj_property>
+      <obj_property name="ObjectShortName">ready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/isram/state" type="array">
+      <obj_property name="ElementShortName">state[2:0]</obj_property>
+      <obj_property name="ObjectShortName">state[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/isram/\state_reg_n_8_[0] " type="logic">
+      <obj_property name="ElementShortName">\state_reg_n_8_[0] </obj_property>
+      <obj_property name="ObjectShortName">\state_reg_n_8_[0] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/isram/\state_reg_n_8_[1] " type="logic">
+      <obj_property name="ElementShortName">\state_reg_n_8_[1] </obj_property>
+      <obj_property name="ObjectShortName">\state_reg_n_8_[1] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/isram/\state_reg_n_8_[2] " type="logic">
+      <obj_property name="ElementShortName">\state_reg_n_8_[2] </obj_property>
+      <obj_property name="ObjectShortName">\state_reg_n_8_[2] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/D" type="array">
+      <obj_property name="ElementShortName">D[31:0]</obj_property>
+      <obj_property name="ObjectShortName">D[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/E" type="array">
+      <obj_property name="ElementShortName">E[0:0]</obj_property>
+      <obj_property name="ObjectShortName">E[0:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\FSM_sequential_wishbone_state[0]_i_1_n_8 " type="logic">
+      <obj_property name="ElementShortName">\FSM_sequential_wishbone_state[0]_i_1_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\FSM_sequential_wishbone_state[0]_i_1_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\FSM_sequential_wishbone_state[1]_i_1_n_8 " type="logic">
+      <obj_property name="ElementShortName">\FSM_sequential_wishbone_state[1]_i_1_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\FSM_sequential_wishbone_state[1]_i_1_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\FSM_sequential_wishbone_state[1]_i_3_n_8 " type="logic">
+      <obj_property name="ElementShortName">\FSM_sequential_wishbone_state[1]_i_3_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\FSM_sequential_wishbone_state[1]_i_3_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\FSM_sequential_wishbone_state[1]_i_4_n_8 " type="logic">
+      <obj_property name="ElementShortName">\FSM_sequential_wishbone_state[1]_i_4_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\FSM_sequential_wishbone_state[1]_i_4_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\FSM_sequential_wishbone_state[1]_i_5_n_8 " type="logic">
+      <obj_property name="ElementShortName">\FSM_sequential_wishbone_state[1]_i_5_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\FSM_sequential_wishbone_state[1]_i_5_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\FSM_sequential_wishbone_state[1]_i_6_n_8 " type="logic">
+      <obj_property name="ElementShortName">\FSM_sequential_wishbone_state[1]_i_6_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\FSM_sequential_wishbone_state[1]_i_6_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\FSM_sequential_wishbone_state_reg[0]_0 " type="logic">
+      <obj_property name="ElementShortName">\FSM_sequential_wishbone_state_reg[0]_0 </obj_property>
+      <obj_property name="ObjectShortName">\FSM_sequential_wishbone_state_reg[0]_0 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\FSM_sequential_wishbone_state_reg[0]_1 " type="array">
+      <obj_property name="ElementShortName">\FSM_sequential_wishbone_state_reg[0]_1 [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\FSM_sequential_wishbone_state_reg[0]_1 [31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\FSM_sequential_wishbone_state_reg[1]_0 " type="logic">
+      <obj_property name="ElementShortName">\FSM_sequential_wishbone_state_reg[1]_0 </obj_property>
+      <obj_property name="ObjectShortName">\FSM_sequential_wishbone_state_reg[1]_0 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\FSM_sequential_wishbone_state_reg[1]_1 " type="array">
+      <obj_property name="ElementShortName">\FSM_sequential_wishbone_state_reg[1]_1 [0:0]</obj_property>
+      <obj_property name="ObjectShortName">\FSM_sequential_wishbone_state_reg[1]_1 [0:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/Q" type="array">
+      <obj_property name="ElementShortName">Q[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Q[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\cpu_data_o_reg[0]_i_1_n_8 " type="logic">
+      <obj_property name="ElementShortName">\cpu_data_o_reg[0]_i_1_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\cpu_data_o_reg[0]_i_1_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\cpu_data_o_reg[10]_i_1_n_8 " type="logic">
+      <obj_property name="ElementShortName">\cpu_data_o_reg[10]_i_1_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\cpu_data_o_reg[10]_i_1_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\cpu_data_o_reg[11]_i_1_n_8 " type="logic">
+      <obj_property name="ElementShortName">\cpu_data_o_reg[11]_i_1_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\cpu_data_o_reg[11]_i_1_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\cpu_data_o_reg[12]_i_1_n_8 " type="logic">
+      <obj_property name="ElementShortName">\cpu_data_o_reg[12]_i_1_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\cpu_data_o_reg[12]_i_1_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\cpu_data_o_reg[13]_i_1_n_8 " type="logic">
+      <obj_property name="ElementShortName">\cpu_data_o_reg[13]_i_1_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\cpu_data_o_reg[13]_i_1_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\cpu_data_o_reg[14]_i_1_n_8 " type="logic">
+      <obj_property name="ElementShortName">\cpu_data_o_reg[14]_i_1_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\cpu_data_o_reg[14]_i_1_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\cpu_data_o_reg[15]_i_1_n_8 " type="logic">
+      <obj_property name="ElementShortName">\cpu_data_o_reg[15]_i_1_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\cpu_data_o_reg[15]_i_1_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\cpu_data_o_reg[16]_i_1_n_8 " type="logic">
+      <obj_property name="ElementShortName">\cpu_data_o_reg[16]_i_1_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\cpu_data_o_reg[16]_i_1_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\cpu_data_o_reg[17]_i_1_n_8 " type="logic">
+      <obj_property name="ElementShortName">\cpu_data_o_reg[17]_i_1_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\cpu_data_o_reg[17]_i_1_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\cpu_data_o_reg[18]_i_1_n_8 " type="logic">
+      <obj_property name="ElementShortName">\cpu_data_o_reg[18]_i_1_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\cpu_data_o_reg[18]_i_1_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\cpu_data_o_reg[19]_i_1_n_8 " type="logic">
+      <obj_property name="ElementShortName">\cpu_data_o_reg[19]_i_1_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\cpu_data_o_reg[19]_i_1_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\cpu_data_o_reg[1]_i_1_n_8 " type="logic">
+      <obj_property name="ElementShortName">\cpu_data_o_reg[1]_i_1_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\cpu_data_o_reg[1]_i_1_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\cpu_data_o_reg[20]_i_1_n_8 " type="logic">
+      <obj_property name="ElementShortName">\cpu_data_o_reg[20]_i_1_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\cpu_data_o_reg[20]_i_1_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\cpu_data_o_reg[21]_i_1_n_8 " type="logic">
+      <obj_property name="ElementShortName">\cpu_data_o_reg[21]_i_1_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\cpu_data_o_reg[21]_i_1_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\cpu_data_o_reg[22]_i_1_n_8 " type="logic">
+      <obj_property name="ElementShortName">\cpu_data_o_reg[22]_i_1_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\cpu_data_o_reg[22]_i_1_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\cpu_data_o_reg[23]_i_1_n_8 " type="logic">
+      <obj_property name="ElementShortName">\cpu_data_o_reg[23]_i_1_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\cpu_data_o_reg[23]_i_1_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\cpu_data_o_reg[24]_i_1_n_8 " type="logic">
+      <obj_property name="ElementShortName">\cpu_data_o_reg[24]_i_1_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\cpu_data_o_reg[24]_i_1_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\cpu_data_o_reg[25]_i_1_n_8 " type="logic">
+      <obj_property name="ElementShortName">\cpu_data_o_reg[25]_i_1_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\cpu_data_o_reg[25]_i_1_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\cpu_data_o_reg[26]_i_1_n_8 " type="logic">
+      <obj_property name="ElementShortName">\cpu_data_o_reg[26]_i_1_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\cpu_data_o_reg[26]_i_1_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\cpu_data_o_reg[27]_i_1_n_8 " type="logic">
+      <obj_property name="ElementShortName">\cpu_data_o_reg[27]_i_1_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\cpu_data_o_reg[27]_i_1_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\cpu_data_o_reg[28]_i_1_n_8 " type="logic">
+      <obj_property name="ElementShortName">\cpu_data_o_reg[28]_i_1_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\cpu_data_o_reg[28]_i_1_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\cpu_data_o_reg[29]_i_1_n_8 " type="logic">
+      <obj_property name="ElementShortName">\cpu_data_o_reg[29]_i_1_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\cpu_data_o_reg[29]_i_1_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\cpu_data_o_reg[2]_i_1_n_8 " type="logic">
+      <obj_property name="ElementShortName">\cpu_data_o_reg[2]_i_1_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\cpu_data_o_reg[2]_i_1_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\cpu_data_o_reg[30]_i_1_n_8 " type="logic">
+      <obj_property name="ElementShortName">\cpu_data_o_reg[30]_i_1_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\cpu_data_o_reg[30]_i_1_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\cpu_data_o_reg[31]_i_1_n_8 " type="logic">
+      <obj_property name="ElementShortName">\cpu_data_o_reg[31]_i_1_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\cpu_data_o_reg[31]_i_1_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\cpu_data_o_reg[3]_i_1_n_8 " type="logic">
+      <obj_property name="ElementShortName">\cpu_data_o_reg[3]_i_1_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\cpu_data_o_reg[3]_i_1_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\cpu_data_o_reg[4]_i_1_n_8 " type="logic">
+      <obj_property name="ElementShortName">\cpu_data_o_reg[4]_i_1_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\cpu_data_o_reg[4]_i_1_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\cpu_data_o_reg[5]_i_1_n_8 " type="logic">
+      <obj_property name="ElementShortName">\cpu_data_o_reg[5]_i_1_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\cpu_data_o_reg[5]_i_1_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\cpu_data_o_reg[6]_i_1_n_8 " type="logic">
+      <obj_property name="ElementShortName">\cpu_data_o_reg[6]_i_1_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\cpu_data_o_reg[6]_i_1_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\cpu_data_o_reg[7]_i_1_n_8 " type="logic">
+      <obj_property name="ElementShortName">\cpu_data_o_reg[7]_i_1_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\cpu_data_o_reg[7]_i_1_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\cpu_data_o_reg[8]_i_1_n_8 " type="logic">
+      <obj_property name="ElementShortName">\cpu_data_o_reg[8]_i_1_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\cpu_data_o_reg[8]_i_1_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\cpu_data_o_reg[9]_i_1_n_8 " type="logic">
+      <obj_property name="ElementShortName">\cpu_data_o_reg[9]_i_1_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\cpu_data_o_reg[9]_i_1_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/data0" type="array">
+      <obj_property name="ElementShortName">data0[7:0]</obj_property>
+      <obj_property name="ObjectShortName">data0[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/dwishbone_ack_i" type="logic">
+      <obj_property name="ElementShortName">dwishbone_ack_i</obj_property>
+      <obj_property name="ObjectShortName">dwishbone_ack_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/dwishbone_addr_o" type="array">
+      <obj_property name="ElementShortName">dwishbone_addr_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dwishbone_addr_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/dwishbone_data_i" type="array">
+      <obj_property name="ElementShortName">dwishbone_data_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dwishbone_data_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/dwishbone_data_o" type="array">
+      <obj_property name="ElementShortName">dwishbone_data_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dwishbone_data_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/dwishbone_sel_o" type="array">
+      <obj_property name="ElementShortName">dwishbone_sel_o[3:0]</obj_property>
+      <obj_property name="ObjectShortName">dwishbone_sel_o[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/dwishbone_stb_o" type="logic">
+      <obj_property name="ElementShortName">dwishbone_stb_o</obj_property>
+      <obj_property name="ObjectShortName">dwishbone_stb_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/flush" type="logic">
+      <obj_property name="ElementShortName">flush</obj_property>
+      <obj_property name="ObjectShortName">flush</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\mem_mem_addr_reg[0] " type="array">
+      <obj_property name="ElementShortName">\mem_mem_addr_reg[0] [3:0]</obj_property>
+      <obj_property name="ObjectShortName">\mem_mem_addr_reg[0] [3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\mem_mem_addr_reg[1] " type="array">
+      <obj_property name="ElementShortName">\mem_mem_addr_reg[1] [1:0]</obj_property>
+      <obj_property name="ObjectShortName">\mem_mem_addr_reg[1] [1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/n_5_4077_BUFG_inst_n_6" type="logic">
+      <obj_property name="ElementShortName">n_5_4077_BUFG_inst_n_6</obj_property>
+      <obj_property name="ObjectShortName">n_5_4077_BUFG_inst_n_6</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/out" type="array">
+      <obj_property name="ElementShortName">out[1:0]</obj_property>
+      <obj_property name="ObjectShortName">out[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/ram_ce_o" type="logic">
+      <obj_property name="ElementShortName">ram_ce_o</obj_property>
+      <obj_property name="ObjectShortName">ram_ce_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/ram_we_o" type="logic">
+      <obj_property name="ElementShortName">ram_we_o</obj_property>
+      <obj_property name="ObjectShortName">ram_we_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/rd_buf" type="logic">
+      <obj_property name="ElementShortName">rd_buf</obj_property>
+      <obj_property name="ObjectShortName">rd_buf</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/stall" type="array">
+      <obj_property name="ElementShortName">stall[2:0]</obj_property>
+      <obj_property name="ObjectShortName">stall[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/stallreq_from_mem" type="logic">
+      <obj_property name="ElementShortName">stallreq_from_mem</obj_property>
+      <obj_property name="ObjectShortName">stallreq_from_mem</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\state_reg[1] " type="logic">
+      <obj_property name="ElementShortName">\state_reg[1] </obj_property>
+      <obj_property name="ObjectShortName">\state_reg[1] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/\wb_wdata_reg[30] " type="logic">
+      <obj_property name="ElementShortName">\wb_wdata_reg[30] </obj_property>
+      <obj_property name="ObjectShortName">\wb_wdata_reg[30] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/wishbone_state0" type="logic">
+      <obj_property name="ElementShortName">wishbone_state0</obj_property>
+      <obj_property name="ObjectShortName">wishbone_state0</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dwishbone_bus_if/wishbone_stb_o_i_1_n_8" type="logic">
+      <obj_property name="ElementShortName">wishbone_stb_o_i_1_n_8</obj_property>
+      <obj_property name="ObjectShortName">wishbone_stb_o_i_1_n_8</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/H_be_n" type="array">
+      <obj_property name="ElementShortName">H_be_n[3:0]</obj_property>
+      <obj_property name="ObjectShortName">H_be_n[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/H_be_n_temp" type="array">
+      <obj_property name="ElementShortName">H_be_n_temp[3:0]</obj_property>
+      <obj_property name="ObjectShortName">H_be_n_temp[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/Haddress" type="array">
+      <obj_property name="ElementShortName">Haddress[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Haddress[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/Haddress_temp" type="logic">
+      <obj_property name="ElementShortName">Haddress_temp</obj_property>
+      <obj_property name="ObjectShortName">Haddress_temp</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/\Haddress_temp_reg_n_8_[0] " type="logic">
+      <obj_property name="ElementShortName">\Haddress_temp_reg_n_8_[0] </obj_property>
+      <obj_property name="ObjectShortName">\Haddress_temp_reg_n_8_[0] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/\Haddress_temp_reg_n_8_[10] " type="logic">
+      <obj_property name="ElementShortName">\Haddress_temp_reg_n_8_[10] </obj_property>
+      <obj_property name="ObjectShortName">\Haddress_temp_reg_n_8_[10] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/\Haddress_temp_reg_n_8_[11] " type="logic">
+      <obj_property name="ElementShortName">\Haddress_temp_reg_n_8_[11] </obj_property>
+      <obj_property name="ObjectShortName">\Haddress_temp_reg_n_8_[11] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/\Haddress_temp_reg_n_8_[12] " type="logic">
+      <obj_property name="ElementShortName">\Haddress_temp_reg_n_8_[12] </obj_property>
+      <obj_property name="ObjectShortName">\Haddress_temp_reg_n_8_[12] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/\Haddress_temp_reg_n_8_[13] " type="logic">
+      <obj_property name="ElementShortName">\Haddress_temp_reg_n_8_[13] </obj_property>
+      <obj_property name="ObjectShortName">\Haddress_temp_reg_n_8_[13] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/\Haddress_temp_reg_n_8_[14] " type="logic">
+      <obj_property name="ElementShortName">\Haddress_temp_reg_n_8_[14] </obj_property>
+      <obj_property name="ObjectShortName">\Haddress_temp_reg_n_8_[14] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/\Haddress_temp_reg_n_8_[15] " type="logic">
+      <obj_property name="ElementShortName">\Haddress_temp_reg_n_8_[15] </obj_property>
+      <obj_property name="ObjectShortName">\Haddress_temp_reg_n_8_[15] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/\Haddress_temp_reg_n_8_[16] " type="logic">
+      <obj_property name="ElementShortName">\Haddress_temp_reg_n_8_[16] </obj_property>
+      <obj_property name="ObjectShortName">\Haddress_temp_reg_n_8_[16] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/\Haddress_temp_reg_n_8_[17] " type="logic">
+      <obj_property name="ElementShortName">\Haddress_temp_reg_n_8_[17] </obj_property>
+      <obj_property name="ObjectShortName">\Haddress_temp_reg_n_8_[17] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/\Haddress_temp_reg_n_8_[18] " type="logic">
+      <obj_property name="ElementShortName">\Haddress_temp_reg_n_8_[18] </obj_property>
+      <obj_property name="ObjectShortName">\Haddress_temp_reg_n_8_[18] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/\Haddress_temp_reg_n_8_[19] " type="logic">
+      <obj_property name="ElementShortName">\Haddress_temp_reg_n_8_[19] </obj_property>
+      <obj_property name="ObjectShortName">\Haddress_temp_reg_n_8_[19] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/\Haddress_temp_reg_n_8_[1] " type="logic">
+      <obj_property name="ElementShortName">\Haddress_temp_reg_n_8_[1] </obj_property>
+      <obj_property name="ObjectShortName">\Haddress_temp_reg_n_8_[1] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/\Haddress_temp_reg_n_8_[2] " type="logic">
+      <obj_property name="ElementShortName">\Haddress_temp_reg_n_8_[2] </obj_property>
+      <obj_property name="ObjectShortName">\Haddress_temp_reg_n_8_[2] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/\Haddress_temp_reg_n_8_[3] " type="logic">
+      <obj_property name="ElementShortName">\Haddress_temp_reg_n_8_[3] </obj_property>
+      <obj_property name="ObjectShortName">\Haddress_temp_reg_n_8_[3] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/\Haddress_temp_reg_n_8_[4] " type="logic">
+      <obj_property name="ElementShortName">\Haddress_temp_reg_n_8_[4] </obj_property>
+      <obj_property name="ObjectShortName">\Haddress_temp_reg_n_8_[4] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/\Haddress_temp_reg_n_8_[5] " type="logic">
+      <obj_property name="ElementShortName">\Haddress_temp_reg_n_8_[5] </obj_property>
+      <obj_property name="ObjectShortName">\Haddress_temp_reg_n_8_[5] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/\Haddress_temp_reg_n_8_[6] " type="logic">
+      <obj_property name="ElementShortName">\Haddress_temp_reg_n_8_[6] </obj_property>
+      <obj_property name="ObjectShortName">\Haddress_temp_reg_n_8_[6] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/\Haddress_temp_reg_n_8_[7] " type="logic">
+      <obj_property name="ElementShortName">\Haddress_temp_reg_n_8_[7] </obj_property>
+      <obj_property name="ObjectShortName">\Haddress_temp_reg_n_8_[7] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/\Haddress_temp_reg_n_8_[8] " type="logic">
+      <obj_property name="ElementShortName">\Haddress_temp_reg_n_8_[8] </obj_property>
+      <obj_property name="ObjectShortName">\Haddress_temp_reg_n_8_[8] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/\Haddress_temp_reg_n_8_[9] " type="logic">
+      <obj_property name="ElementShortName">\Haddress_temp_reg_n_8_[9] </obj_property>
+      <obj_property name="ObjectShortName">\Haddress_temp_reg_n_8_[9] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/Hclock" type="logic">
+      <obj_property name="ElementShortName">Hclock</obj_property>
+      <obj_property name="ObjectShortName">Hclock</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/Hreaddata" type="array">
+      <obj_property name="ElementShortName">Hreaddata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Hreaddata[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/Hready" type="logic">
+      <obj_property name="ElementShortName">Hready</obj_property>
+      <obj_property name="ObjectShortName">Hready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/Hreset" type="logic">
+      <obj_property name="ElementShortName">Hreset</obj_property>
+      <obj_property name="ObjectShortName">Hreset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/Hselect" type="logic">
+      <obj_property name="ElementShortName">Hselect</obj_property>
+      <obj_property name="ObjectShortName">Hselect</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/Hwrite" type="logic">
+      <obj_property name="ElementShortName">Hwrite</obj_property>
+      <obj_property name="ObjectShortName">Hwrite</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/Hwritedata" type="array">
+      <obj_property name="ElementShortName">Hwritedata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Hwritedata[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/Hwritedata_temp" type="array">
+      <obj_property name="ElementShortName">Hwritedata_temp[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Hwritedata_temp[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/Ram1Address" type="array">
+      <obj_property name="ElementShortName">Ram1Address[19:0]</obj_property>
+      <obj_property name="ObjectShortName">Ram1Address[19:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/Ram1BE" type="array">
+      <obj_property name="ElementShortName">Ram1BE[3:0]</obj_property>
+      <obj_property name="ObjectShortName">Ram1BE[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/Ram1EN" type="logic">
+      <obj_property name="ElementShortName">Ram1EN</obj_property>
+      <obj_property name="ObjectShortName">Ram1EN</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/Ram1OE" type="logic">
+      <obj_property name="ElementShortName">Ram1OE</obj_property>
+      <obj_property name="ObjectShortName">Ram1OE</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/Ram1WE" type="logic">
+      <obj_property name="ElementShortName">Ram1WE</obj_property>
+      <obj_property name="ObjectShortName">Ram1WE</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/Ram1data" type="array">
+      <obj_property name="ElementShortName">Ram1data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Ram1data[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/\Ram1data_TRI[0] " type="logic">
+      <obj_property name="ElementShortName">\Ram1data_TRI[0] </obj_property>
+      <obj_property name="ObjectShortName">\Ram1data_TRI[0] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/ready" type="logic">
+      <obj_property name="ElementShortName">ready</obj_property>
+      <obj_property name="ObjectShortName">ready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/state" type="array">
+      <obj_property name="ElementShortName">state[2:0]</obj_property>
+      <obj_property name="ObjectShortName">state[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/\state_reg_n_8_[0] " type="logic">
+      <obj_property name="ElementShortName">\state_reg_n_8_[0] </obj_property>
+      <obj_property name="ObjectShortName">\state_reg_n_8_[0] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/\state_reg_n_8_[1] " type="logic">
+      <obj_property name="ElementShortName">\state_reg_n_8_[1] </obj_property>
+      <obj_property name="ObjectShortName">\state_reg_n_8_[1] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/dsram/\state_reg_n_8_[2] " type="logic">
+      <obj_property name="ElementShortName">\state_reg_n_8_[2] </obj_property>
+      <obj_property name="ObjectShortName">\state_reg_n_8_[2] </obj_property>
+   </wvobject>
+</wave_config>

@@ -254,7 +254,7 @@ always@(posedge clock_btn or posedge reset_btn) begin
     end
     else begin //每次按下时钟按钮，数码管显示值加1，LED循环左移
         number <= counter[7:0];
-        led_bits <= ~current[15:0];
+        led_bits <= current[15:0];
     end
 end
 
