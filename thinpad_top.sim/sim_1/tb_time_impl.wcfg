@@ -11,15 +11,24 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="7832080990fs"></ZoomStartTime>
-      <ZoomEndTime time="9040080991fs"></ZoomEndTime>
-      <Cursor1Time time="8460978000fs"></Cursor1Time>
+      <ZoomStartTime time="23620978000fs"></ZoomStartTime>
+      <ZoomEndTime time="26264978001fs"></ZoomEndTime>
+      <Cursor1Time time="24890978000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="230"></NameColumnWidth>
-      <ValueColumnWidth column_width="77"></ValueColumnWidth>
+      <ValueColumnWidth column_width="73"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="224" />
+   <WVObjectSize size="244" />
+   <wave_markers>
+      <marker time="46990978000" label="" />
+      <marker time="47090978000" label="" />
+      <marker time="47190978000" label="" />
+      <marker time="47290978000" label="" />
+      <marker time="47390978000" label="" />
+      <marker time="47490978000" label="" />
+      <marker time="47590978000" label="" />
+   </wave_markers>
    <wvobject fp_name="/tb/clk_50M" type="logic">
       <obj_property name="ElementShortName">clk_50M</obj_property>
       <obj_property name="ObjectShortName">clk_50M</obj_property>
@@ -156,6 +165,10 @@
       <obj_property name="ElementShortName">FLASH_INIT_FILE[119:0]</obj_property>
       <obj_property name="ObjectShortName">FLASH_INIT_FILE[119:0]</obj_property>
    </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/iwishbone_bus_if/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
    <wvobject fp_name="/tb/dut/openmips0/pc_reg0/pc0" type="array">
       <obj_property name="ElementShortName">pc0[30:0]</obj_property>
       <obj_property name="ObjectShortName">pc0[30:0]</obj_property>
@@ -199,10 +212,6 @@
    <wvobject fp_name="/tb/dut/openmips0/iwishbone_bus_if/Q" type="array">
       <obj_property name="ElementShortName">Q[31:0]</obj_property>
       <obj_property name="ObjectShortName">Q[31:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb/dut/openmips0/iwishbone_bus_if/clk" type="logic">
-      <obj_property name="ElementShortName">clk</obj_property>
-      <obj_property name="ObjectShortName">clk</obj_property>
    </wvobject>
    <wvobject fp_name="/tb/dut/openmips0/iwishbone_bus_if/flush" type="logic">
       <obj_property name="ElementShortName">flush</obj_property>
@@ -915,5 +924,85 @@
    <wvobject fp_name="/tb/dut/dsram/\state_reg_n_8_[2] " type="logic">
       <obj_property name="ElementShortName">\state_reg_n_8_[2] </obj_property>
       <obj_property name="ObjectShortName">\state_reg_n_8_[2] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/mem0/\status_o_reg[11] " type="logic">
+      <obj_property name="ElementShortName">\status_o_reg[11] </obj_property>
+      <obj_property name="ObjectShortName">\status_o_reg[11] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/mem0/D" type="array">
+      <obj_property name="ElementShortName">D[7:0]</obj_property>
+      <obj_property name="ObjectShortName">D[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/mem0/E" type="array">
+      <obj_property name="ElementShortName">E[0:0]</obj_property>
+      <obj_property name="ObjectShortName">E[0:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/mem0/Q" type="array">
+      <obj_property name="ElementShortName">Q[2:0]</obj_property>
+      <obj_property name="ObjectShortName">Q[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/mem0/cp0_cause" type="array">
+      <obj_property name="ElementShortName">cp0_cause[15:8]</obj_property>
+      <obj_property name="ObjectShortName">cp0_cause[15:8]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/mem0/cp0_status" type="array">
+      <obj_property name="ElementShortName">cp0_status[6:0]</obj_property>
+      <obj_property name="ObjectShortName">cp0_status[6:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/mem0/excepttype_o37_in" type="logic">
+      <obj_property name="ElementShortName">excepttype_o37_in</obj_property>
+      <obj_property name="ObjectShortName">excepttype_o37_in</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/mem0/\mem_aluop_reg[2] " type="array">
+      <obj_property name="ElementShortName">\mem_aluop_reg[2] [0:0]</obj_property>
+      <obj_property name="ObjectShortName">\mem_aluop_reg[2] [0:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/mem0/\mem_reg2_reg[15] " type="array">
+      <obj_property name="ElementShortName">\mem_reg2_reg[15] [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\mem_reg2_reg[15] [31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/mem0/\new_pc_reg[31]_i_27_n_8 " type="logic">
+      <obj_property name="ElementShortName">\new_pc_reg[31]_i_27_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\new_pc_reg[31]_i_27_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/mem0/\new_pc_reg[31]_i_31_n_8 " type="logic">
+      <obj_property name="ElementShortName">\new_pc_reg[31]_i_31_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\new_pc_reg[31]_i_31_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/mem0/\new_pc_reg[31]_i_38_n_8 " type="logic">
+      <obj_property name="ElementShortName">\new_pc_reg[31]_i_38_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\new_pc_reg[31]_i_38_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/mem0/\new_pc_reg[31]_i_39_n_8 " type="logic">
+      <obj_property name="ElementShortName">\new_pc_reg[31]_i_39_n_8 </obj_property>
+      <obj_property name="ObjectShortName">\new_pc_reg[31]_i_39_n_8 </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/mem0/out" type="array">
+      <obj_property name="ElementShortName">out[0:0]</obj_property>
+      <obj_property name="ObjectShortName">out[0:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/mem0/ram_data_o" type="array">
+      <obj_property name="ElementShortName">ram_data_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ram_data_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/mem0/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/mem0/wb_cp0_reg_data_i" type="array">
+      <obj_property name="ElementShortName">wb_cp0_reg_data_i[5:0]</obj_property>
+      <obj_property name="ObjectShortName">wb_cp0_reg_data_i[5:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/mem0/\wb_cp0_reg_data_reg[9] " type="logic">
+      <obj_property name="ElementShortName">\wb_cp0_reg_data_reg[9] </obj_property>
+      <obj_property name="ObjectShortName">\wb_cp0_reg_data_reg[9] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/mem0/\wb_cp0_reg_write_addr_reg[1] " type="logic">
+      <obj_property name="ElementShortName">\wb_cp0_reg_write_addr_reg[1] </obj_property>
+      <obj_property name="ObjectShortName">\wb_cp0_reg_write_addr_reg[1] </obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/mem0/\wishbone_data_o_reg[31] " type="array">
+      <obj_property name="ElementShortName">\wishbone_data_o_reg[31] [31:0]</obj_property>
+      <obj_property name="ObjectShortName">\wishbone_data_o_reg[31] [31:0]</obj_property>
    </wvobject>
 </wave_config>

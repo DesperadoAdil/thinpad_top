@@ -4,7 +4,6 @@ module mem(
 
 	input wire rst,
 
-	
 	input wire[`RegAddrBus] wd_i,
 	input wire wreg_i,
 	input wire[`RegBus] wdata_i,
@@ -35,11 +34,20 @@ module mem(
 	input wire[`RegBus] cp0_cause_i,
 	input wire[`RegBus] cp0_epc_i,
 	input wire[`RegBus] cp0_ebase_i,
-
+	
+	input wire[`RegBus] cp0_index_i,
+	input wire[`RegBus] cp0_random_i,
+    input wire[`RegBus] cp0_entryhi_i,
+    input wire[`RegBus] cp0_entrylo0_i,
+    input wire[`RegBus] cp0_entrylo1_i,
 
     input wire wb_cp0_reg_we,
 	input wire[4:0] wb_cp0_reg_write_addr,
 	input wire[`RegBus] wb_cp0_reg_data,
+	
+	// ????tlb????
+    input wire tlb_isMiss,
+    input wire tlb_addr_valid,
 	
     output reg[`RegAddrBus] wd_o,
 	output reg wreg_o,
@@ -67,6 +75,13 @@ module mem(
 	output wire[`RegBus] cp0_epc_o,
 	output wire[`RegBus] cp0_ebase_o,
 	
+	output wire[`RegBus] cp0_tlb_index_random_o,
+	output wire[`RegBus] cp0_entryhi_o,
+	output wire[`RegBus] cp0_entrylo0_o,
+	output wire[`RegBus] cp0_entrylo1_o,
+	//output wire[`RegBus] cp0_random_o,
+	
+	output wire write_tlb_o,
 	
 	output wire is_in_delayslot_o,
 	
@@ -79,15 +94,29 @@ module mem(
 	reg[`RegBus] cp0_cause;
 	reg[`RegBus] cp0_epc;
 	reg[`RegBus] cp0_ebase;
+	
+	reg[`RegBus] cp0_index;
+	reg[`RegBus] cp0_entryhi;
+	reg[`RegBus] cp0_entrylo0;
+	reg[`RegBus] cp0_entrylo1;
+	reg[`RegBus] cp0_random;
+	
+	reg[`RegBus] cp0_tlb_index_random;
+	
 	reg mem_we;
 	
 	reg excepttype_load_error;
 	reg excepttype_save_error;
 	
 	reg[`RegBus] badvaddr;
+	reg write_tlb;
+	
+	reg is_save_read;
 	
 	assign badvaddr_o = badvaddr;
-
+    
+    assign write_tlb_o = write_tlb;
+    
 	assign mem_we_o = mem_we & (~(|excepttype_o));
 	assign zero32 = `ZeroWord;
 
@@ -95,6 +124,13 @@ module mem(
 	assign current_inst_address_o = current_inst_address_i;
 	assign cp0_epc_o = cp0_epc;
 	assign cp0_ebase_o = cp0_ebase;
+	
+	//assign cp0_index_o = cp0_index;
+	assign cp0_entryhi_o = cp0_entryhi;
+	assign cp0_entrylo0_o = cp0_entrylo0;
+	assign cp0_entrylo1_o = cp0_entrylo1;
+	//assign cp0_random_o = cp0_random;
+	assign cp0_tlb_index_random_o = cp0_tlb_index_random;
 
 	always @ (*) begin
 		if(rst == `RstEnable) begin
@@ -130,10 +166,20 @@ module mem(
             excepttype_load_error <= 1'b0;
             excepttype_save_error <= 1'b0;
             badvaddr <= `ZeroWord;
+            write_tlb <= 1'b0;
+            
+            cp0_tlb_index_random <= 1'b0;
+            
+            is_save_read <= 1'b0;
 		end else begin
             excepttype_load_error <= 1'b0;
             excepttype_save_error <= 1'b0;
             badvaddr <= `ZeroWord;
+            write_tlb <= 1'b0;
+            
+            cp0_tlb_index_random <= 1'b0;
+            
+            is_save_read <= 1'b0;
             
             wd_o <= wd_i;
             wreg_o <= wreg_i;
@@ -152,6 +198,8 @@ module mem(
             cp0_reg_data_o <= cp0_reg_data_i;
 			case (aluop_i)
 				`EXE_LB_OP:		begin
+				    is_save_read <= 1'b1;
+				
 					mem_addr_o <= mem_addr_i;
 					mem_we <= `WriteDisable;
 					mem_ce_o <= `ChipEnable;
@@ -178,6 +226,8 @@ module mem(
 					endcase
 				end
 				`EXE_LBU_OP:		begin
+				    is_save_read <= 1'b1;
+				    
 					mem_addr_o <= mem_addr_i;
 					mem_we <= `WriteDisable;
 					mem_ce_o <= `ChipEnable;
@@ -204,6 +254,8 @@ module mem(
 					endcase				
 				end
 				`EXE_LH_OP:		begin
+				    is_save_read <= 1'b1;
+				
 					mem_addr_o <= mem_addr_i;
 					mem_we <= `WriteDisable;
 					mem_ce_o <= `ChipEnable;
@@ -218,6 +270,7 @@ module mem(
 						end
 						default:	begin
 						    badvaddr <= mem_addr_i;
+						    is_save_read <= 1'b0;
 						    excepttype_load_error <= 1'b1;
                             mem_addr_o <= `ZeroWord;
                             mem_ce_o <= `ChipEnable;
@@ -227,6 +280,8 @@ module mem(
 					endcase					
 				end
 				`EXE_LHU_OP:		begin
+				    is_save_read <= 1'b1;
+				
 					mem_addr_o <= mem_addr_i;
 					mem_we <= `WriteDisable;
 					mem_ce_o <= `ChipEnable;
@@ -241,6 +296,8 @@ module mem(
 						end
 						default:	begin
 						    badvaddr <= mem_addr_i;
+						    is_save_read <= 1'b0;
+						    
 						    excepttype_load_error <= 1'b1;
 						    mem_addr_o <= `ZeroWord;
 						    mem_ce_o <= `ChipEnable;
@@ -250,8 +307,12 @@ module mem(
 					endcase				
 				end
 				`EXE_LW_OP:		begin
+				    is_save_read <= 1'b1;
+				    
 				    if (mem_addr_i[1:0] != 2'b00) begin
 				        badvaddr <= mem_addr_i;
+				        is_save_read <= 1'b0;
+				        
 				        excepttype_load_error <= 1'b1;
                         mem_we <= `WriteDisable;
                         mem_addr_o <= `ZeroWord;
@@ -266,6 +327,8 @@ module mem(
 					end
 				end
 				`EXE_LWL_OP: begin
+				    is_save_read <= 1'b1;
+				    
 					mem_addr_o <= {mem_addr_i[31:2], 2'b00};
 					mem_we <= `WriteDisable;
 					mem_sel_o <= 4'b1111;
@@ -289,6 +352,8 @@ module mem(
 					endcase				
 				end
 				`EXE_LWR_OP:		begin
+				    is_save_read <= 1'b1;
+				
 					mem_addr_o <= {mem_addr_i[31:2], 2'b00};
 					mem_we <= `WriteDisable;
 					mem_sel_o <= 4'b1111;
@@ -312,6 +377,8 @@ module mem(
 					endcase					
 				end
 				`EXE_LL_OP:		begin
+				    is_save_read <= 1'b1;
+				
 					mem_addr_o <= mem_addr_i;
 					mem_we <= `WriteDisable;
 					wdata_o <= mem_data_i;	
@@ -321,6 +388,8 @@ module mem(
                     mem_ce_o <= `ChipEnable;				
 				end				
 				`EXE_SB_OP:		begin
+				    is_save_read <= 1'b1;
+				
 					mem_addr_o <= mem_addr_i;
 					mem_we <= `WriteEnable;
 					mem_data_o <= {reg2_i[7:0],reg2_i[7:0],reg2_i[7:0],reg2_i[7:0]};
@@ -344,6 +413,8 @@ module mem(
 					endcase				
 				end
 				`EXE_SH_OP:		begin
+				    is_save_read <= 1'b1;
+				
 					mem_addr_o <= mem_addr_i;
 					mem_we <= `WriteEnable;
 					mem_data_o <= {reg2_i[15:0],reg2_i[15:0]};
@@ -357,6 +428,7 @@ module mem(
 						end
 						default:	begin
 						    badvaddr <= mem_addr_i;
+						    is_save_read <= 1'b0;
 						    excepttype_save_error <= 1'b1;
 						    mem_we <= `WriteDisable;
                             mem_addr_o <= `ZeroWord;
@@ -366,8 +438,11 @@ module mem(
 					endcase						
 				end
 				`EXE_SW_OP:		begin
+				    is_save_read <= 1'b1;
+				
 				    if (mem_addr_i[1:0] != 2'b00) begin
 				        badvaddr <= mem_addr_i;
+				        is_save_read <= 1'b0;
 				        excepttype_save_error <= 1'b1;
                         mem_we <= `WriteDisable;
                         mem_addr_o <= `ZeroWord;
@@ -382,6 +457,8 @@ module mem(
                     end
 				end
 				`EXE_SWL_OP:		begin
+				    is_save_read <= 1'b1;
+				    
 					mem_addr_o <= {mem_addr_i[31:2], 2'b00};
 					mem_we <= `WriteEnable;
 					mem_ce_o <= `ChipEnable;
@@ -408,6 +485,8 @@ module mem(
 					endcase							
 				end
 				`EXE_SWR_OP:		begin
+				    is_save_read <= 1'b1;
+				    
 					mem_addr_o <= {mem_addr_i[31:2], 2'b00};
 					mem_we <= `WriteEnable;
 					mem_ce_o <= `ChipEnable;
@@ -434,6 +513,8 @@ module mem(
 					endcase											
 				end 
 				`EXE_SC_OP:		begin
+				    is_save_read <= 1'b1;
+				    
 					if(LLbit == 1'b1) begin
 						LLbit_we_o <= 1'b1;
 						LLbit_value_o <= 1'b0;
@@ -446,14 +527,23 @@ module mem(
 					end else begin
 						wdata_o <= 32'b0;
 					end
-				end				
+				end
+				`EXE_TLBWI_OP: begin
+				    write_tlb <= 1'b1;
+				    cp0_tlb_index_random <= cp0_index;
+				end
+				`EXE_TLBWR_OP: begin
+				    write_tlb <= 1'b1;
+                    cp0_tlb_index_random <= cp0_random;
+				end	
 				default:		begin
           //???????
 				end
 			endcase							
 		end    //if
 	end      //always
-
+    
+    // for status
 	always @ (*) begin
 		if(rst == `RstEnable) begin
 			cp0_status <= `ZeroWord;
@@ -465,6 +555,7 @@ module mem(
 		end
 	end
 	
+	// for epc
 	always @ (*) begin
 		if(rst == `RstEnable) begin
 			cp0_epc <= `ZeroWord;
@@ -476,6 +567,7 @@ module mem(
 		end
 	end
 	
+	// for ebase
 	always @(*) begin
 	   if (rst == `RstEnable) begin
 	       cp0_ebase <= `ZeroWord;
@@ -488,6 +580,7 @@ module mem(
 	end
 	//assign cp0_ebase_o = cp0_ebase;
 
+    // for cause
     always @ (*) begin
 		if(rst == `RstEnable) begin
 			cp0_cause <= `ZeroWord;
@@ -500,7 +593,68 @@ module mem(
 		  cp0_cause <= cp0_cause_i;
 		end
 	end
+    
+    // for index
+    always @(*) begin
+       if (rst == `RstEnable) begin
+           cp0_index <= `ZeroWord;
+       end else if((wb_cp0_reg_we == `WriteEnable) &&
+                       (wb_cp0_reg_write_addr == `CP0_REG_INDEX)) begin
+           cp0_index <= wb_cp0_reg_data;
+       end else begin
+           cp0_index <= cp0_index_i;
+       end
+    end
+    
+    // for index
+    always @(*) begin
+       if (rst == `RstEnable) begin
+           cp0_random <= `ZeroWord;
+       end else if((wb_cp0_reg_we == `WriteEnable) &&
+                       (wb_cp0_reg_write_addr == `CP0_REG_RANDOM)) begin
+           cp0_random <= wb_cp0_reg_data;
+       end else begin
+           cp0_random <= cp0_random_i;
+       end
+    end
+    
+    // for entryhi
+    always @(*) begin
+       if (rst == `RstEnable) begin
+           cp0_entryhi <= `ZeroWord;
+       end else if((wb_cp0_reg_we == `WriteEnable) &&
+                       (wb_cp0_reg_write_addr == `CP0_REG_ENTRYHI)) begin
+           cp0_entryhi <= wb_cp0_reg_data;
+       end else begin
+           cp0_entryhi <= cp0_entryhi_i;
+       end
+    end
 
+	// for entrylo0
+    always @(*) begin
+       if (rst == `RstEnable) begin
+           cp0_entrylo0 <= `ZeroWord;
+       end else if((wb_cp0_reg_we == `WriteEnable) &&
+                       (wb_cp0_reg_write_addr == `CP0_REG_ENTRYLO0)) begin
+           cp0_entrylo0 <= wb_cp0_reg_data;
+       end else begin
+           cp0_entrylo0 <= cp0_entrylo0_i;
+       end
+    end
+    
+    // for entrylo1
+    always @(*) begin
+       if (rst == `RstEnable) begin
+           cp0_entrylo1 <= `ZeroWord;
+       end else if((wb_cp0_reg_we == `WriteEnable) &&
+                       (wb_cp0_reg_write_addr == `CP0_REG_ENTRYLO1)) begin
+           cp0_entrylo1 <= wb_cp0_reg_data;
+       end else begin
+           cp0_entrylo1 <= cp0_entrylo1_i;
+       end
+    end
+	
+	
 	always @ (*) begin
 		if(rst == `RstEnable) begin
 			excepttype_o <= `ZeroWord;
@@ -527,6 +681,12 @@ module mem(
 				    excepttype_o <= 32'h0000000f; // break
 				end else if (excepttype_load_error == 1'b1) begin
 				    excepttype_o <= 32'h00000011; // load address error
+				end else if (tlb_isMiss == 1'b1 && is_save_read == 1'b1) begin  // TLB refill exception
+				    excepttype_o <= 32'h00000013;
+				    badvaddr <= mem_addr_i;
+                end else if (tlb_addr_valid == 1'b0 && is_save_read == 1'b1) begin // TLB invalid exception
+                    excepttype_o <= 32'h00000014;
+                    badvaddr <= mem_addr_i;
 				end else if (excepttype_save_error == 1'b1) begin
 				    excepttype_o <= 32'h00000012; // save address error
 				end

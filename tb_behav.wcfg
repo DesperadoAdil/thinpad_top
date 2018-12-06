@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="17719032490515fs"></ZoomStartTime>
+      <ZoomEndTime time="17720212803880fs"></ZoomEndTime>
+      <Cursor1Time time="17719610000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="221"></NameColumnWidth>
+      <ValueColumnWidth column_width="58"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="74" />
+   <wvobject fp_name="/tb/clk_50M" type="logic">
+      <obj_property name="ElementShortName">clk_50M</obj_property>
+      <obj_property name="ObjectShortName">clk_50M</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/clk_11M0592" type="logic">
+      <obj_property name="ElementShortName">clk_11M0592</obj_property>
+      <obj_property name="ObjectShortName">clk_11M0592</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/clock_btn" type="logic">
+      <obj_property name="ElementShortName">clock_btn</obj_property>
+      <obj_property name="ObjectShortName">clock_btn</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/reset_btn" type="logic">
+      <obj_property name="ElementShortName">reset_btn</obj_property>
+      <obj_property name="ObjectShortName">reset_btn</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/touch_btn" type="array">
+      <obj_property name="ElementShortName">touch_btn[3:0]</obj_property>
+      <obj_property name="ObjectShortName">touch_btn[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dip_sw" type="array">
+      <obj_property name="ElementShortName">dip_sw[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dip_sw[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/leds" type="array">
+      <obj_property name="ElementShortName">leds[15:0]</obj_property>
+      <obj_property name="ObjectShortName">leds[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/regfile1/regs[19]" type="array">
+      <obj_property name="ElementShortName">[19][31:0]</obj_property>
+      <obj_property name="ObjectShortName">[19][31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dpy0" type="array">
+      <obj_property name="ElementShortName">dpy0[7:0]</obj_property>
+      <obj_property name="ObjectShortName">dpy0[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dpy1" type="array">
+      <obj_property name="ElementShortName">dpy1[7:0]</obj_property>
+      <obj_property name="ObjectShortName">dpy1[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/txd" type="logic">
+      <obj_property name="ElementShortName">txd</obj_property>
+      <obj_property name="ObjectShortName">txd</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/rxd" type="logic">
+      <obj_property name="ElementShortName">rxd</obj_property>
+      <obj_property name="ObjectShortName">rxd</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/base_ram_data" type="array">
+      <obj_property name="ElementShortName">base_ram_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">base_ram_data[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/base_ram_addr" type="array">
+      <obj_property name="ElementShortName">base_ram_addr[19:0]</obj_property>
+      <obj_property name="ObjectShortName">base_ram_addr[19:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/base_ram_be_n" type="array">
+      <obj_property name="ElementShortName">base_ram_be_n[3:0]</obj_property>
+      <obj_property name="ObjectShortName">base_ram_be_n[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/base_ram_ce_n" type="logic">
+      <obj_property name="ElementShortName">base_ram_ce_n</obj_property>
+      <obj_property name="ObjectShortName">base_ram_ce_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/base_ram_oe_n" type="logic">
+      <obj_property name="ElementShortName">base_ram_oe_n</obj_property>
+      <obj_property name="ObjectShortName">base_ram_oe_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/base_ram_we_n" type="logic">
+      <obj_property name="ElementShortName">base_ram_we_n</obj_property>
+      <obj_property name="ObjectShortName">base_ram_we_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/ext_ram_data" type="array">
+      <obj_property name="ElementShortName">ext_ram_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ext_ram_data[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/ext_ram_addr" type="array">
+      <obj_property name="ElementShortName">ext_ram_addr[19:0]</obj_property>
+      <obj_property name="ObjectShortName">ext_ram_addr[19:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/ext_ram_be_n" type="array">
+      <obj_property name="ElementShortName">ext_ram_be_n[3:0]</obj_property>
+      <obj_property name="ObjectShortName">ext_ram_be_n[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/ext_ram_ce_n" type="logic">
+      <obj_property name="ElementShortName">ext_ram_ce_n</obj_property>
+      <obj_property name="ObjectShortName">ext_ram_ce_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/ext_ram_oe_n" type="logic">
+      <obj_property name="ElementShortName">ext_ram_oe_n</obj_property>
+      <obj_property name="ObjectShortName">ext_ram_oe_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/ext_ram_we_n" type="logic">
+      <obj_property name="ElementShortName">ext_ram_we_n</obj_property>
+      <obj_property name="ObjectShortName">ext_ram_we_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/flash_a" type="array">
+      <obj_property name="ElementShortName">flash_a[22:0]</obj_property>
+      <obj_property name="ObjectShortName">flash_a[22:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/flash_d" type="array">
+      <obj_property name="ElementShortName">flash_d[15:0]</obj_property>
+      <obj_property name="ObjectShortName">flash_d[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/flash_rp_n" type="logic">
+      <obj_property name="ElementShortName">flash_rp_n</obj_property>
+      <obj_property name="ObjectShortName">flash_rp_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/flash_vpen" type="logic">
+      <obj_property name="ElementShortName">flash_vpen</obj_property>
+      <obj_property name="ObjectShortName">flash_vpen</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/flash_ce_n" type="logic">
+      <obj_property name="ElementShortName">flash_ce_n</obj_property>
+      <obj_property name="ObjectShortName">flash_ce_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/flash_oe_n" type="logic">
+      <obj_property name="ElementShortName">flash_oe_n</obj_property>
+      <obj_property name="ObjectShortName">flash_oe_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/flash_we_n" type="logic">
+      <obj_property name="ElementShortName">flash_we_n</obj_property>
+      <obj_property name="ObjectShortName">flash_we_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/flash_byte_n" type="logic">
+      <obj_property name="ElementShortName">flash_byte_n</obj_property>
+      <obj_property name="ObjectShortName">flash_byte_n</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/BASE_RAM_INIT_FILE" type="array">
+      <obj_property name="ElementShortName">BASE_RAM_INIT_FILE[479:0]</obj_property>
+      <obj_property name="ObjectShortName">BASE_RAM_INIT_FILE[479:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/EXT_RAM_INIT_FILE" type="array">
+      <obj_property name="ElementShortName">EXT_RAM_INIT_FILE[479:0]</obj_property>
+      <obj_property name="ObjectShortName">EXT_RAM_INIT_FILE[479:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/FLASH_INIT_FILE" type="array">
+      <obj_property name="ElementShortName">FLASH_INIT_FILE[119:0]</obj_property>
+      <obj_property name="ObjectShortName">FLASH_INIT_FILE[119:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/if_id0/if_inst" type="array">
+      <obj_property name="ElementShortName">if_inst[31:0]</obj_property>
+      <obj_property name="ObjectShortName">if_inst[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/if_id0/id_inst" type="array">
+      <obj_property name="ElementShortName">id_inst[31:0]</obj_property>
+      <obj_property name="ObjectShortName">id_inst[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/isram/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/isram/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/isram/ready" type="logic">
+      <obj_property name="ElementShortName">ready</obj_property>
+      <obj_property name="ObjectShortName">ready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/isram/Hready" type="logic">
+      <obj_property name="ElementShortName">Hready</obj_property>
+      <obj_property name="ObjectShortName">Hready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/isram/mem_addr_i" type="array">
+      <obj_property name="ElementShortName">mem_addr_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_addr_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/isram/mem_we_i" type="logic">
+      <obj_property name="ElementShortName">mem_we_i</obj_property>
+      <obj_property name="ObjectShortName">mem_we_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/isram/mem_sel_i" type="array">
+      <obj_property name="ElementShortName">mem_sel_i[3:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_sel_i[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/isram/mem_data_i" type="array">
+      <obj_property name="ElementShortName">mem_data_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_data_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/isram/mem_ce_i" type="logic">
+      <obj_property name="ElementShortName">mem_ce_i</obj_property>
+      <obj_property name="ObjectShortName">mem_ce_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/isram/ramData_io" type="array">
+      <obj_property name="ElementShortName">ramData_io[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ramData_io[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/isram/ramAddr_o" type="array">
+      <obj_property name="ElementShortName">ramAddr_o[19:0]</obj_property>
+      <obj_property name="ObjectShortName">ramAddr_o[19:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/isram/bitEnable_o" type="array">
+      <obj_property name="ElementShortName">bitEnable_o[3:0]</obj_property>
+      <obj_property name="ObjectShortName">bitEnable_o[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/isram/sramEnable_o" type="logic">
+      <obj_property name="ElementShortName">sramEnable_o</obj_property>
+      <obj_property name="ObjectShortName">sramEnable_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/isram/writeEnable_o" type="logic">
+      <obj_property name="ElementShortName">writeEnable_o</obj_property>
+      <obj_property name="ObjectShortName">writeEnable_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/isram/readEnable_o" type="logic">
+      <obj_property name="ElementShortName">readEnable_o</obj_property>
+      <obj_property name="ObjectShortName">readEnable_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/isram/ramData_o" type="array">
+      <obj_property name="ElementShortName">ramData_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ramData_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/isram/STATE" type="array">
+      <obj_property name="ElementShortName">STATE[2:0]</obj_property>
+      <obj_property name="ObjectShortName">STATE[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/isram/ramData_reg" type="array">
+      <obj_property name="ElementShortName">ramData_reg[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ramData_reg[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dsram/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dsram/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dsram/ready" type="logic">
+      <obj_property name="ElementShortName">ready</obj_property>
+      <obj_property name="ObjectShortName">ready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dsram/Hready" type="logic">
+      <obj_property name="ElementShortName">Hready</obj_property>
+      <obj_property name="ObjectShortName">Hready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dsram/mem_addr_i" type="array">
+      <obj_property name="ElementShortName">mem_addr_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_addr_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dsram/mem_we_i" type="logic">
+      <obj_property name="ElementShortName">mem_we_i</obj_property>
+      <obj_property name="ObjectShortName">mem_we_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dsram/mem_sel_i" type="array">
+      <obj_property name="ElementShortName">mem_sel_i[3:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_sel_i[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dsram/mem_data_i" type="array">
+      <obj_property name="ElementShortName">mem_data_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_data_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dsram/mem_ce_i" type="logic">
+      <obj_property name="ElementShortName">mem_ce_i</obj_property>
+      <obj_property name="ObjectShortName">mem_ce_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dsram/ramData_io" type="array">
+      <obj_property name="ElementShortName">ramData_io[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ramData_io[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dsram/ramAddr_o" type="array">
+      <obj_property name="ElementShortName">ramAddr_o[19:0]</obj_property>
+      <obj_property name="ObjectShortName">ramAddr_o[19:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dsram/bitEnable_o" type="array">
+      <obj_property name="ElementShortName">bitEnable_o[3:0]</obj_property>
+      <obj_property name="ObjectShortName">bitEnable_o[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dsram/sramEnable_o" type="logic">
+      <obj_property name="ElementShortName">sramEnable_o</obj_property>
+      <obj_property name="ObjectShortName">sramEnable_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dsram/writeEnable_o" type="logic">
+      <obj_property name="ElementShortName">writeEnable_o</obj_property>
+      <obj_property name="ObjectShortName">writeEnable_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dsram/readEnable_o" type="logic">
+      <obj_property name="ElementShortName">readEnable_o</obj_property>
+      <obj_property name="ObjectShortName">readEnable_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dsram/ramData_o" type="array">
+      <obj_property name="ElementShortName">ramData_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ramData_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dsram/STATE" type="array">
+      <obj_property name="ElementShortName">STATE[2:0]</obj_property>
+      <obj_property name="ObjectShortName">STATE[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb/dut/openmips0/dsram/ramData_reg" type="array">
+      <obj_property name="ElementShortName">ramData_reg[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ramData_reg[31:0]</obj_property>
+   </wvobject>
+</wave_config>

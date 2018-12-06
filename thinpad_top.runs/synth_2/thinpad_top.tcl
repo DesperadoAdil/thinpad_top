@@ -50,8 +50,8 @@ read_verilog -library xil_defaultlib {
   D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/pc_reg.v
   D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/regfile.v
   D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/sram.v
+  D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/tlb.v
   D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/vga.v
-  D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/wishbone_bus_if.v
   D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/thinpad_top.v
 }
 read_ip -quiet D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/ip/pll_example/pll_example.xci
@@ -70,6 +70,8 @@ foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
 read_xdc D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc
 set_property used_in_implementation false [get_files D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc]
 
+read_xdc dont_touch.xdc
+set_property used_in_implementation false [get_files dont_touch.xdc]
 set_param ips.enableIPCacheLiteLoad 0
 close [open __synthesis_is_running__ w]
 

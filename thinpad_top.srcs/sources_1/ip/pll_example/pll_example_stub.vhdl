@@ -3,8 +3,8 @@
 -- Tool Version: Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
 -- Date        : Thu Nov 29 14:38:30 2018
 -- Host        : DESKTOP-HGO3NEF running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub
---               D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/ip/pll_example/pll_example_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub -rename_top pll_example -prefix
+--               pll_example_ pll_example_stub.vhdl
 -- Design      : pll_example
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7a100tfgg676-2

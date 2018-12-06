@@ -113,10 +113,11 @@ wire[31:0] current;
 //ʵ����cpu
 openmips openmips0(
     .clk(clk_10M),
+    .clk_ram(clk_20M),
 	.rst(reset_btn),
 	.int_i(int),
 
-	.dwishbone_data_i(dwishbone_data_i_m),
+	/*.dwishbone_data_i(dwishbone_data_i_m),
 	.dwishbone_ack_i(dwishbone_ack_i_m),
 	.dwishbone_addr_o(dwishbone_addr_o_m),
 	.dwishbone_data_o(dwishbone_data_o_m),
@@ -132,68 +133,68 @@ openmips openmips0(
     .iwishbone_we_o(iwishbone_we_o_m),
     .iwishbone_sel_o(iwishbone_sel_o_m),
     .iwishbone_stb_o(iwishbone_stb_o_m),
-    .iwishbone_cyc_o(iwishbone_cyc_o_m),
+    .iwishbone_cyc_o(iwishbone_cyc_o_m),*/
 
 	.timer_int_o(timer_int),
 
 	.counter_reg(counter),
-	.current_reg(current)
+	.current_reg(current),
+	
+	.base_readEnable_o(base_ram_oe_n),
+        .base_writeEnable_o(base_ram_we_n),
+        .base_sramEnable_o(base_ram_ce_n),
+        .base_bitEnable_o(base_ram_be_n),
+        .base_ramAddr_o(base_ram_addr),
+        .base_ramData_io(base_ram_data),
+        
+    .ext_readEnable_o(ext_ram_oe_n),
+            .ext_writeEnable_o(ext_ram_we_n),
+            .ext_sramEnable_o(ext_ram_ce_n),
+            .ext_bitEnable_o(ext_ram_be_n),
+            .ext_ramAddr_o(ext_ram_addr),
+            .ext_ramData_io(ext_ram_data)
 );
 
 //ʵ����data_sram
-sram dsram(
-    .Hclock(clk_20M),
-	.Hreset(reset_btn),
-	.Hwrite(dwishbone_we_o_m),
+/*sram dsram(
+    .clk(clk_20M),
+	.rst(reset_btn),
+	.mem_we_i(dwishbone_we_o_m),
 	.ready(dwishbone_stb_o_m),
-	.H_be_n(dwishbone_sel_o_m),
-	.Hselect(dwishbone_cyc_o_m),
-	.Haddress(dwishbone_addr_o_m),
-	.Hwritedata(dwishbone_data_o_m),
+	.mem_sel_i(dwishbone_sel_o_m),
+	.mem_ce_i(dwishbone_cyc_o_m),
+	.mem_addr_i(dwishbone_addr_o_m),
+	.mem_data_i(dwishbone_data_o_m),
 	.Hready(dwishbone_ack_i_m),
-	.Hreaddata(dwishbone_data_i_m),
+	.ramData_o(dwishbone_data_i_m),
 
-	.Ram1OE(base_ram_oe_n),
-	.Ram1WE(base_ram_we_n),
-	.Ram1EN(base_ram_ce_n),
-	.Ram1BE(base_ram_be_n),
-	.Ram1Address(base_ram_addr),
-	.Ram1data(base_ram_data)
-
-	/*.ext_Ram1OE(ext_ram_oe_n),
-    .ext_Ram1WE(ext_ram_we_n),
-    .ext_Ram1EN(ext_ram_ce_n),
-    .ext_Ram1BE(ext_ram_be_n),
-    .ext_Ram1Address(ext_ram_addr),
-	.ext_Ram1data(ext_ram_data)*/
+	.readEnable_o(base_ram_oe_n),
+	.writeEnable_o(base_ram_we_n),
+	.sramEnable_o(base_ram_ce_n),
+	.bitEnable_o(base_ram_be_n),
+	.ramAddr_o(base_ram_addr),
+	.ramData_io(base_ram_data)
 );
 
 sram isram (
-    .Hclock(clk_20M),
-    .Hreset(reset_btn),
-    .Hwrite(iwishbone_we_o_m),
+    .clk(clk_20M),
+    .rst(reset_btn),
+    .mem_we_i(iwishbone_we_o_m),
     .ready(iwishbone_stb_o_m),
-    .H_be_n(iwishbone_sel_o_m),
-    .Hselect(iwishbone_cyc_o_m),
-    .Haddress(iwishbone_addr_o_m),
-    .Hwritedata(iwishbone_data_o_m),
+    .mem_sel_i(iwishbone_sel_o_m),
+    .mem_ce_i(iwishbone_cyc_o_m),
+    .mem_addr_i(iwishbone_addr_o_m),
+    .mem_data_i(iwishbone_data_o_m),
     .Hready(iwishbone_ack_i_m),
-    .Hreaddata(iwishbone_data_i_m),
+    .ramData_o(iwishbone_data_i_m),
 
-    /*.base_Ram1OE(base_ram_oe_n),
-    .base_Ram1WE(base_ram_we_n),
-    .base_Ram1EN(base_ram_ce_n),
-    .base_Ram1BE(base_ram_be_n),
-    .base_Ram1Address(base_ram_addr),
-    .base_Ram1data(base_ram_data),*/
-
-    .Ram1OE(ext_ram_oe_n),
-    .Ram1WE(ext_ram_we_n),
-    .Ram1EN(ext_ram_ce_n),
-    .Ram1BE(ext_ram_be_n),
-    .Ram1Address(ext_ram_addr),
-    .Ram1data(ext_ram_data)
-);
+    .readEnable_o(ext_ram_oe_n),
+    .writeEnable_o(ext_ram_we_n),
+    .sramEnable_o(ext_ram_ce_n),
+    .bitEnable_o(ext_ram_be_n),
+    .ramAddr_o(ext_ram_addr),
+    .ramData_io(ext_ram_data)
+);*/
 
 
 /* =========== Demo code begin =========== */

@@ -1,136 +1,97 @@
 `include "defines.v"
 module sram(
-    input wire Hclock,
-    input wire Hreset,
-    output reg Ram1OE,
-    output reg Ram1WE,
-    output reg Ram1EN,
-    output reg[3:0] Ram1BE,
-    output reg[19:0] Ram1Address,
-    inout wire[31:0] Ram1data,
-    input wire Hwrite,
-    input wire[3:0] H_be_n,
+    input wire clk,
+    input wire rst,
     input wire ready,
-    input wire Hselect,
-    input wire[31:0] Hwritedata,
-    input wire[31:0] Haddress,
-    output reg[31:0] Hreaddata,
-    output wire Hready
+    output wire Hready,
+    
+    input wire[`RegBus] mem_addr_i,
+    input wire mem_we_i,
+    input wire[3:0] mem_sel_i,
+    input wire[`RegBus] mem_data_i,
+    input wire mem_ce_i,
+    // from SRAM
+    inout wire[31:0] ramData_io,
+    // to SRAM
+    output reg [19:0] ramAddr_o,
+    output reg [3:0]  bitEnable_o,
+    output reg sramEnable_o,
+    output reg writeEnable_o,
+    output reg readEnable_o,
+    // To MMU
+    output wire[`RegBus] ramData_o
     );
-    reg[31:0] data_temp;
-    reg[3:0] state;
-    reg[31:0] Hwritedata_temp;
-    reg[19:0] Haddress_temp;
-    reg[3:0] H_be_n_temp;
-    reg control;
-    assign Ram1data = (control == 1'b1)?{data_temp[7:0], data_temp[15:8], data_temp[23:16], data_temp[31:24]}:{32{1'bz}};
-    localparam WriteWord1 = 4'd1, WriteWord2 = 4'd2, ReadWord = 4'd3, idle = 4'd4, WriteWord3 = 4'd5;
-    assign Hready = (state != WriteWord1) & (state != WriteWord2);
-    always @(posedge Hclock or negedge Hreset) begin
-        if (Hreset) begin
-            state <= idle;
-            Haddress_temp <= 20'b0;
-            Hwritedata_temp <= 32'b0;
-            H_be_n_temp <= 4'b1111;
-        end else if(Hselect == 1 && ready == 1) begin
-            Haddress_temp <= Haddress[21:2];
-            Hwritedata_temp <= Hwritedata;
-            H_be_n_temp <= H_be_n;
-            if(Hwrite == 1'b1) begin
-                state <= WriteWord1;
-            end else begin
-                state <= ReadWord;
+    
+    
+    parameter IDLE = 3'b000;
+    parameter READ1 = 3'b001;
+    parameter READ2 = 3'b010;
+    parameter WRITE1 = 3'b011;
+    parameter WRITE2 = 3'b100;
+    
+    reg[2:0] STATE;
+    reg[`RegBus] ramData_reg;
+    //reg[31:0] ramAddr_reg;
+    
+    assign ramData_o = {ramData_io[7:0], ramData_io[15:8], ramData_io[23:16], ramData_io[31:24]};
+    assign ramData_io = (STATE == READ1 || STATE == READ2) ? 32'hzzzzzzzz: ramData_reg;
+    assign Hready = (STATE != READ1) & (STATE != WRITE1);
+    
+    always @(posedge clk or posedge rst) begin
+        if (rst) begin
+            STATE <= IDLE;
+            writeEnable_o <= 1'b1;
+            readEnable_o <= 1'b1;
+            sramEnable_o <= 1'b1;
+            bitEnable_o <= 4'b1;
+            ramAddr_o <= 32'h0;
+            ramData_reg <= 32'h0;
+        end
+        else case (STATE)
+            IDLE, READ2, WRITE2: begin
+                if(mem_ce_i == `ChipEnable) begin
+                    case (mem_we_i)
+                        `WriteDisable: begin
+                            STATE <= READ1;
+                            // Read the SRAM data
+                            ramAddr_o <= mem_addr_i[21:2];
+                            writeEnable_o <= 1'b1;
+                            readEnable_o <= 1'b0;
+                            bitEnable_o <= 4'h0;
+                            sramEnable_o <= mem_ce_i ==`ChipEnable ? 1'b0: 1'b1;
+                        end
+                        `WriteEnable: begin
+                            STATE <= WRITE1;
+                            // save a word to SRAM
+                            ramAddr_o <= mem_addr_i[21:2];
+                            ramData_reg <= {mem_data_i[7:0], mem_data_i[15:8], mem_data_i[23:16], mem_data_i[31:24]};
+                            writeEnable_o <= 1'b0;
+                            readEnable_o <= 1'b1;
+                            bitEnable_o <= {~mem_sel_i[0], ~mem_sel_i[1], ~mem_sel_i[2], ~mem_sel_i[3]};
+                            sramEnable_o <= mem_ce_i ==`ChipEnable ? 1'b0: 1'b1;
+                        end
+                        default: begin
+                            STATE <= IDLE;
+                            writeEnable_o <= 1'b1;
+                            readEnable_o <= 1'b1;
+                            sramEnable_o <= 1'b1;
+                        end
+                    endcase
+                end
+                else begin
+                    STATE <= IDLE;
+                    writeEnable_o <= 1'b1;
+                    readEnable_o <= 1'b1;
+                    sramEnable_o <= 1'b1;
+                end
             end
-        end else if(state == WriteWord1) begin
-            state <= WriteWord2;
-            Haddress_temp <= Haddress_temp;
-            Hwritedata_temp <= Hwritedata_temp;
-            H_be_n_temp <= H_be_n_temp;
-        end else if(state == WriteWord2) begin
-            state <= WriteWord3;
-            Haddress_temp <= Haddress_temp;
-            Hwritedata_temp <= Hwritedata_temp;
-            H_be_n_temp <= H_be_n_temp;
-        end else begin
-            Haddress_temp <= Haddress[21:2];
-            Hwritedata_temp <= Hwritedata;
-            H_be_n_temp <= H_be_n;
-            state <= idle;
-        end
-    end
-    always @(*) begin
-        if (Hreset) begin
-            Hreaddata = 32'b0;
-            Ram1OE = 1'b1;
-            Ram1WE = 1'b1;
-            Ram1EN = 1'b1;
-            Ram1BE = 4'b1111;
-            data_temp = 32'b0;
-            control = 1'b1;
-            Ram1Address = 20'b0;
-        end else begin
-            case(state)
-                WriteWord1: begin
-                    Ram1Address = Haddress_temp;
-                    control = 1'b1;
-                    data_temp = Hwritedata_temp;
-                    Ram1WE = 1'b1;
-                    Ram1OE = 1'b1;
-                    Ram1EN = 1'b1;
-                    Ram1BE = 4'b1111;
-                    Hreaddata = 32'b0;
-                end
-                WriteWord2: begin
-                    Ram1Address = Haddress_temp;
-                    control = 1'b1;
-                    data_temp = Hwritedata_temp;
-                    Ram1WE = 1'b0;
-                    Ram1OE = 1'b1;
-                    Ram1EN = 1'b0;
-                    Ram1BE = ~H_be_n_temp;
-                    Hreaddata = 32'b0;
-                end
-                WriteWord3: begin
-                    Ram1Address = Haddress_temp;
-                    control = 1'b1;
-                    data_temp = Hwritedata_temp;
-                    Ram1WE = 1'b1;
-                    Ram1OE = 1'b1;
-                    Ram1EN = 1'b1;
-                    Ram1BE = 4'b1111;
-                    Hreaddata = 32'b0;
-                end
-                ReadWord: begin
-                    control = 1'b0;
-                    Ram1WE = 1'b1;
-                    Ram1OE = 1'b0;
-                    Ram1EN = 1'b0;
-                    Ram1BE = ~H_be_n_temp;
-                    data_temp = 32'b0;
-                    Ram1Address = Haddress_temp;
-                    if (H_be_n == 4'b0001) begin
-                        Hreaddata = {{24{Ram1data[7]}}, Ram1data[7:0]};
-                    end else if (H_be_n == 4'b0010) begin
-                        Hreaddata = {{24{Ram1data[15]}}, Ram1data[15:8]};
-                    end else if (H_be_n == 4'b0100) begin
-                        Hreaddata = {{24{Ram1data[23]}}, Ram1data[23:16]};
-                    end else if (H_be_n == 4'b1000) begin
-                        Hreaddata = {{24{Ram1data[31]}}, Ram1data[31:24]};
-                    end else begin
-                        Hreaddata = {Ram1data[7:0], Ram1data[15:8], Ram1data[23:16], Ram1data[31:24]};
-                    end
-                end
-                default: begin
-                    Ram1Address = Haddress_temp;
-                    control = 1'b0;
-                    Ram1WE = 1'b1;
-                    Ram1OE = 1'b1;
-                    Ram1EN = 1'b1;
-                    Ram1BE = 4'b1111;
-                    data_temp = 32'b0;
-                    Hreaddata = 32'b0;
-                end
-            endcase
-        end
+            READ1: begin
+                STATE <= READ2;
+            end
+            WRITE1: begin
+                STATE <= WRITE2;
+                writeEnable_o <= 1'b1;
+            end
+        endcase
     end
 endmodule

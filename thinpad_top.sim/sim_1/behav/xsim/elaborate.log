@@ -22,9 +22,9 @@ Compiling module xil_defaultlib.ctrl
 Compiling module xil_defaultlib.div
 Compiling module xil_defaultlib.LLbit_reg
 Compiling module xil_defaultlib.cp0_reg
-Compiling module xil_defaultlib.wishbone_bus_if
-Compiling module xil_defaultlib.openmips
 Compiling module xil_defaultlib.sram
+Compiling module xil_defaultlib.tlb
+Compiling module xil_defaultlib.openmips
 Compiling module unisims_ver.IBUF
 Compiling module unisims_ver.MMCME2_ADV(CLKFBOUT_MULT_F=20.0,...
 Compiling module unisims_ver.BUFG
