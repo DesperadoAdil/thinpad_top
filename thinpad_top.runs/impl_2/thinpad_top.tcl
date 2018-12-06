@@ -61,104 +61,12 @@ proc step_failed { step } {
 }
 
 
-start_step init_design
-set ACTIVE_STEP init_design
-set rc [catch {
-  create_msg_db init_design.pb
-  create_project -in_memory -part xc7a100tfgg676-2
-  set_property design_mode GateLvl [current_fileset]
-  set_param project.singleFileAddWarning.threshold 0
-  set_property webtalk.parent_dir D:/MIPS32CPU/thinpad_top/thinpad_top.cache/wt [current_project]
-  set_property parent.project_path D:/MIPS32CPU/thinpad_top/thinpad_top.xpr [current_project]
-  set_property ip_output_repo D:/MIPS32CPU/thinpad_top/thinpad_top.cache/ip [current_project]
-  set_property ip_cache_permissions {read write} [current_project]
-  set_property XPM_LIBRARIES XPM_CDC [current_project]
-  add_files -quiet D:/MIPS32CPU/thinpad_top/thinpad_top.runs/synth_2/thinpad_top.dcp
-  read_ip -quiet D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/ip/pll_example/pll_example.xci
-  read_xdc D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc
-  link_design -top thinpad_top -part xc7a100tfgg676-2
-  close_msg_db -file init_design.pb
-} RESULT]
-if {$rc} {
-  step_failed init_design
-  return -code error $RESULT
-} else {
-  end_step init_design
-  unset ACTIVE_STEP 
-}
-
-start_step opt_design
-set ACTIVE_STEP opt_design
-set rc [catch {
-  create_msg_db opt_design.pb
-  opt_design -directive Explore
-  write_checkpoint -force thinpad_top_opt.dcp
-  close_msg_db -file opt_design.pb
-} RESULT]
-if {$rc} {
-  step_failed opt_design
-  return -code error $RESULT
-} else {
-  end_step opt_design
-  unset ACTIVE_STEP 
-}
-
-start_step place_design
-set ACTIVE_STEP place_design
-set rc [catch {
-  create_msg_db place_design.pb
-  if { [llength [get_debug_cores -quiet] ] > 0 }  { 
-    implement_debug_core 
-  } 
-  place_design -directive Explore
-  write_checkpoint -force thinpad_top_placed.dcp
-  close_msg_db -file place_design.pb
-} RESULT]
-if {$rc} {
-  step_failed place_design
-  return -code error $RESULT
-} else {
-  end_step place_design
-  unset ACTIVE_STEP 
-}
-
-start_step phys_opt_design
-set ACTIVE_STEP phys_opt_design
-set rc [catch {
-  create_msg_db phys_opt_design.pb
-  phys_opt_design -directive Explore
-  write_checkpoint -force thinpad_top_physopt.dcp
-  close_msg_db -file phys_opt_design.pb
-} RESULT]
-if {$rc} {
-  step_failed phys_opt_design
-  return -code error $RESULT
-} else {
-  end_step phys_opt_design
-  unset ACTIVE_STEP 
-}
-
-start_step route_design
-set ACTIVE_STEP route_design
-set rc [catch {
-  create_msg_db route_design.pb
-  route_design -directive Explore
-  write_checkpoint -force thinpad_top_routed.dcp
-  close_msg_db -file route_design.pb
-} RESULT]
-if {$rc} {
-  write_checkpoint -force thinpad_top_routed_error.dcp
-  step_failed route_design
-  return -code error $RESULT
-} else {
-  end_step route_design
-  unset ACTIVE_STEP 
-}
-
 start_step write_bitstream
 set ACTIVE_STEP write_bitstream
 set rc [catch {
   create_msg_db write_bitstream.pb
+  open_checkpoint thinpad_top_routed.dcp
+  set_property webtalk.parent_dir D:/MIPS32CPU/thinpad_top/thinpad_top.cache/wt [current_project]
   set_property XPM_LIBRARIES XPM_CDC [current_project]
   catch { write_mem_info -force thinpad_top.mmi }
   write_bitstream -force thinpad_top.bit 

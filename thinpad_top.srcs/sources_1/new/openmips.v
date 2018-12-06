@@ -41,7 +41,7 @@ module openmips(
         output wire base_writeEnable_o,
         output wire base_readEnable_o,
         // To MMU
-        output wire[`RegBus] base_ramData_o,
+        //output wire[`RegBus] base_ramData_o,
         
     inout wire[31:0] ext_ramData_io,
             // to SRAM
@@ -49,9 +49,9 @@ module openmips(
             output wire [3:0]  ext_bitEnable_o,
             output wire ext_sramEnable_o,
             output wire ext_writeEnable_o,
-            output wire ext_readEnable_o,
+            output wire ext_readEnable_o
             // To MMU
-            output wire[`RegBus] ext_ramData_o
+            //output wire[`RegBus] ext_ramData_o
 );
 
 	wire[`InstAddrBus] pc;
@@ -235,10 +235,13 @@ module openmips(
 	wire write_tlb;
 	
 	wire ram_we_o;
+	wire ram_we_o_2;
   wire[3:0] ram_sel_o;
 	wire[`RegBus] ram_data_o;
 	wire ram_ce_o;
   wire[`RegBus] ram_data_i;
+  
+  assign ram_we_o_2 = ram_we_o;
 
   //pc_reg����
 	pc_reg pc_reg0(
@@ -799,7 +802,7 @@ module openmips(
 sram dsram(
     .clk(clk_ram),
 	.rst(rst),
-	.mem_we_i(ram_we_o),
+	.mem_we_i(ram_we_o_2),
 	//.ready(dwishbone_stb_o_m),
 	.mem_sel_i(ram_sel_o),
 	.mem_ce_i(ram_ce_o),

@@ -1,33 +1,33 @@
 #Clock
-set_property -dict {PACKAGE_PIN D18 IOSTANDARD LVCMOS33} [get_ports clk_50M]
-set_property -dict {PACKAGE_PIN C18 IOSTANDARD LVCMOS33} [get_ports clk_11M0592]
+set_property -dict {PACKAGE_PIN D18 IOSTANDARD LVCMOS33} [get_ports clk_50M] ;#50MHz main clock in
+set_property -dict {PACKAGE_PIN C18 IOSTANDARD LVCMOS33} [get_ports clk_11M0592] ;#11.0592MHz clock for UART
 set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets clk_11M0592_IBUF]
 
 create_clock -period 20.000 -name clk_50M -waveform {0.000 10.000} [get_ports clk_50M]
 create_clock -period 90.422 -name clk_11M0592 -waveform {0.000 45.211} [get_ports clk_11M0592]
 
 #Touch Button
-set_property -dict {PACKAGE_PIN J19 IOSTANDARD LVCMOS33} [get_ports {touch_btn[0]}]
-set_property -dict {PACKAGE_PIN E25 IOSTANDARD LVCMOS33} [get_ports {touch_btn[1]}]
-set_property -dict {PACKAGE_PIN F23 IOSTANDARD LVCMOS33} [get_ports {touch_btn[2]}]
-set_property -dict {PACKAGE_PIN E23 IOSTANDARD LVCMOS33} [get_ports {touch_btn[3]}]
-set_property -dict {PACKAGE_PIN H19 IOSTANDARD LVCMOS33} [get_ports clock_btn]
-set_property -dict {PACKAGE_PIN F22 IOSTANDARD LVCMOS33} [get_ports reset_btn]
+set_property -dict {PACKAGE_PIN J19 IOSTANDARD LVCMOS33} [get_ports touch_btn[0]] ;#BTN1
+set_property -dict {PACKAGE_PIN E25 IOSTANDARD LVCMOS33} [get_ports touch_btn[1]] ;#BTN2
+set_property -dict {PACKAGE_PIN F23 IOSTANDARD LVCMOS33} [get_ports touch_btn[2]] ;#BTN3
+set_property -dict {PACKAGE_PIN E23 IOSTANDARD LVCMOS33} [get_ports touch_btn[3]] ;#BTN4
+set_property -dict {PACKAGE_PIN H19 IOSTANDARD LVCMOS33} [get_ports clock_btn] ;#BTN5
+set_property -dict {PACKAGE_PIN F22 IOSTANDARD LVCMOS33} [get_ports reset_btn] ;#BTN6
 
 #required if touch button used as manual clock source
 set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets clock_btn_IBUF]
 set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets reset_btn_IBUF]
 
 #CPLD
-set_property -dict {PACKAGE_PIN P20 IOSTANDARD LVCMOS33} [get_ports uart_wrn]
-set_property -dict {PACKAGE_PIN K22 IOSTANDARD LVCMOS33} [get_ports uart_rdn]
-set_property -dict {PACKAGE_PIN M20 IOSTANDARD LVCMOS33} [get_ports uart_tbre]
-set_property -dict {PACKAGE_PIN M16 IOSTANDARD LVCMOS33} [get_ports uart_tsre]
-set_property -dict {PACKAGE_PIN J24 IOSTANDARD LVCMOS33} [get_ports uart_dataready]
+set_property -dict {PACKAGE_PIN P20 IOSTANDARD LVCMOS33} [get_ports {uart_wrn}]
+set_property -dict {PACKAGE_PIN K22 IOSTANDARD LVCMOS33} [get_ports {uart_rdn}]
+set_property -dict {PACKAGE_PIN M20 IOSTANDARD LVCMOS33} [get_ports {uart_tbre}]
+set_property -dict {PACKAGE_PIN M16 IOSTANDARD LVCMOS33} [get_ports {uart_tsre}]
+set_property -dict {PACKAGE_PIN J24 IOSTANDARD LVCMOS33} [get_ports {uart_dataready}]
 
 #Ext serial
-set_property -dict {IOSTANDARD LVCMOS33 PACKAGE_PIN L19} [get_ports txd]
-set_property -dict {IOSTANDARD LVCMOS33 PACKAGE_PIN K21} [get_ports rxd]
+set_property -dict {IOSTANDARD LVCMOS33 PACKAGE_PIN L19} [get_ports txd] ;#GPIO5
+set_property -dict {IOSTANDARD LVCMOS33 PACKAGE_PIN K21} [get_ports rxd] ;#GPIO6
 
 #USB
 set_property -dict {PACKAGE_PIN K3 IOSTANDARD LVCMOS33} [get_ports sl811_a0]
@@ -111,7 +111,7 @@ set_property -dict {PACKAGE_PIN G15 IOSTANDARD LVCMOS33} [get_ports {dpy0[3]}]
 set_property -dict {PACKAGE_PIN H16 IOSTANDARD LVCMOS33} [get_ports {dpy0[4]}]
 set_property -dict {PACKAGE_PIN H14 IOSTANDARD LVCMOS33} [get_ports {dpy0[5]}]
 set_property -dict {PACKAGE_PIN G19 IOSTANDARD LVCMOS33} [get_ports {dpy0[6]}]
-set_property -dict {PACKAGE_PIN J8 IOSTANDARD LVCMOS33} [get_ports {dpy0[7]}]
+set_property -dict {PACKAGE_PIN  J8 IOSTANDARD LVCMOS33} [get_ports {dpy0[7]}]
 
 #DPY1
 set_property -dict {PACKAGE_PIN H9 IOSTANDARD LVCMOS33} [get_ports {dpy1[0]}]
@@ -157,7 +157,7 @@ set_property -dict {PACKAGE_PIN N7 IOSTANDARD LVCMOS33} [get_ports {dip_sw[29]}]
 set_property -dict {PACKAGE_PIN M7 IOSTANDARD LVCMOS33} [get_ports {dip_sw[30]}]
 set_property -dict {PACKAGE_PIN M5 IOSTANDARD LVCMOS33} [get_ports {dip_sw[31]}]
 
-set_property -dict {PACKAGE_PIN K8 IOSTANDARD LVCMOS33} [get_ports {flash_a[0]}]
+set_property -dict {PACKAGE_PIN K8 IOSTANDARD LVCMOS33}  [get_ports {flash_a[0]}]
 set_property -dict {PACKAGE_PIN C26 IOSTANDARD LVCMOS33} [get_ports {flash_a[1]}]
 set_property -dict {PACKAGE_PIN B26 IOSTANDARD LVCMOS33} [get_ports {flash_a[2]}]
 set_property -dict {PACKAGE_PIN B25 IOSTANDARD LVCMOS33} [get_ports {flash_a[3]}]
@@ -327,94 +327,4 @@ set_property -dict {PACKAGE_PIN U16 IOSTANDARD LVCMOS33} [get_ports ext_ram_we_n
 
 set_property CFGBVS VCCO [current_design]
 set_property CONFIG_VOLTAGE 3.3 [current_design]
-
-
-
-
-
-
-
-set_property MARK_DEBUG true [get_nets clk_50M_IBUF]
-set_property MARK_DEBUG true [get_nets clk_10M]
-set_property MARK_DEBUG true [get_nets clk_20M]
-
-set_property MARK_DEBUG true [get_nets dwishbone_cyc_o_m]
-set_property MARK_DEBUG true [get_nets dwishbone_stb_o_m]
-set_property MARK_DEBUG true [get_nets {base_ram_addr_OBUF[7]}]
-set_property MARK_DEBUG true [get_nets {base_ram_addr_OBUF[9]}]
-set_property MARK_DEBUG true [get_nets {base_ram_addr_OBUF[10]}]
-set_property MARK_DEBUG true [get_nets {base_ram_addr_OBUF[1]}]
-set_property MARK_DEBUG true [get_nets {base_ram_addr_OBUF[5]}]
-set_property MARK_DEBUG true [get_nets {base_ram_addr_OBUF[6]}]
-set_property MARK_DEBUG true [get_nets {base_ram_addr_OBUF[14]}]
-set_property MARK_DEBUG true [get_nets {base_ram_addr_OBUF[16]}]
-set_property MARK_DEBUG true [get_nets {base_ram_addr_OBUF[19]}]
-set_property MARK_DEBUG true [get_nets {base_ram_addr_OBUF[0]}]
-set_property MARK_DEBUG true [get_nets {base_ram_addr_OBUF[2]}]
-set_property MARK_DEBUG true [get_nets {base_ram_addr_OBUF[3]}]
-set_property MARK_DEBUG true [get_nets {base_ram_addr_OBUF[8]}]
-set_property MARK_DEBUG true [get_nets {base_ram_addr_OBUF[11]}]
-set_property MARK_DEBUG true [get_nets {base_ram_addr_OBUF[4]}]
-set_property MARK_DEBUG true [get_nets {base_ram_addr_OBUF[12]}]
-set_property MARK_DEBUG true [get_nets {base_ram_addr_OBUF[13]}]
-set_property MARK_DEBUG true [get_nets {base_ram_addr_OBUF[15]}]
-set_property MARK_DEBUG true [get_nets {base_ram_addr_OBUF[17]}]
-set_property MARK_DEBUG true [get_nets {base_ram_addr_OBUF[18]}]
-set_property MARK_DEBUG true [get_nets base_ram_we_n_OBUF]
-set_property MARK_DEBUG true [get_nets base_ram_oe_n_OBUF]
-set_property MARK_DEBUG true [get_nets base_ram_ce_n_OBUF]
-set_property MARK_DEBUG true [get_nets {base_ram_be_n_OBUF[0]}]
-set_property MARK_DEBUG true [get_nets {base_ram_be_n_OBUF[1]}]
-set_property MARK_DEBUG true [get_nets {base_ram_be_n_OBUF[2]}]
-set_property MARK_DEBUG true [get_nets {base_ram_be_n_OBUF[3]}]
-set_property MARK_DEBUG true [get_nets dwishbone_we_o_m]
-set_property MARK_DEBUG true [get_nets {dwishbone_sel_o_m[0]}]
-set_property MARK_DEBUG true [get_nets {dwishbone_sel_o_m[1]}]
-set_property MARK_DEBUG true [get_nets {dwishbone_sel_o_m[2]}]
-set_property MARK_DEBUG true [get_nets {dwishbone_sel_o_m[3]}]
-set_property MARK_DEBUG true [get_nets {iwishbone_sel_o_m[0]}]
-set_property MARK_DEBUG true [get_nets {iwishbone_sel_o_m[1]}]
-set_property MARK_DEBUG true [get_nets {iwishbone_sel_o_m[2]}]
-set_property MARK_DEBUG true [get_nets {iwishbone_sel_o_m[3]}]
-set_property MARK_DEBUG true [get_nets iwishbone_cyc_o_m]
-set_property MARK_DEBUG true [get_nets iwishbone_we_o_m]
-set_property MARK_DEBUG true [get_nets iwishbone_stb_o_m]
-set_property MARK_DEBUG true [get_nets ext_ram_we_n_OBUF]
-set_property MARK_DEBUG true [get_nets ext_ram_oe_n_OBUF]
-set_property MARK_DEBUG true [get_nets ext_ram_ce_n_OBUF]
-set_property MARK_DEBUG true [get_nets {ext_ram_be_n_OBUF[0]}]
-set_property MARK_DEBUG true [get_nets {ext_ram_be_n_OBUF[1]}]
-set_property MARK_DEBUG true [get_nets {ext_ram_be_n_OBUF[2]}]
-set_property MARK_DEBUG true [get_nets {ext_ram_be_n_OBUF[3]}]
-set_property MARK_DEBUG true [get_nets {ext_ram_addr_OBUF[2]}]
-set_property MARK_DEBUG true [get_nets {ext_ram_addr_OBUF[3]}]
-set_property MARK_DEBUG true [get_nets {ext_ram_addr_OBUF[10]}]
-set_property MARK_DEBUG true [get_nets {ext_ram_addr_OBUF[13]}]
-set_property MARK_DEBUG true [get_nets {ext_ram_addr_OBUF[0]}]
-set_property MARK_DEBUG true [get_nets {ext_ram_addr_OBUF[1]}]
-set_property MARK_DEBUG true [get_nets {ext_ram_addr_OBUF[6]}]
-set_property MARK_DEBUG true [get_nets {ext_ram_addr_OBUF[11]}]
-set_property MARK_DEBUG true [get_nets {ext_ram_addr_OBUF[12]}]
-set_property MARK_DEBUG true [get_nets {ext_ram_addr_OBUF[16]}]
-set_property MARK_DEBUG true [get_nets {ext_ram_addr_OBUF[18]}]
-set_property MARK_DEBUG true [get_nets {ext_ram_addr_OBUF[5]}]
-set_property MARK_DEBUG true [get_nets {ext_ram_addr_OBUF[9]}]
-set_property MARK_DEBUG true [get_nets {ext_ram_addr_OBUF[17]}]
-set_property MARK_DEBUG true [get_nets {ext_ram_addr_OBUF[4]}]
-set_property MARK_DEBUG true [get_nets {ext_ram_addr_OBUF[7]}]
-set_property MARK_DEBUG true [get_nets {ext_ram_addr_OBUF[8]}]
-set_property MARK_DEBUG true [get_nets {ext_ram_addr_OBUF[14]}]
-set_property MARK_DEBUG true [get_nets {ext_ram_addr_OBUF[15]}]
-set_property MARK_DEBUG true [get_nets {ext_ram_addr_OBUF[19]}]
-set_property MARK_DEBUG true [get_nets iwishbone_ack_i_m]
-set_property MARK_DEBUG true [get_nets dwishbone_ack_i_m]
-set_property MARK_DEBUG true [get_nets {counter[0]}]
-set_property MARK_DEBUG true [get_nets {counter[1]}]
-set_property MARK_DEBUG true [get_nets {counter[2]}]
-set_property MARK_DEBUG true [get_nets {counter[3]}]
-set_property MARK_DEBUG true [get_nets {counter[4]}]
-set_property MARK_DEBUG true [get_nets {counter[5]}]
-set_property MARK_DEBUG true [get_nets {counter[6]}]
-set_property MARK_DEBUG true [get_nets {counter[7]}]
-set_property MARK_DEBUG false [get_nets reset_btn_IBUF]
 

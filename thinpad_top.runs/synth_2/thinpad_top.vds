@@ -2,8 +2,8 @@
 # Vivado v2018.2 (64-bit)
 # SW Build 2258646 on Thu Jun 14 20:03:12 MDT 2018
 # IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
-# Start of session at: Thu Dec  6 19:53:25 2018
-# Process ID: 15336
+# Start of session at: Thu Dec  6 22:15:36 2018
+# Process ID: 16924
 # Current directory: D:/MIPS32CPU/thinpad_top/thinpad_top.runs/synth_2
 # Command line: vivado.exe -log thinpad_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source thinpad_top.tcl
 # Log file: D:/MIPS32CPU/thinpad_top/thinpad_top.runs/synth_2/thinpad_top.vds
@@ -15,9 +15,9 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 3792 
+INFO: Helper process launched with PID 21572 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 389.031 ; gain = 99.402
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 388.551 ; gain = 98.910
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'thinpad_top' [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/thinpad_top.v:4]
 INFO: [Synth 8-6157] synthesizing module 'openmips' [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/openmips.v:3]
@@ -73,7 +73,7 @@ WARNING: [Synth 8-6090] variable 'status_o' is written by both blocking and non-
 WARNING: [Synth 8-6090] variable 'status_o' is written by both blocking and non-blocking assignments, entire logic could be removed [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/cp0_reg.v:285]
 WARNING: [Synth 8-3848] Net config_o in module/entity cp0_reg does not have driver. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/cp0_reg.v:27]
 INFO: [Synth 8-6155] done synthesizing module 'cp0_reg' (14#1) [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/cp0_reg.v:4]
-WARNING: [Synth 8-350] instance 'cp0_reg0' of module 'cp0_reg' requires 28 connections, but only 26 given [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/openmips.v:700]
+WARNING: [Synth 8-350] instance 'cp0_reg0' of module 'cp0_reg' requires 28 connections, but only 26 given [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/openmips.v:703]
 INFO: [Synth 8-6157] synthesizing module 'sram' [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/sram.v:2]
 	Parameter IDLE bound to: 3'b000 
 	Parameter READ1 bound to: 3'b001 
@@ -83,16 +83,13 @@ INFO: [Synth 8-6157] synthesizing module 'sram' [D:/MIPS32CPU/thinpad_top/thinpa
 INFO: [Synth 8-226] default block is never used [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/sram.v:53]
 INFO: [Synth 8-155] case statement is not full and has no default [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/sram.v:50]
 INFO: [Synth 8-6155] done synthesizing module 'sram' (15#1) [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/sram.v:2]
-WARNING: [Synth 8-350] instance 'dsram' of module 'sram' requires 16 connections, but only 14 given [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/openmips.v:799]
-WARNING: [Synth 8-350] instance 'isram' of module 'sram' requires 16 connections, but only 14 given [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/openmips.v:819]
+WARNING: [Synth 8-350] instance 'dsram' of module 'sram' requires 16 connections, but only 14 given [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/openmips.v:802]
+WARNING: [Synth 8-350] instance 'isram' of module 'sram' requires 16 connections, but only 14 given [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/openmips.v:822]
 INFO: [Synth 8-6157] synthesizing module 'tlb' [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/tlb.v:1]
 INFO: [Synth 8-6155] done synthesizing module 'tlb' (16#1) [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/tlb.v:1]
-WARNING: [Synth 8-3848] Net base_ramData_o in module/entity openmips does not have driver. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/openmips.v:44]
-WARNING: [Synth 8-3848] Net ext_ramData_o in module/entity openmips does not have driver. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/openmips.v:54]
 INFO: [Synth 8-6155] done synthesizing module 'openmips' (17#1) [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/openmips.v:3]
-WARNING: [Synth 8-350] instance 'openmips0' of module 'openmips' requires 21 connections, but only 19 given [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/thinpad_top.v:114]
-INFO: [Synth 8-6157] synthesizing module 'pll_example' [D:/MIPS32CPU/thinpad_top/thinpad_top.runs/synth_2/.Xil/Vivado-15336-DESKTOP-HGO3NEF/realtime/pll_example_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'pll_example' (18#1) [D:/MIPS32CPU/thinpad_top/thinpad_top.runs/synth_2/.Xil/Vivado-15336-DESKTOP-HGO3NEF/realtime/pll_example_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'pll_example' [D:/MIPS32CPU/thinpad_top/thinpad_top.runs/synth_2/.Xil/Vivado-16924-DESKTOP-HGO3NEF/realtime/pll_example_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'pll_example' (18#1) [D:/MIPS32CPU/thinpad_top/thinpad_top.runs/synth_2/.Xil/Vivado-16924-DESKTOP-HGO3NEF/realtime/pll_example_stub.v:5]
 INFO: [Synth 8-6157] synthesizing module 'SEG7_LUT' [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/SEG7_LUT.v:1]
 INFO: [Synth 8-6155] done synthesizing module 'SEG7_LUT' (19#1) [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/SEG7_LUT.v:1]
 INFO: [Synth 8-6157] synthesizing module 'async_receiver' [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/async.v:75]
@@ -259,7 +256,7 @@ WARNING: [Synth 8-3331] design mem has unconnected port excepttype_i[24]
 WARNING: [Synth 8-3331] design mem has unconnected port excepttype_i[23]
 INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 470.051 ; gain = 180.422
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 469.926 ; gain = 180.285
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -272,10 +269,10 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 470.051 ; gain = 180.422
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 469.926 ; gain = 180.285
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 470.051 ; gain = 180.422
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 469.926 ; gain = 180.285
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7a100tfgg676-2
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -289,78 +286,6 @@ WARNING: [Vivado 12-507] No nets matched 'clk_11M0592_IBUF'. [D:/MIPS32CPU/thinp
 WARNING: [Constraints 18-619] A clock with name 'clk_50M' already exists, overwriting the previous clock with the same name. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:6]
 WARNING: [Vivado 12-507] No nets matched 'clock_btn_IBUF'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:18]
 WARNING: [Vivado 12-507] No nets matched 'reset_btn_IBUF'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:19]
-WARNING: [Vivado 12-507] No nets matched 'clk_50M_IBUF'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:337]
-WARNING: [Vivado 12-507] No nets matched 'dwishbone_cyc_o_m'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:341]
-WARNING: [Vivado 12-507] No nets matched 'dwishbone_stb_o_m'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:342]
-WARNING: [Vivado 12-507] No nets matched 'base_ram_addr_OBUF[7]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:343]
-WARNING: [Vivado 12-507] No nets matched 'base_ram_addr_OBUF[9]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:344]
-WARNING: [Vivado 12-507] No nets matched 'base_ram_addr_OBUF[10]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:345]
-WARNING: [Vivado 12-507] No nets matched 'base_ram_addr_OBUF[1]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:346]
-WARNING: [Vivado 12-507] No nets matched 'base_ram_addr_OBUF[5]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:347]
-WARNING: [Vivado 12-507] No nets matched 'base_ram_addr_OBUF[6]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:348]
-WARNING: [Vivado 12-507] No nets matched 'base_ram_addr_OBUF[14]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:349]
-WARNING: [Vivado 12-507] No nets matched 'base_ram_addr_OBUF[16]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:350]
-WARNING: [Vivado 12-507] No nets matched 'base_ram_addr_OBUF[19]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:351]
-WARNING: [Vivado 12-507] No nets matched 'base_ram_addr_OBUF[0]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:352]
-WARNING: [Vivado 12-507] No nets matched 'base_ram_addr_OBUF[2]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:353]
-WARNING: [Vivado 12-507] No nets matched 'base_ram_addr_OBUF[3]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:354]
-WARNING: [Vivado 12-507] No nets matched 'base_ram_addr_OBUF[8]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:355]
-WARNING: [Vivado 12-507] No nets matched 'base_ram_addr_OBUF[11]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:356]
-WARNING: [Vivado 12-507] No nets matched 'base_ram_addr_OBUF[4]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:357]
-WARNING: [Vivado 12-507] No nets matched 'base_ram_addr_OBUF[12]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:358]
-WARNING: [Vivado 12-507] No nets matched 'base_ram_addr_OBUF[13]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:359]
-WARNING: [Vivado 12-507] No nets matched 'base_ram_addr_OBUF[15]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:360]
-WARNING: [Vivado 12-507] No nets matched 'base_ram_addr_OBUF[17]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:361]
-WARNING: [Vivado 12-507] No nets matched 'base_ram_addr_OBUF[18]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:362]
-WARNING: [Vivado 12-507] No nets matched 'base_ram_we_n_OBUF'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:363]
-WARNING: [Vivado 12-507] No nets matched 'base_ram_oe_n_OBUF'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:364]
-WARNING: [Vivado 12-507] No nets matched 'base_ram_ce_n_OBUF'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:365]
-WARNING: [Vivado 12-507] No nets matched 'base_ram_be_n_OBUF[0]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:366]
-WARNING: [Vivado 12-507] No nets matched 'base_ram_be_n_OBUF[1]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:367]
-WARNING: [Vivado 12-507] No nets matched 'base_ram_be_n_OBUF[2]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:368]
-WARNING: [Vivado 12-507] No nets matched 'base_ram_be_n_OBUF[3]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:369]
-WARNING: [Vivado 12-507] No nets matched 'dwishbone_we_o_m'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:370]
-WARNING: [Vivado 12-507] No nets matched 'dwishbone_sel_o_m[0]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:371]
-WARNING: [Vivado 12-507] No nets matched 'dwishbone_sel_o_m[1]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:372]
-WARNING: [Vivado 12-507] No nets matched 'dwishbone_sel_o_m[2]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:373]
-WARNING: [Vivado 12-507] No nets matched 'dwishbone_sel_o_m[3]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:374]
-WARNING: [Vivado 12-507] No nets matched 'iwishbone_sel_o_m[0]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:375]
-WARNING: [Vivado 12-507] No nets matched 'iwishbone_sel_o_m[1]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:376]
-WARNING: [Vivado 12-507] No nets matched 'iwishbone_sel_o_m[2]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:377]
-WARNING: [Vivado 12-507] No nets matched 'iwishbone_sel_o_m[3]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:378]
-WARNING: [Vivado 12-507] No nets matched 'iwishbone_cyc_o_m'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:379]
-WARNING: [Vivado 12-507] No nets matched 'iwishbone_we_o_m'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:380]
-WARNING: [Vivado 12-507] No nets matched 'iwishbone_stb_o_m'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:381]
-WARNING: [Vivado 12-507] No nets matched 'ext_ram_we_n_OBUF'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:382]
-WARNING: [Vivado 12-507] No nets matched 'ext_ram_oe_n_OBUF'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:383]
-WARNING: [Vivado 12-507] No nets matched 'ext_ram_ce_n_OBUF'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:384]
-WARNING: [Vivado 12-507] No nets matched 'ext_ram_be_n_OBUF[0]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:385]
-WARNING: [Vivado 12-507] No nets matched 'ext_ram_be_n_OBUF[1]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:386]
-WARNING: [Vivado 12-507] No nets matched 'ext_ram_be_n_OBUF[2]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:387]
-WARNING: [Vivado 12-507] No nets matched 'ext_ram_be_n_OBUF[3]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:388]
-WARNING: [Vivado 12-507] No nets matched 'ext_ram_addr_OBUF[2]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:389]
-WARNING: [Vivado 12-507] No nets matched 'ext_ram_addr_OBUF[3]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:390]
-WARNING: [Vivado 12-507] No nets matched 'ext_ram_addr_OBUF[10]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:391]
-WARNING: [Vivado 12-507] No nets matched 'ext_ram_addr_OBUF[13]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:392]
-WARNING: [Vivado 12-507] No nets matched 'ext_ram_addr_OBUF[0]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:393]
-WARNING: [Vivado 12-507] No nets matched 'ext_ram_addr_OBUF[1]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:394]
-WARNING: [Vivado 12-507] No nets matched 'ext_ram_addr_OBUF[6]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:395]
-WARNING: [Vivado 12-507] No nets matched 'ext_ram_addr_OBUF[11]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:396]
-WARNING: [Vivado 12-507] No nets matched 'ext_ram_addr_OBUF[12]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:397]
-WARNING: [Vivado 12-507] No nets matched 'ext_ram_addr_OBUF[16]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:398]
-WARNING: [Vivado 12-507] No nets matched 'ext_ram_addr_OBUF[18]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:399]
-WARNING: [Vivado 12-507] No nets matched 'ext_ram_addr_OBUF[5]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:400]
-WARNING: [Vivado 12-507] No nets matched 'ext_ram_addr_OBUF[9]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:401]
-WARNING: [Vivado 12-507] No nets matched 'ext_ram_addr_OBUF[17]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:402]
-WARNING: [Vivado 12-507] No nets matched 'ext_ram_addr_OBUF[4]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:403]
-WARNING: [Vivado 12-507] No nets matched 'ext_ram_addr_OBUF[7]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:404]
-WARNING: [Vivado 12-507] No nets matched 'ext_ram_addr_OBUF[8]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:405]
-WARNING: [Vivado 12-507] No nets matched 'ext_ram_addr_OBUF[14]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:406]
-WARNING: [Vivado 12-507] No nets matched 'ext_ram_addr_OBUF[15]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:407]
-WARNING: [Vivado 12-507] No nets matched 'ext_ram_addr_OBUF[19]'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:408]
-WARNING: [Vivado 12-507] No nets matched 'iwishbone_ack_i_m'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:409]
-WARNING: [Vivado 12-507] No nets matched 'dwishbone_ack_i_m'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:410]
-WARNING: [Vivado 12-507] No nets matched 'reset_btn_IBUF'. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc:419]
 Finished Parsing XDC File [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc]
 WARNING: [Project 1-498] One or more constraints failed evaluation while reading constraint file [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc] and the design contains unresolved black boxes. These constraints will be read post-synthesis (as long as their source constraint file is marked as used_in_implementation) and should be applied correctly then. You should review the constraints listed in the file [.Xil/thinpad_top_propImpl.xdc] and check the run log file to verify that these constraints were correctly applied.
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/thinpad_top_propImpl.xdc].
@@ -372,28 +297,25 @@ Completed Processing XDC Constraints
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 863.309 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.006 . Memory (MB): peak = 861.801 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:17 ; elapsed = 00:00:19 . Memory (MB): peak = 863.309 ; gain = 573.680
+Finished Constraint Validation : Time (s): cpu = 00:00:16 ; elapsed = 00:00:19 . Memory (MB): peak = 861.801 ; gain = 572.160
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a100tfgg676-2
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:17 ; elapsed = 00:00:19 . Memory (MB): peak = 863.309 ; gain = 573.680
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:16 ; elapsed = 00:00:19 . Memory (MB): peak = 861.801 ; gain = 572.160
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 Applied set_property IO_BUFFER_TYPE = NONE for clk_50M. (constraint file  d:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/ip/pll_example/pll_example/pll_example_in_context.xdc, line 4).
 Applied set_property CLOCK_BUFFER_TYPE = NONE for clk_50M. (constraint file  d:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/ip/pll_example/pll_example/pll_example_in_context.xdc, line 5).
-Applied set_property MARK_DEBUG = true for clk_10M. (constraint file  D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc, line 338).
-Applied set_property MARK_DEBUG = true for clk_20M. (constraint file  D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc, line 339).
-Applied set_property MARK_DEBUG = true for counter[0]. (constraint file  D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc, line 411).
 Applied set_property DONT_TOUCH = true for clock_gen. (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:19 . Memory (MB): peak = 863.309 ; gain = 573.680
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:16 ; elapsed = 00:00:19 . Memory (MB): peak = 861.801 ; gain = 572.160
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5545] ROM "reg1_read_o" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5546] ROM "reg1_read_o" won't be mapped to RAM because it is too sparse
@@ -574,8 +496,6 @@ INFO: [Synth 8-5544] ROM "RxD_bit" won't be mapped to Block RAM because address 
 INFO: [Synth 8-5544] ROM "OversamplingCnt0" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-802] inferred FSM for state register 'TxD_state_reg' in module 'async_transmitter'
 INFO: [Synth 8-5546] ROM "vdata" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'clock_gen'. This will prevent further optimization [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/thinpad_top.v:204]
-INFO: [Synth 8-6071] Mark debug on the nets applies keep_hierarchy on instance 'openmips0'. This will prevent further optimization [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/thinpad_top.v:114]
 WARNING: [Synth 8-327] inferring latch for variable 'reg1_o_reg' [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/id.v:1044]
 WARNING: [Synth 8-327] inferring latch for variable 'reg2_o_reg' [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/id.v:1066]
 WARNING: [Synth 8-327] inferring latch for variable 'cp0_reg_read_addr_o_reg' [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/ex.v:444]
@@ -655,7 +575,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'RxD_state_reg' using encod
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'TxD_state_reg' using encoding 'one-hot' in module 'async_transmitter'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 863.309 ; gain = 573.680
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:20 ; elapsed = 00:00:24 . Memory (MB): peak = 861.801 ; gain = 572.160
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1151,88 +1071,88 @@ INFO: [Synth 8-5544] ROM "TLB_reg[14]" won't be mapped to Block RAM because addr
 INFO: [Synth 8-5544] ROM "TLB_reg[14]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "TLB_reg[15]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "TLB_reg[15]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
-INFO: [Synth 8-5545] ROM "div0/cnt" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 WARNING: [Synth 8-6014] Unused sequential element ext_uart_r/RxD_endofpacket_reg was removed.  [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/async.v:176]
+INFO: [Synth 8-5545] ROM "openmips0/div0/cnt" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 WARNING: [Synth 8-3917] design thinpad_top has port dpy0[0] driven by constant 0
 WARNING: [Synth 8-3917] design thinpad_top has port dpy1[0] driven by constant 0
-INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/cause_o_reg[16]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[0]'
-INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[16]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[0]'
-INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/cause_o_reg[17]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[0]'
-INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[17]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[0]'
-INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/cause_o_reg[18]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[0]'
-INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[18]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[0]'
-INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/cause_o_reg[19]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[0]'
-INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[19]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[0]'
-INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/cause_o_reg[20]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[0]'
-INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[20]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[0]'
-INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/cause_o_reg[21]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[0]'
-INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[21]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[0]'
-INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[22]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[0]'
-INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[23]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[0]'
-INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/cause_o_reg[24]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[0]'
-INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[24]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[0]'
-INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/cause_o_reg[25]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[0]'
-INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[25]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[0]'
-INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/cause_o_reg[26]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[0]'
-INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[26]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[0]'
-INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/cause_o_reg[27]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[0]'
-INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[27]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[0]'
-INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/cause_o_reg[28]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[0]'
-INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[28]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[0]'
-INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/cause_o_reg[29]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[0]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/cp0_reg0/\pagemask_o_reg[29] )
-INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[29]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[0]'
-INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/cause_o_reg[30]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[0]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/cp0_reg0/\pagemask_o_reg[30] )
-INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[30]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[0]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/cp0_reg0/\entrylo1_o_reg[30] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/cp0_reg0/\entrylo0_o_reg[30] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/cp0_reg0/\pagemask_o_reg[31] )
-INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[31]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[0]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/cp0_reg0/\entrylo1_o_reg[31] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/cp0_reg0/\entrylo0_o_reg[31] )
+INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/ebase_o_reg[2]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[0]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/cp0_reg0 /\pagemask_o_reg[2] )
+INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[2]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[0]'
+INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/ebase_o_reg[1]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[0]'
+INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/cause_o_reg[1]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[0]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/cp0_reg0 /\pagemask_o_reg[1] )
+INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[1]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[0]'
 INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/ebase_o_reg[0]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[0]'
 INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/cause_o_reg[0]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[0]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/cp0_reg0/\pagemask_o_reg[0] )
-INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[0]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[1]'
-INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/ebase_o_reg[1]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[1]'
-INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/cause_o_reg[1]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[1]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/cp0_reg0/\pagemask_o_reg[1] )
-INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[1]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[2]'
-INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/ebase_o_reg[2]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[2]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/cp0_reg0/\pagemask_o_reg[2] )
-INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[2]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[3]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/cp0_reg0 /\pagemask_o_reg[0] )
+INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[0]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[3]'
 INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/ebase_o_reg[3]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[3]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/cp0_reg0/\pagemask_o_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/cp0_reg0 /\pagemask_o_reg[3] )
 INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[3]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[4]'
 INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/ebase_o_reg[4]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[4]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/cp0_reg0/\pagemask_o_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/cp0_reg0 /\pagemask_o_reg[4] )
 INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[4]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[5]'
 INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/ebase_o_reg[5]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[5]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/cp0_reg0/\pagemask_o_reg[5] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/cp0_reg0 /\pagemask_o_reg[5] )
 INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[5]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[6]'
 INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/ebase_o_reg[6]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[6]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/cp0_reg0/\cause_o_reg[6] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/cp0_reg0/\pagemask_o_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/cp0_reg0 /\cause_o_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/cp0_reg0 /\pagemask_o_reg[6] )
 INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[6]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[7]'
 INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/ebase_o_reg[7]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[7]'
 INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/cause_o_reg[7]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[7]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/cp0_reg0/\pagemask_o_reg[7] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/cp0_reg0 /\pagemask_o_reg[7] )
 INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[7]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[8]'
 INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/ebase_o_reg[8]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[8]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/cp0_reg0/\pagemask_o_reg[8] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/cp0_reg0 /\pagemask_o_reg[8] )
 INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[8]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[9]'
 INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/ebase_o_reg[9]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[9]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/cp0_reg0/\pagemask_o_reg[9] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/cp0_reg0 /\pagemask_o_reg[9] )
 INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[9]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[10]'
 INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/ebase_o_reg[10]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[10]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/cp0_reg0/\pagemask_o_reg[10] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/cp0_reg0 /\pagemask_o_reg[10] )
 INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[10]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[11]'
 INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[11]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[12]'
 INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[12]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[13]'
 INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[13]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[14]'
 INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[14]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[15]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/cp0_reg0/\context_o_reg[15] )
+INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[15]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[16]'
+INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/cause_o_reg[16]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[16]'
+INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[16]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[17]'
+INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/cause_o_reg[17]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[17]'
+INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[17]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[18]'
+INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/cause_o_reg[18]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[18]'
+INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[18]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[19]'
+INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/cause_o_reg[19]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[19]'
+INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[19]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[20]'
+INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/cause_o_reg[20]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[20]'
+INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[20]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[21]'
+INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/cause_o_reg[21]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[21]'
+INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[21]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[22]'
+INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[22]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[23]'
+INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[23]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[24]'
+INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/cause_o_reg[24]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[24]'
+INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[24]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[25]'
+INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/cause_o_reg[25]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[25]'
+INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[25]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[26]'
+INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/cause_o_reg[26]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[26]'
+INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[26]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[27]'
+INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/cause_o_reg[27]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[27]'
+INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[27]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[28]'
+INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/cause_o_reg[28]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[28]'
+INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[28]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[29]'
+INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/cause_o_reg[29]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[29]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/cp0_reg0 /\pagemask_o_reg[29] )
+INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[29]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[30]'
+INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/cause_o_reg[30]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[30]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/cp0_reg0 /\pagemask_o_reg[30] )
+INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/context_o_reg[30]' (FDRE) to 'openmips0/cp0_reg0/context_o_reg[31]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/cp0_reg0 /\entrylo1_o_reg[30] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/cp0_reg0 /\entrylo0_o_reg[30] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/cp0_reg0 /\pagemask_o_reg[31] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/cp0_reg0 /\context_o_reg[31] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/cp0_reg0 /\entrylo1_o_reg[31] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/cp0_reg0 /\entrylo0_o_reg[31] )
 INFO: [Synth 8-3886] merging instance 'openmips0/regfile1/regs_reg[19][2]' (FDE) to 'openmips0/regfile1/counter_reg_reg[2]'
 INFO: [Synth 8-3886] merging instance 'openmips0/regfile1/regs_reg[19][1]' (FDE) to 'openmips0/regfile1/counter_reg_reg[1]'
 INFO: [Synth 8-3886] merging instance 'openmips0/regfile1/regs_reg[19][0]' (FDE) to 'openmips0/regfile1/counter_reg_reg[0]'
@@ -1241,43 +1161,45 @@ INFO: [Synth 8-3886] merging instance 'openmips0/regfile1/regs_reg[19][4]' (FDE)
 INFO: [Synth 8-3886] merging instance 'openmips0/regfile1/regs_reg[19][5]' (FDE) to 'openmips0/regfile1/counter_reg_reg[5]'
 INFO: [Synth 8-3886] merging instance 'openmips0/regfile1/regs_reg[19][6]' (FDE) to 'openmips0/regfile1/counter_reg_reg[6]'
 INFO: [Synth 8-3886] merging instance 'openmips0/regfile1/regs_reg[19][7]' (FDE) to 'openmips0/regfile1/counter_reg_reg[7]'
-INFO: [Synth 8-3886] merging instance 'openmips0/regfile1/regs_reg[19][8]' (FDE) to 'openmips0/regfile1/counter_reg_reg[8]'
-INFO: [Synth 8-3886] merging instance 'openmips0/regfile1/regs_reg[19][9]' (FDE) to 'openmips0/regfile1/counter_reg_reg[9]'
-INFO: [Synth 8-3886] merging instance 'openmips0/regfile1/regs_reg[19][10]' (FDE) to 'openmips0/regfile1/counter_reg_reg[10]'
-INFO: [Synth 8-3886] merging instance 'openmips0/regfile1/regs_reg[19][11]' (FDE) to 'openmips0/regfile1/counter_reg_reg[11]'
-INFO: [Synth 8-3886] merging instance 'openmips0/regfile1/regs_reg[19][12]' (FDE) to 'openmips0/regfile1/counter_reg_reg[12]'
-INFO: [Synth 8-3886] merging instance 'openmips0/regfile1/regs_reg[19][13]' (FDE) to 'openmips0/regfile1/counter_reg_reg[13]'
-INFO: [Synth 8-3886] merging instance 'openmips0/regfile1/regs_reg[19][14]' (FDE) to 'openmips0/regfile1/counter_reg_reg[14]'
-INFO: [Synth 8-3886] merging instance 'openmips0/regfile1/regs_reg[19][15]' (FDE) to 'openmips0/regfile1/counter_reg_reg[15]'
-INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[0]' (FDCE) to 'openmips0/isram/ramData_reg_reg[1]'
-INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[1]' (FDCE) to 'openmips0/isram/ramData_reg_reg[2]'
-INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[2]' (FDCE) to 'openmips0/isram/ramData_reg_reg[3]'
-INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[3]' (FDCE) to 'openmips0/isram/ramData_reg_reg[4]'
-INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[4]' (FDCE) to 'openmips0/isram/ramData_reg_reg[5]'
-INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[5]' (FDCE) to 'openmips0/isram/ramData_reg_reg[6]'
-INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[6]' (FDCE) to 'openmips0/isram/ramData_reg_reg[7]'
-INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[7]' (FDCE) to 'openmips0/isram/ramData_reg_reg[8]'
-INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[8]' (FDCE) to 'openmips0/isram/ramData_reg_reg[9]'
-INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[9]' (FDCE) to 'openmips0/isram/ramData_reg_reg[10]'
-INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[10]' (FDCE) to 'openmips0/isram/ramData_reg_reg[11]'
-INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[11]' (FDCE) to 'openmips0/isram/ramData_reg_reg[12]'
-INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[12]' (FDCE) to 'openmips0/isram/ramData_reg_reg[13]'
-INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[13]' (FDCE) to 'openmips0/isram/ramData_reg_reg[14]'
-INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[14]' (FDCE) to 'openmips0/isram/ramData_reg_reg[15]'
-INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[15]' (FDCE) to 'openmips0/isram/ramData_reg_reg[16]'
-INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[16]' (FDCE) to 'openmips0/isram/ramData_reg_reg[17]'
-INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[17]' (FDCE) to 'openmips0/isram/ramData_reg_reg[18]'
-INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[18]' (FDCE) to 'openmips0/isram/ramData_reg_reg[19]'
-INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[19]' (FDCE) to 'openmips0/isram/ramData_reg_reg[20]'
-INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[20]' (FDCE) to 'openmips0/isram/ramData_reg_reg[21]'
-INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[21]' (FDCE) to 'openmips0/isram/ramData_reg_reg[22]'
-INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[22]' (FDCE) to 'openmips0/isram/ramData_reg_reg[23]'
-INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[23]' (FDCE) to 'openmips0/isram/ramData_reg_reg[24]'
-INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[24]' (FDCE) to 'openmips0/isram/ramData_reg_reg[25]'
-INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[25]' (FDCE) to 'openmips0/isram/ramData_reg_reg[26]'
+INFO: [Synth 8-3886] merging instance 'openmips0/regfile1/counter_reg_reg[8]' (FDE) to 'openmips0/regfile1/regs_reg[19][8]'
+INFO: [Synth 8-3886] merging instance 'openmips0/regfile1/counter_reg_reg[9]' (FDE) to 'openmips0/regfile1/regs_reg[19][9]'
+INFO: [Synth 8-3886] merging instance 'openmips0/regfile1/counter_reg_reg[10]' (FDE) to 'openmips0/regfile1/regs_reg[19][10]'
+INFO: [Synth 8-3886] merging instance 'openmips0/regfile1/counter_reg_reg[11]' (FDE) to 'openmips0/regfile1/regs_reg[19][11]'
+INFO: [Synth 8-3886] merging instance 'openmips0/regfile1/counter_reg_reg[12]' (FDE) to 'openmips0/regfile1/regs_reg[19][12]'
+INFO: [Synth 8-3886] merging instance 'openmips0/regfile1/counter_reg_reg[13]' (FDE) to 'openmips0/regfile1/regs_reg[19][13]'
+INFO: [Synth 8-3886] merging instance 'openmips0/regfile1/counter_reg_reg[14]' (FDE) to 'openmips0/regfile1/regs_reg[19][14]'
+INFO: [Synth 8-3886] merging instance 'openmips0/regfile1/counter_reg_reg[15]' (FDE) to 'openmips0/regfile1/regs_reg[19][15]'
+INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/cause_o_reg[14]' (FDR) to 'openmips0/cp0_reg0/cause_o_reg[15]'
+INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/cause_o_reg[15]' (FDR) to 'openmips0/cp0_reg0/cause_o_reg[13]'
+INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/cause_o_reg[13]' (FDR) to 'openmips0/cp0_reg0/cause_o_reg[12]'
+INFO: [Synth 8-3886] merging instance 'openmips0/cp0_reg0/cause_o_reg[12]' (FDR) to 'openmips0/cp0_reg0/cause_o_reg[11]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/cp0_reg0 /\cause_o_reg[11] )
+INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[0]' (FDCE) to 'openmips0/isram/ramData_reg_reg[31]'
+INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[1]' (FDCE) to 'openmips0/isram/ramData_reg_reg[31]'
+INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[2]' (FDCE) to 'openmips0/isram/ramData_reg_reg[31]'
+INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[3]' (FDCE) to 'openmips0/isram/ramData_reg_reg[31]'
+INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[4]' (FDCE) to 'openmips0/isram/ramData_reg_reg[31]'
+INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[5]' (FDCE) to 'openmips0/isram/ramData_reg_reg[31]'
+INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[6]' (FDCE) to 'openmips0/isram/ramData_reg_reg[31]'
+INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[7]' (FDCE) to 'openmips0/isram/ramData_reg_reg[31]'
+INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[8]' (FDCE) to 'openmips0/isram/ramData_reg_reg[31]'
+INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[9]' (FDCE) to 'openmips0/isram/ramData_reg_reg[31]'
+INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[10]' (FDCE) to 'openmips0/isram/ramData_reg_reg[31]'
+INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[11]' (FDCE) to 'openmips0/isram/ramData_reg_reg[31]'
+INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[12]' (FDCE) to 'openmips0/isram/ramData_reg_reg[31]'
+INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[13]' (FDCE) to 'openmips0/isram/ramData_reg_reg[31]'
+INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[14]' (FDCE) to 'openmips0/isram/ramData_reg_reg[31]'
+INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[15]' (FDCE) to 'openmips0/isram/ramData_reg_reg[31]'
+INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[16]' (FDCE) to 'openmips0/isram/ramData_reg_reg[31]'
+INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[17]' (FDCE) to 'openmips0/isram/ramData_reg_reg[31]'
+INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[18]' (FDCE) to 'openmips0/isram/ramData_reg_reg[31]'
+INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[19]' (FDCE) to 'openmips0/isram/ramData_reg_reg[31]'
+INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[20]' (FDCE) to 'openmips0/isram/ramData_reg_reg[31]'
+INFO: [Synth 8-3886] merging instance 'openmips0/isram/ramData_reg_reg[21]' (FDCE) to 'openmips0/isram/ramData_reg_reg[31]'
 INFO: [Common 17-14] Message 'Synth 8-3886' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/\isram/ramData_reg_reg[31] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/\isram/bitEnable_o_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/isram/ramData_reg_reg[31] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/isram/bitEnable_o_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/mem0 /\cp0_cause_reg[11] )
 WARNING: [Synth 8-3332] Sequential element (cp0_cause_reg[31]) is unused and will be removed from module mem.
 WARNING: [Synth 8-3332] Sequential element (cp0_cause_reg[30]) is unused and will be removed from module mem.
 WARNING: [Synth 8-3332] Sequential element (cp0_cause_reg[29]) is unused and will be removed from module mem.
@@ -1294,6 +1216,7 @@ WARNING: [Synth 8-3332] Sequential element (cp0_cause_reg[19]) is unused and wil
 WARNING: [Synth 8-3332] Sequential element (cp0_cause_reg[18]) is unused and will be removed from module mem.
 WARNING: [Synth 8-3332] Sequential element (cp0_cause_reg[17]) is unused and will be removed from module mem.
 WARNING: [Synth 8-3332] Sequential element (cp0_cause_reg[16]) is unused and will be removed from module mem.
+WARNING: [Synth 8-3332] Sequential element (cp0_cause_reg[11]) is unused and will be removed from module mem.
 WARNING: [Synth 8-3332] Sequential element (cp0_cause_reg[7]) is unused and will be removed from module mem.
 WARNING: [Synth 8-3332] Sequential element (cp0_cause_reg[6]) is unused and will be removed from module mem.
 WARNING: [Synth 8-3332] Sequential element (cp0_cause_reg[5]) is unused and will be removed from module mem.
@@ -1302,6 +1225,7 @@ WARNING: [Synth 8-3332] Sequential element (cp0_cause_reg[3]) is unused and will
 WARNING: [Synth 8-3332] Sequential element (cp0_cause_reg[2]) is unused and will be removed from module mem.
 WARNING: [Synth 8-3332] Sequential element (cp0_cause_reg[1]) is unused and will be removed from module mem.
 WARNING: [Synth 8-3332] Sequential element (cp0_cause_reg[0]) is unused and will be removed from module mem.
+WARNING: [Synth 8-3332] Sequential element (cause_o_reg[11]) is unused and will be removed from module cp0_reg.
 WARNING: [Synth 8-3332] Sequential element (cause_o_reg[6]) is unused and will be removed from module cp0_reg.
 WARNING: [Synth 8-3332] Sequential element (entrylo0_o_reg[31]) is unused and will be removed from module cp0_reg.
 WARNING: [Synth 8-3332] Sequential element (entrylo0_o_reg[30]) is unused and will be removed from module cp0_reg.
@@ -1321,7 +1245,7 @@ WARNING: [Synth 8-3332] Sequential element (pagemask_o_reg[3]) is unused and wil
 WARNING: [Synth 8-3332] Sequential element (pagemask_o_reg[2]) is unused and will be removed from module cp0_reg.
 WARNING: [Synth 8-3332] Sequential element (pagemask_o_reg[1]) is unused and will be removed from module cp0_reg.
 WARNING: [Synth 8-3332] Sequential element (pagemask_o_reg[0]) is unused and will be removed from module cp0_reg.
-WARNING: [Synth 8-3332] Sequential element (context_o_reg[15]) is unused and will be removed from module cp0_reg.
+WARNING: [Synth 8-3332] Sequential element (context_o_reg[31]) is unused and will be removed from module cp0_reg.
 WARNING: [Synth 8-3332] Sequential element (TLB_reg[0][63]) is unused and will be removed from module tlb.
 WARNING: [Synth 8-3332] Sequential element (TLB_reg[0][43]) is unused and will be removed from module tlb.
 WARNING: [Synth 8-3332] Sequential element (TLB_reg[0][42]) is unused and will be removed from module tlb.
@@ -1376,12 +1300,10 @@ WARNING: [Synth 8-3332] Sequential element (TLB_reg[2][36]) is unused and will b
 WARNING: [Synth 8-3332] Sequential element (TLB_reg[2][35]) is unused and will be removed from module tlb.
 WARNING: [Synth 8-3332] Sequential element (TLB_reg[2][34]) is unused and will be removed from module tlb.
 WARNING: [Synth 8-3332] Sequential element (TLB_reg[2][21]) is unused and will be removed from module tlb.
-WARNING: [Synth 8-3332] Sequential element (TLB_reg[2][20]) is unused and will be removed from module tlb.
-WARNING: [Synth 8-3332] Sequential element (TLB_reg[2][19]) is unused and will be removed from module tlb.
 INFO: [Common 17-14] Message 'Synth 8-3332' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
-INFO: [Synth 8-3333] propagating constant 1 across sequential element (openmips0/\isram/writeEnable_o_reg )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (\openmips0/isram/writeEnable_o_reg )
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:52 ; elapsed = 00:01:57 . Memory (MB): peak = 863.309 ; gain = 573.680
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:47 ; elapsed = 00:01:55 . Memory (MB): peak = 861.801 ; gain = 572.160
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -1415,21 +1337,21 @@ INFO: [Synth 8-5578] Moved timing constraint from pin 'clock_gen/clk_out2' to pi
 WARNING: [Synth 8-565] redefining clock 'clk_50M'
 INFO: [Synth 8-5819] Moved 2 constraints on hierarchical pins to their respective driving/loading pins
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:02:06 ; elapsed = 00:02:12 . Memory (MB): peak = 880.477 ; gain = 590.848
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:02:01 ; elapsed = 00:02:10 . Memory (MB): peak = 875.281 ; gain = 585.641
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
-      : openmips0/mem0/i_0/tlb_addr_valid
-      : openmips0/mem0/tlb_addr_valid
-      : openmips0/tlb0/ValidAddress
-      : openmips0/tlb0/i_0/ValidAddress
-      : openmips0/tlb0/i_0/WriteEnable
-      : openmips0/tlb0/WriteEnable
-      : openmips0/mem0/mem_we_o
-      : openmips0/mem0/i_0/mem_we_o
+      : \openmips0/mem0 /i_0/tlb_addr_valid
+      : \openmips0/mem0 /tlb_addr_valid
+      : \openmips0/tlb0 /ValidAddress
+      : \openmips0/tlb0 /i_0/ValidAddress
+      : \openmips0/tlb0 /i_0/WriteEnable
+      : \openmips0/tlb0 /WriteEnable
+      : \openmips0/mem0 /mem_we_o
+      : \openmips0/mem0 /i_0/mem_we_o
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:02:10 ; elapsed = 00:02:17 . Memory (MB): peak = 908.387 ; gain = 618.758
+Finished Timing Optimization : Time (s): cpu = 00:02:05 ; elapsed = 00:02:15 . Memory (MB): peak = 903.070 ; gain = 613.430
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1440,74 +1362,73 @@ Report RTL Partitions:
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/\regfile1/regs_reg[0][24] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/\regfile1/regs_reg[0][25] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/\regfile1/regs_reg[0][26] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/\regfile1/regs_reg[0][30] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/\regfile1/regs_reg[0][22] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/\regfile1/regs_reg[0][23] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/\regfile1/regs_reg[0][1] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/\regfile1/regs_reg[0][3] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/\regfile1/regs_reg[0][27] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/\regfile1/regs_reg[0][28] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/\regfile1/regs_reg[0][29] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/\regfile1/regs_reg[0][0] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/\regfile1/regs_reg[0][2] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/\regfile1/regs_reg[0][4] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/\regfile1/regs_reg[0][5] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/\regfile1/regs_reg[0][6] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/\regfile1/regs_reg[0][7] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/\regfile1/regs_reg[0][8] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/\regfile1/regs_reg[0][9] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/\regfile1/regs_reg[0][10] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/\regfile1/regs_reg[0][11] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/\regfile1/regs_reg[0][12] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/\regfile1/regs_reg[0][13] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/\regfile1/regs_reg[0][14] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/\regfile1/regs_reg[0][15] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/\regfile1/regs_reg[0][16] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/\regfile1/regs_reg[0][17] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/\regfile1/regs_reg[0][18] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/\regfile1/regs_reg[0][19] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/\regfile1/regs_reg[0][20] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/\regfile1/regs_reg[0][31] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (openmips0/\regfile1/regs_reg[0][21] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/regfile1/regs_reg[0][24] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/regfile1/regs_reg[0][25] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/regfile1/regs_reg[0][26] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/regfile1/regs_reg[0][27] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/regfile1/regs_reg[0][28] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/regfile1/regs_reg[0][29] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/regfile1/regs_reg[0][30] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/regfile1/regs_reg[0][22] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/regfile1/regs_reg[0][23] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/regfile1/regs_reg[0][1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/regfile1/regs_reg[0][3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/regfile1/regs_reg[0][0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/regfile1/regs_reg[0][2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/regfile1/regs_reg[0][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/regfile1/regs_reg[0][5] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/regfile1/regs_reg[0][6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/regfile1/regs_reg[0][7] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/regfile1/regs_reg[0][8] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/regfile1/regs_reg[0][9] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/regfile1/regs_reg[0][10] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/regfile1/regs_reg[0][11] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/regfile1/regs_reg[0][12] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/regfile1/regs_reg[0][13] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/regfile1/regs_reg[0][14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/regfile1/regs_reg[0][15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/regfile1/regs_reg[0][16] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/regfile1/regs_reg[0][17] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/regfile1/regs_reg[0][18] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/regfile1/regs_reg[0][19] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/regfile1/regs_reg[0][20] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/regfile1/regs_reg[0][31] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\openmips0/regfile1/regs_reg[0][21] )
 Found timing loop:
-     0: openmips0/i_3796/O (LUT2)
-     1: openmips0/i_3796/I1 (LUT2)
-     2: openmips0/i_3333/O (LUT5)
-     3: openmips0/i_3333/I0 (LUT5)
-     4: openmips0/i_3795/O (LUT2)
-     5: openmips0/i_3795/I0 (LUT2)
-     6: openmips0/i_4325/O (LUT3)
-     7: openmips0/i_4325/I2 (LUT3)
-     8: openmips0/i_4327/O (LUT6)
-     9: openmips0/i_4327/I3 (LUT6)
-    10: openmips0/i_3330/O (LUT6)
-    11: openmips0/i_3330/I3 (LUT6)
-    12: openmips0/i_3395/O (LUT6)
-    13: openmips0/i_3395/I0 (LUT6)
-    14: openmips0/i_3796/O (LUT2)
-CRITICAL WARNING: [Synth 8-295] found timing loop. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/openmips.v:3]
-Inferred a: "set_disable_timing -from I1 -to O openmips0/i_3796"
+     0: i_5363/O (LUT6)
+     1: i_5363/I2 (LUT6)
+     2: i_3072/O (LUT6)
+     3: i_3072/I0 (LUT6)
+     4: i_3623/O (LUT2)
+     5: i_3623/I0 (LUT2)
+     6: i_4162/O (LUT3)
+     7: i_4162/I2 (LUT3)
+     8: i_4163/O (LUT6)
+     9: i_4163/I3 (LUT6)
+    10: i_5354/O (LUT6)
+    11: i_5354/I3 (LUT6)
+    12: i_5363/O (LUT6)
+CRITICAL WARNING: [Synth 8-295] found timing loop. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/thinpad_top.v:4]
+Inferred a: "set_disable_timing -from I2 -to O i_5363"
 Found timing loop:
-     0: openmips0/i_3795/O (LUT2)
-     1: openmips0/i_3795/I0 (LUT2)
-     2: openmips0/i_4325/O (LUT3)
-     3: openmips0/i_4325/I2 (LUT3)
-     4: openmips0/i_4327/O (LUT6)
-     5: openmips0/i_4327/I3 (LUT6)
-     6: openmips0/i_3330/O (LUT6)
-     7: openmips0/i_3330/I1 (LUT6)
-     8: openmips0/i_3336/O (LUT6)
-     9: openmips0/i_3336/I4 (LUT6)
-    10: openmips0/i_3344/O (LUT6)
-    11: openmips0/i_3344/I0 (LUT6)
-    12: openmips0/i_3795/O (LUT2)
-CRITICAL WARNING: [Synth 8-295] found timing loop. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/openmips.v:3]
-Inferred a: "set_disable_timing -from I0 -to O openmips0/i_3795"
+     0: i_3623/O (LUT2)
+     1: i_3623/I0 (LUT2)
+     2: i_4162/O (LUT3)
+     3: i_4162/I2 (LUT3)
+     4: i_4163/O (LUT6)
+     5: i_4163/I3 (LUT6)
+     6: i_5354/O (LUT6)
+     7: i_5354/I3 (LUT6)
+     8: i_5363/O (LUT6)
+     9: i_5363/O (LUT6)
+CRITICAL WARNING: [Synth 8-295] found timing loop. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/thinpad_top.v:4]
+Inferred a: "set_disable_timing -from I0 -to O i_3623"
+Found timing loop:
+     0: i_3623/O (LUT2)
+     1: i_3623/O (LUT2)
+CRITICAL WARNING: [Synth 8-295] found timing loop. [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/thinpad_top.v:4]
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:02:17 ; elapsed = 00:02:24 . Memory (MB): peak = 1035.035 ; gain = 745.406
+Finished Technology Mapping : Time (s): cpu = 00:02:13 ; elapsed = 00:02:22 . Memory (MB): peak = 1020.594 ; gain = 730.953
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1530,10 +1451,8 @@ Start Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/id_ex.v:44]
-WARNING: [Synth 8-5396] Clock pin C has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/sram.v:44]
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:02:19 ; elapsed = 00:02:25 . Memory (MB): peak = 1035.035 ; gain = 745.406
+Finished IO Insertion : Time (s): cpu = 00:02:15 ; elapsed = 00:02:24 . Memory (MB): peak = 1020.594 ; gain = 730.953
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -1546,7 +1465,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:02:19 ; elapsed = 00:02:25 . Memory (MB): peak = 1035.035 ; gain = 745.406
+Finished Renaming Generated Instances : Time (s): cpu = 00:02:15 ; elapsed = 00:02:24 . Memory (MB): peak = 1020.594 ; gain = 730.953
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1554,29 +1473,32 @@ Report RTL Partitions:
 | |RTL Partition |Replication |Instances |
 +-+--------------+------------+----------+
 +-+--------------+------------+----------+
+WARNING: [Synth 8-326] inferred exception to break timing loop: 'set_false_path -through \new_pc_reg[31]_i_9 /O'
+WARNING: [Synth 8-326] inferred exception to break timing loop: 'set_false_path -through \new_pc_reg[31]_i_24 /O'
+WARNING: [Synth 8-326] inferred exception to break timing loop: 'set_false_path -through \badvaddr_o[31]_i_6 /O'
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:02:20 ; elapsed = 00:02:26 . Memory (MB): peak = 1035.035 ; gain = 745.406
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:02:16 ; elapsed = 00:02:25 . Memory (MB): peak = 1020.594 ; gain = 730.953
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:02:20 ; elapsed = 00:02:27 . Memory (MB): peak = 1035.035 ; gain = 745.406
+Finished Renaming Generated Ports : Time (s): cpu = 00:02:16 ; elapsed = 00:02:25 . Memory (MB): peak = 1020.594 ; gain = 730.953
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:02:20 ; elapsed = 00:02:27 . Memory (MB): peak = 1035.035 ; gain = 745.406
+Finished Handling Custom Attributes : Time (s): cpu = 00:02:16 ; elapsed = 00:02:26 . Memory (MB): peak = 1020.594 ; gain = 730.953
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:02:20 ; elapsed = 00:02:27 . Memory (MB): peak = 1035.035 ; gain = 745.406
+Finished Renaming Generated Nets : Time (s): cpu = 00:02:16 ; elapsed = 00:02:26 . Memory (MB): peak = 1020.594 ; gain = 730.953
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -1597,20 +1519,20 @@ Report Cell Usage:
 |2     |BUFG        |    12|
 |3     |CARRY4      |   258|
 |4     |DSP48E1     |     4|
-|5     |LUT1        |   223|
-|6     |LUT2        |   407|
-|7     |LUT3        |   453|
-|8     |LUT4        |   494|
-|9     |LUT5        |   944|
-|10    |LUT6        |  2590|
-|11    |MUXF7       |   237|
+|5     |LUT1        |   213|
+|6     |LUT2        |   489|
+|7     |LUT3        |   328|
+|8     |LUT4        |   502|
+|9     |LUT5        |   991|
+|10    |LUT6        |  2459|
+|11    |MUXF7       |   220|
 |12    |MUXF8       |    42|
 |13    |FDCE        |   106|
 |14    |FDPE        |     9|
-|15    |FDRE        |  2456|
+|15    |FDRE        |  2450|
 |16    |FDSE        |     8|
 |17    |LD          |    69|
-|18    |LDC         |   906|
+|18    |LDC         |   901|
 |19    |LDP         |    16|
 |20    |IBUF        |     3|
 |21    |IOBUF       |    64|
@@ -1622,58 +1544,58 @@ Report Instance Areas:
 +------+-----------------+----------------------------+------+
 |      |Instance         |Module                      |Cells |
 +------+-----------------+----------------------------+------+
-|1     |top              |                            |  9445|
-|2     |  openmips0      |openmips                    |  9036|
-|3     |    LLbit_reg0   |LLbit_reg                   |     1|
-|4     |    cp0_reg0     |cp0_reg                     |   534|
-|5     |    ctrl0        |ctrl                        |    32|
-|6     |    div0         |div                         |   442|
-|7     |    dsram        |sram                        |    87|
-|8     |    ex0          |ex                          |   392|
-|9     |    ex_mem0      |ex_mem                      |  1278|
-|10    |    hilo_reg0    |hilo_reg                    |    64|
-|11    |    id0          |id                          |   111|
-|12    |    id_ex0       |id_ex                       |  1881|
-|13    |    if_id0       |if_id                       |   760|
-|14    |    isram        |sram_1                      |    33|
-|15    |    mem0         |mem                         |    40|
-|16    |    mem_wb0      |mem_wb                      |   450|
-|17    |    pc_reg0      |pc_reg                      |    88|
-|18    |    regfile1     |regfile                     |  1758|
-|19    |    tlb0         |tlb                         |  1000|
-|20    |  ext_uart_r     |async_receiver              |    77|
-|21    |    tickgen      |BaudTickGen                 |    41|
-|22    |  ext_uart_t     |async_transmitter           |    70|
-|23    |    tickgen      |BaudTickGen__parameterized0 |    37|
+|1     |top              |                            |  9288|
+|2     |  ext_uart_r     |async_receiver              |    77|
+|3     |    tickgen      |BaudTickGen                 |    41|
+|4     |  ext_uart_t     |async_transmitter           |    69|
+|5     |    tickgen      |BaudTickGen__parameterized0 |    37|
+|6     |  openmips0      |openmips                    |  8809|
+|7     |    LLbit_reg0   |LLbit_reg                   |     1|
+|8     |    cp0_reg0     |cp0_reg                     |   539|
+|9     |    ctrl0        |ctrl                        |    33|
+|10    |    div0         |div                         |   441|
+|11    |    dsram        |sram                        |    82|
+|12    |    ex0          |ex                          |   387|
+|13    |    ex_mem0      |ex_mem                      |  1379|
+|14    |    hilo_reg0    |hilo_reg                    |    64|
+|15    |    id0          |id                          |   111|
+|16    |    id_ex0       |id_ex                       |  1634|
+|17    |    if_id0       |if_id                       |   758|
+|18    |    isram        |sram_1                      |    33|
+|19    |    mem0         |mem                         |    35|
+|20    |    mem_wb0      |mem_wb                      |   443|
+|21    |    pc_reg0      |pc_reg                      |    88|
+|22    |    regfile1     |regfile                     |  1758|
+|23    |    tlb0         |tlb                         |  1022|
 |24    |  segH           |SEG7_LUT                    |     7|
 |25    |  segL           |SEG7_LUT_0                  |     7|
-|26    |  vga800x600at75 |vga                         |    58|
+|26    |  vga800x600at75 |vga                         |    54|
 +------+-----------------+----------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:02:20 ; elapsed = 00:02:27 . Memory (MB): peak = 1035.035 ; gain = 745.406
+Finished Writing Synthesis Report : Time (s): cpu = 00:02:16 ; elapsed = 00:02:26 . Memory (MB): peak = 1020.594 ; gain = 730.953
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 2 critical warnings and 824 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:02:06 ; elapsed = 00:02:16 . Memory (MB): peak = 1035.035 ; gain = 352.148
-Synthesis Optimization Complete : Time (s): cpu = 00:02:21 ; elapsed = 00:02:27 . Memory (MB): peak = 1035.035 ; gain = 745.406
+Synthesis finished with 0 errors, 3 critical warnings and 763 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:02:03 ; elapsed = 00:02:15 . Memory (MB): peak = 1020.594 ; gain = 339.078
+Synthesis Optimization Complete : Time (s): cpu = 00:02:16 ; elapsed = 00:02:26 . Memory (MB): peak = 1020.594 ; gain = 730.953
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 1599 Unisim elements for replacement
+INFO: [Netlist 29-17] Analyzing 1577 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-140] Inserted 1 IBUFs to IO ports without IO buffers.
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 1055 instances were transformed.
+  A total of 1050 instances were transformed.
   IOBUF => IOBUF (IBUF, OBUFT): 64 instances
   LD => LDCE: 69 instances
-  LDC => LDCE: 906 instances
+  LDC => LDCE: 901 instances
   LDP => LDPE: 16 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-469 Infos, 353 Warnings, 2 Critical Warnings and 0 Errors encountered.
+469 Infos, 279 Warnings, 3 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:02:23 ; elapsed = 00:02:32 . Memory (MB): peak = 1035.035 ; gain = 756.879
+synth_design: Time (s): cpu = 00:02:20 ; elapsed = 00:02:30 . Memory (MB): peak = 1020.594 ; gain = 742.426
 WARNING: [Constraints 18-5210] No constraint will be written out.
 INFO: [Common 17-1381] The checkpoint 'D:/MIPS32CPU/thinpad_top/thinpad_top.runs/synth_2/thinpad_top.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file thinpad_top_utilization_synth.rpt -pb thinpad_top_utilization_synth.pb
-report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.127 . Memory (MB): peak = 1035.035 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Thu Dec  6 19:56:04 2018...
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.135 . Memory (MB): peak = 1020.594 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Thu Dec  6 22:18:14 2018...

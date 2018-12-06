@@ -1,0 +1,32 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:03:12 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Thu Dec  6 20:01:39 2018
+# Process ID: 13780
+# Current directory: D:/MIPS32CPU/thinpad_top
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent10108 D:\MIPS32CPU\thinpad_top\thinpad_top.xpr
+# Log file: D:/MIPS32CPU/thinpad_top/vivado.log
+# Journal file: D:/MIPS32CPU/thinpad_top\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project D:/MIPS32CPU/thinpad_top/thinpad_top.xpr
+update_compile_order -fileset sources_1
+reset_run impl_2 -prev_step 
+launch_runs impl_2 -to_step write_bitstream -jobs 4
+wait_on_run impl_2
+open_run impl_2
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 100 -input_pins -routable_nets -name timing_1
+reset_run synth_2
+launch_runs synth_2 -jobs 4
+wait_on_run synth_2
+reset_run synth_2
+launch_runs impl_2 -to_step write_bitstream -jobs 4
+wait_on_run impl_2
+export_ip_user_files -of_objects  [get_files D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/wishbone_bus_if.v] -no_script -reset -force -quiet
+remove_files  D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/wishbone_bus_if.v
+remove_files  D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/new/wishbone_bus_if.v
+close_design
+reset_run synth_2
+launch_runs impl_2 -to_step write_bitstream -jobs 4
+wait_on_run impl_2
