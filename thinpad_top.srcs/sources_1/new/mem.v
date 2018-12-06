@@ -165,7 +165,7 @@ module mem(
             
             excepttype_load_error <= 1'b0;
             excepttype_save_error <= 1'b0;
-            badvaddr <= `ZeroWord;
+            //badvaddr <= `ZeroWord;
             write_tlb <= 1'b0;
             
             cp0_tlb_index_random <= 1'b0;
@@ -174,7 +174,7 @@ module mem(
 		end else begin
             excepttype_load_error <= 1'b0;
             excepttype_save_error <= 1'b0;
-            badvaddr <= `ZeroWord;
+            //badvaddr <= `ZeroWord;
             write_tlb <= 1'b0;
             
             cp0_tlb_index_random <= 1'b0;
@@ -269,7 +269,7 @@ module mem(
 							mem_sel_o <= 4'b0011;
 						end
 						default:	begin
-						    badvaddr <= mem_addr_i;
+						    //badvaddr <= mem_addr_i;
 						    is_save_read <= 1'b0;
 						    excepttype_load_error <= 1'b1;
                             mem_addr_o <= `ZeroWord;
@@ -295,7 +295,7 @@ module mem(
 							mem_sel_o <= 4'b0011;
 						end
 						default:	begin
-						    badvaddr <= mem_addr_i;
+						    //badvaddr <= mem_addr_i;
 						    is_save_read <= 1'b0;
 						    
 						    excepttype_load_error <= 1'b1;
@@ -310,7 +310,7 @@ module mem(
 				    is_save_read <= 1'b1;
 				    
 				    if (mem_addr_i[1:0] != 2'b00) begin
-				        badvaddr <= mem_addr_i;
+				        //badvaddr <= mem_addr_i;
 				        is_save_read <= 1'b0;
 				        
 				        excepttype_load_error <= 1'b1;
@@ -427,7 +427,7 @@ module mem(
 							mem_sel_o <= 4'b0011;
 						end
 						default:	begin
-						    badvaddr <= mem_addr_i;
+						    //badvaddr <= mem_addr_i;
 						    is_save_read <= 1'b0;
 						    excepttype_save_error <= 1'b1;
 						    mem_we <= `WriteDisable;
@@ -441,7 +441,7 @@ module mem(
 				    is_save_read <= 1'b1;
 				
 				    if (mem_addr_i[1:0] != 2'b00) begin
-				        badvaddr <= mem_addr_i;
+				        //badvaddr <= mem_addr_i;
 				        is_save_read <= 1'b0;
 				        excepttype_save_error <= 1'b1;
                         mem_we <= `WriteDisable;
@@ -658,8 +658,10 @@ module mem(
 	always @ (*) begin
 		if(rst == `RstEnable) begin
 			excepttype_o <= `ZeroWord;
+			badvaddr <= `ZeroWord;
 		end else begin
 			excepttype_o <= `ZeroWord;
+			badvaddr <= `ZeroWord;
 			
 			if(current_inst_address_i != `ZeroWord) begin
 				if(((cp0_cause[15:8] & (cp0_status[15:8])) != 8'h00) && (cp0_status[1] == 1'b0) && 
@@ -681,6 +683,7 @@ module mem(
 				    excepttype_o <= 32'h0000000f; // break
 				end else if (excepttype_load_error == 1'b1) begin
 				    excepttype_o <= 32'h00000011; // load address error
+				    badvaddr <= mem_addr_i;
 				end else if (tlb_isMiss == 1'b1 && is_save_read == 1'b1) begin  // TLB refill exception
 				    excepttype_o <= 32'h00000013;
 				    badvaddr <= mem_addr_i;
@@ -689,6 +692,7 @@ module mem(
                     badvaddr <= mem_addr_i;
 				end else if (excepttype_save_error == 1'b1) begin
 				    excepttype_o <= 32'h00000012; // save address error
+				    badvaddr <= mem_addr_i;
 				end
 			end
 				

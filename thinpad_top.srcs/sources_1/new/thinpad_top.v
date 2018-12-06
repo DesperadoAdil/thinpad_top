@@ -82,7 +82,7 @@ module thinpad_top(
 );
 
 //�м�����
-wire[`RegBus] dwishbone_data_i_m;
+/*wire[`RegBus] dwishbone_data_i_m;
 wire 			dwishbone_ack_i_m;
 wire[`RegBus] dwishbone_addr_o_m;
 wire[`RegBus] dwishbone_data_o_m;
@@ -98,7 +98,7 @@ wire[`RegBus] iwishbone_data_o_m;
 wire 			iwishbone_we_o_m;
 wire[3:0]      iwishbone_sel_o_m;
 wire           iwishbone_stb_o_m;
-wire           iwishbone_cyc_o_m;
+wire           iwishbone_cyc_o_m;*/
 
 wire[5:0] int;
 wire timer_int;

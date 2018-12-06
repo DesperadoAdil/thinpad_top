@@ -65,13 +65,18 @@ start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
-  reset_param project.defaultXPMLibraries 
-  open_checkpoint D:/MIPS32CPU/thinpad_top/thinpad_top.runs/impl_2/thinpad_top.dcp
+  create_project -in_memory -part xc7a100tfgg676-2
+  set_property design_mode GateLvl [current_fileset]
+  set_param project.singleFileAddWarning.threshold 0
   set_property webtalk.parent_dir D:/MIPS32CPU/thinpad_top/thinpad_top.cache/wt [current_project]
   set_property parent.project_path D:/MIPS32CPU/thinpad_top/thinpad_top.xpr [current_project]
   set_property ip_output_repo D:/MIPS32CPU/thinpad_top/thinpad_top.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
   set_property XPM_LIBRARIES XPM_CDC [current_project]
+  add_files -quiet D:/MIPS32CPU/thinpad_top/thinpad_top.runs/synth_2/thinpad_top.dcp
+  read_ip -quiet D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sources_1/ip/pll_example/pll_example.xci
+  read_xdc D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/constrs_1/new/thinpad_top.xdc
+  link_design -top thinpad_top -part xc7a100tfgg676-2
   close_msg_db -file init_design.pb
 } RESULT]
 if {$rc} {
@@ -147,6 +152,25 @@ if {$rc} {
   return -code error $RESULT
 } else {
   end_step route_design
+  unset ACTIVE_STEP 
+}
+
+start_step write_bitstream
+set ACTIVE_STEP write_bitstream
+set rc [catch {
+  create_msg_db write_bitstream.pb
+  set_property XPM_LIBRARIES XPM_CDC [current_project]
+  catch { write_mem_info -force thinpad_top.mmi }
+  write_bitstream -force thinpad_top.bit 
+  catch {write_debug_probes -quiet -force thinpad_top}
+  catch {file copy -force thinpad_top.ltx debug_nets.ltx}
+  close_msg_db -file write_bitstream.pb
+} RESULT]
+if {$rc} {
+  step_failed write_bitstream
+  return -code error $RESULT
+} else {
+  end_step write_bitstream
   unset ACTIVE_STEP 
 }
 
