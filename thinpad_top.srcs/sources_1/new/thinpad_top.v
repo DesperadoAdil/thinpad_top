@@ -81,24 +81,12 @@ module thinpad_top(
     output wire video_de           //行数据有效信号，用于区分消隐��?
 );
 
-//�м�����
-/*wire[`RegBus] dwishbone_data_i_m;
-wire 			dwishbone_ack_i_m;
-wire[`RegBus] dwishbone_addr_o_m;
-wire[`RegBus] dwishbone_data_o_m;
-wire 			dwishbone_we_o_m;
-wire[3:0]      dwishbone_sel_o_m;
-wire           dwishbone_stb_o_m;
-wire           dwishbone_cyc_o_m;
-
-wire[`RegBus] iwishbone_data_i_m;
-wire 			iwishbone_ack_i_m;
-wire[`RegBus] iwishbone_addr_o_m;
-wire[`RegBus] iwishbone_data_o_m;
-wire 			iwishbone_we_o_m;
-wire[3:0]      iwishbone_sel_o_m;
-wire           iwishbone_stb_o_m;
-wire           iwishbone_cyc_o_m;*/
+wire                  cpu_we;
+wire[3:0]							cpu_sel;
+wire 									cpu_ce;
+wire[31:0]						cpu_addr;
+wire[31:0]						cpu_write;
+wire[31:0]						cpu_read;
 
 wire[5:0] int;
 wire timer_int;
@@ -112,90 +100,68 @@ wire[31:0] current;
 
 //ʵ����cpu
 openmips openmips0(
-    .clk(clk_10M),
-    .clk_ram(clk_20M),
+  .clk(clk_10M),
+  .clk_ram(clk_20M),
 	.rst(reset_btn),
 	.int_i(int),
-
-	/*.dwishbone_data_i(dwishbone_data_i_m),
-	.dwishbone_ack_i(dwishbone_ack_i_m),
-	.dwishbone_addr_o(dwishbone_addr_o_m),
-	.dwishbone_data_o(dwishbone_data_o_m),
-	.dwishbone_we_o(dwishbone_we_o_m),
-	.dwishbone_sel_o(dwishbone_sel_o_m),
-	.dwishbone_stb_o(dwishbone_stb_o_m),
-	.dwishbone_cyc_o(dwishbone_cyc_o_m),
-
-	.iwishbone_data_i(iwishbone_data_i_m),
-    .iwishbone_ack_i(iwishbone_ack_i_m),
-    .iwishbone_addr_o(iwishbone_addr_o_m),
-    .iwishbone_data_o(iwishbone_data_o_m),
-    .iwishbone_we_o(iwishbone_we_o_m),
-    .iwishbone_sel_o(iwishbone_sel_o_m),
-    .iwishbone_stb_o(iwishbone_stb_o_m),
-    .iwishbone_cyc_o(iwishbone_cyc_o_m),*/
-
 	.timer_int_o(timer_int),
 
 	.counter_reg(counter),
 	.current_reg(current),
-	
-	.base_readEnable_o(base_ram_oe_n),
+
+  .cpu_we(cpu_we),
+	.cpu_sel(cpu_sel),
+	.cpu_ce(cpu_ce),
+	.cpu_addr(cpu_addr),
+	.cpu_write(cpu_write),
+	.cpu_read(cpu_read),
+	/*.base_readEnable_o(base_ram_oe_n),
         .base_writeEnable_o(base_ram_we_n),
         .base_sramEnable_o(base_ram_ce_n),
         .base_bitEnable_o(base_ram_be_n),
         .base_ramAddr_o(base_ram_addr),
-        .base_ramData_io(base_ram_data),
-        
-    .ext_readEnable_o(ext_ram_oe_n),
-            .ext_writeEnable_o(ext_ram_we_n),
-            .ext_sramEnable_o(ext_ram_ce_n),
-            .ext_bitEnable_o(ext_ram_be_n),
-            .ext_ramAddr_o(ext_ram_addr),
-            .ext_ramData_io(ext_ram_data)
+        .base_ramData_io(base_ram_data),*/
+
+  .ext_readEnable_o(ext_ram_oe_n),
+  .ext_writeEnable_o(ext_ram_we_n),
+  .ext_sramEnable_o(ext_ram_ce_n),
+  .ext_bitEnable_o(ext_ram_be_n),
+  .ext_ramAddr_o(ext_ram_addr),
+  .ext_ramData_io(ext_ram_data)
 );
 
-//ʵ����data_sram
-/*sram dsram(
-    .clk(clk_20M),
-	.rst(reset_btn),
-	.mem_we_i(dwishbone_we_o_m),
-	.ready(dwishbone_stb_o_m),
-	.mem_sel_i(dwishbone_sel_o_m),
-	.mem_ce_i(dwishbone_cyc_o_m),
-	.mem_addr_i(dwishbone_addr_o_m),
-	.mem_data_i(dwishbone_data_o_m),
-	.Hready(dwishbone_ack_i_m),
-	.ramData_o(dwishbone_data_i_m),
+bus bus0 (
+  .clk(clk_10M),
+  .clk_ram(clk_20M),
+  .rst(reset_btn),
 
-	.readEnable_o(base_ram_oe_n),
-	.writeEnable_o(base_ram_we_n),
-	.sramEnable_o(base_ram_ce_n),
-	.bitEnable_o(base_ram_be_n),
-	.ramAddr_o(base_ram_addr),
-	.ramData_io(base_ram_data)
+  .bus_we_i(cpu_we),
+  .bus_sel_i(cpu_sel),
+  .bus_ce_i(cpu_ce),
+  .bus_addr_i(cpu_addr),
+  .bus_data_i(cpu_write),
+  .bus_data_o(cpu_read),
+  //.bus_ready,
+
+  .sram_oe_o(base_ram_oe_n), //sram
+  .sram_we_o(base_ram_we_n),
+  .sram_sel_o(base_ram_be_n),
+  .sram_ce_o(base_ram_ce_n),
+  .sram_addr_o(base_ram_addr),
+  .sram_data(base_ram_data)
+
+  /*.RxD, //串口
+  .TxD,
+  .Break,
+
+  .vs, //VGA
+  .hs,
+  .r,
+  .g,
+  .b,
+  .ps2clk,
+  .ps2data*/
 );
-
-sram isram (
-    .clk(clk_20M),
-    .rst(reset_btn),
-    .mem_we_i(iwishbone_we_o_m),
-    .ready(iwishbone_stb_o_m),
-    .mem_sel_i(iwishbone_sel_o_m),
-    .mem_ce_i(iwishbone_cyc_o_m),
-    .mem_addr_i(iwishbone_addr_o_m),
-    .mem_data_i(iwishbone_data_o_m),
-    .Hready(iwishbone_ack_i_m),
-    .ramData_o(iwishbone_data_i_m),
-
-    .readEnable_o(ext_ram_oe_n),
-    .writeEnable_o(ext_ram_we_n),
-    .sramEnable_o(ext_ram_ce_n),
-    .bitEnable_o(ext_ram_be_n),
-    .ramAddr_o(ext_ram_addr),
-    .ramData_io(ext_ram_data)
-);*/
-
 
 /* =========== Demo code begin =========== */
 

@@ -3,37 +3,23 @@
 module openmips(
 
 	input	wire										clk,
-	input wire clk_ram,
+	input wire 										clk_ram,
 	input wire										rst,
 
   input wire[5:0]                int_i,
-
-  //Ö¸ï¿½ï¿½wishboneï¿½ï¿½ï¿½ï¿½
-	/*input wire[`RegBus]           iwishbone_data_i,
-	input wire                    iwishbone_ack_i,
-	output wire[`RegBus]           iwishbone_addr_o,
-	output wire[`RegBus]           iwishbone_data_o,
-	output wire                    iwishbone_we_o,
-	output wire[3:0]               iwishbone_sel_o,
-	output wire                    iwishbone_stb_o,
-	output wire                    iwishbone_cyc_o,
-
-  //ï¿½ï¿½ï¿½ï¿½wishboneï¿½ï¿½ï¿½ï¿½
-	input wire[`RegBus]           dwishbone_data_i,
-	input wire                    dwishbone_ack_i,
-	output wire[`RegBus]           dwishbone_addr_o,
-	output wire[`RegBus]           dwishbone_data_o,
-	output wire                    dwishbone_we_o,
-	output wire[3:0]               dwishbone_sel_o,
-	output wire                    dwishbone_stb_o,
-	output wire                    dwishbone_cyc_o,*/
-
 	output wire                    timer_int_o,
 
 	output wire[15:0]               counter_reg,
 	output wire[31:0]              current_reg,
-	
-	inout wire[31:0] base_ramData_io,
+
+	output wire 									cpu_we,
+	output wire[3:0]							cpu_sel,
+	output wire 									cpu_ce,
+	output wire[31:0]							cpu_addr,
+	output wire[31:0]							cpu_write,
+	output wire[31:0]							cpu_read,
+
+	/*inout wire[31:0] base_ramData_io,
         // to SRAM
         output wire [19:0] base_ramAddr_o,
         output wire [3:0]  base_bitEnable_o,
@@ -41,8 +27,8 @@ module openmips(
         output wire base_writeEnable_o,
         output wire base_readEnable_o,
         // To MMU
-        //output wire[`RegBus] base_ramData_o,
-        
+        //output wire[`RegBus] base_ramData_o,*/
+
     inout wire[31:0] ext_ramData_io,
             // to SRAM
             output wire [19:0] ext_ramAddr_o,
@@ -207,7 +193,7 @@ module openmips(
 	wire[`RegBus]	cp0_config;
 	wire[`RegBus]	cp0_prid;
 	wire[`RegBus] cp0_badvaddr;
-	
+
 	wire[`RegBus] cp0_index;
         wire[`RegBus] cp0_entryhi;
         wire[`RegBus] cp0_entrylo0;
@@ -218,7 +204,7 @@ module openmips(
 
   wire[`RegBus] latest_epc;
   wire[`RegBus] latest_ebase;
-  
+
   wire[`RegBus] latest_index_random;
      wire[`RegBus] latest_entryhi;
      wire[`RegBus] latest_entrylo0;
@@ -226,22 +212,28 @@ module openmips(
 
 	wire rom_ce;
 
-	  wire[31:0] virtual_addr; 
+	  wire[31:0] virtual_addr;
 	wire[31:0] ram_addr_o;
 	// wire[31:0] mem_write_enable;
 	wire tlb_addr_valid;
 	wire tlb_isMiss;
-	
+
 	wire write_tlb;
-	
+
 	wire ram_we_o;
 	wire ram_we_o_2;
   wire[3:0] ram_sel_o;
 	wire[`RegBus] ram_data_o;
 	wire ram_ce_o;
   wire[`RegBus] ram_data_i;
-  
+
   assign ram_we_o_2 = ram_we_o;
+	assign cpu_we = ram_we_o_2;
+	assign cpu_sel = ram_sel_o;
+	assign cpu_ce = ram_ce_o;
+	assign cpu_addr = ram_addr_o;
+	assign cpu_write = ram_data_o;
+	assign cpu_read = ram_data_i;
 
   //pc_regï¿½ï¿½ï¿½ï¿½
 	pc_reg pc_reg0(
@@ -514,7 +506,7 @@ module openmips(
   //MEMÄ£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	mem mem0(
           .rst(rst),
-  
+
           //????EX/MEM????????
           .wd_i(mem_wd_i),
           .wreg_i(mem_wreg_i),
@@ -522,28 +514,28 @@ module openmips(
           .hi_i(mem_hi_i),
           .lo_i(mem_lo_i),
           .whilo_i(mem_whilo_i),
-  
+
             .aluop_i(mem_aluop_i),
           .mem_addr_i(mem_mem_addr_i),
           .reg2_i(mem_reg2_i),
-  
+
           //????memory?????
           .mem_data_i(ram_data_i),
-  
+
           //LLbit_i??LLbit????????
           .LLbit_i(LLbit_o),
-          //??????????????????§Õ??¦Ï????§ÕLLbit??????????????§Ø?
+          //??????????????????ï¿½ï¿½??ï¿½ï¿½????ï¿½ï¿½LLbit??????????????ï¿½ï¿½?
           .wb_LLbit_we_i(wb_LLbit_we_i),
           .wb_LLbit_value_i(wb_LLbit_value_i),
-  
+
           .cp0_reg_we_i(mem_cp0_reg_we_i),
           .cp0_reg_write_addr_i(mem_cp0_reg_write_addr_i),
           .cp0_reg_data_i(mem_cp0_reg_data_i),
-  
+
           .excepttype_i(mem_excepttype_i),
           .is_in_delayslot_i(mem_is_in_delayslot_i),
           .current_inst_address_i(mem_current_inst_address_i),
-  
+
           .cp0_status_i(cp0_status),
           .cp0_cause_i(cp0_cause),
           .cp0_epc_i(cp0_epc),
@@ -553,21 +545,21 @@ module openmips(
           .cp0_entrylo0_i(cp0_entrylo0),
           .cp0_entrylo1_i(cp0_entrylo1),
           .cp0_random_i(cp0_random),
-  
+
           .tlb_isMiss(tlb_isMiss),
           .tlb_addr_valid(tlb_addr_valid),
-          
+
             .wb_cp0_reg_we(wb_cp0_reg_we_i),
           .wb_cp0_reg_write_addr(wb_cp0_reg_write_addr_i),
           .wb_cp0_reg_data(wb_cp0_reg_data_i),
-  
+
           .LLbit_we_o(mem_LLbit_we_o),
           .LLbit_value_o(mem_LLbit_value_o),
-  
+
           .cp0_reg_we_o(mem_cp0_reg_we_o),
           .cp0_reg_write_addr_o(mem_cp0_reg_write_addr_o),
           .cp0_reg_data_o(mem_cp0_reg_data_o),
-  
+
           //???MEM/WB????????
           .wd_o(mem_wd_o),
           .wreg_o(mem_wreg_o),
@@ -575,27 +567,27 @@ module openmips(
           .hi_o(mem_hi_o),
           .lo_o(mem_lo_o),
           .whilo_o(mem_whilo_o),
-  
+
           //???memory?????
           .mem_addr_o(virtual_addr),
           .mem_we_o(ram_we_o),
           .mem_sel_o(ram_sel_o),
           .mem_data_o(ram_data_o),
           .mem_ce_o(ram_ce_o),
-  
+
           .badvaddr_o(cp0_reg_badvaddr_tmp),
-  
+
           .excepttype_o(mem_excepttype_o),
           .cp0_epc_o(latest_epc),
           .cp0_ebase_o(latest_ebase),
-          
+
           .cp0_tlb_index_random_o(latest_index_random),
           .cp0_entryhi_o(latest_entryhi),
           .cp0_entrylo0_o(latest_entrylo0),
           .cp0_entrylo1_o(latest_entrylo1),
-          
+
           .write_tlb_o(write_tlb),
-          
+
           .is_in_delayslot_o(mem_is_in_delayslot_o),
           .current_inst_address_o(mem_current_inst_address_o)
       );
@@ -656,15 +648,15 @@ module openmips(
 
 	ctrl ctrl0(
             .rst(rst),
-            
+
             .excepttype_i(mem_excepttype_o),
             .cp0_epc_i(latest_epc),
             .cp0_ebase_i(latest_ebase),
-            
+
             //.stallreq_from_if(stallreq_from_if),
             .stallreq_from_id(stallreq_from_id),
-            
-            //??????§ß?¦Å????????
+
+            //??????ï¿½ï¿½?ï¿½ï¿½????????
             .stallreq_from_ex(stallreq_from_ex),
             //.stallreq_from_mem(stallreq_from_mem),
             .new_pc(new_pc),
@@ -703,19 +695,19 @@ module openmips(
 	cp0_reg cp0_reg0(
             .clk(clk),
             .rst(rst),
-    
+
             .we_i(wb_cp0_reg_we_i),
             .waddr_i(wb_cp0_reg_write_addr_i),
             .raddr_i(cp0_raddr_i),
             .data_i(wb_cp0_reg_data_i),
-    
+
             .excepttype_i(mem_excepttype_o),
             .int_i(int_i),
             .current_inst_addr_i(mem_current_inst_address_o),
             .is_in_delayslot_i(mem_is_in_delayslot_o),
-    
+
             .badvaddr_i(cp0_reg_badvaddr_tmp),
-    
+
             .data_o(cp0_data_o),
             .count_o(cp0_count),
             .compare_o(cp0_compare),
@@ -730,76 +722,15 @@ module openmips(
             .entrylo0_o(cp0_entrylo0),
             .entrylo1_o(cp0_entrylo1),
             .random_o(cp0_random),
-            
+
             //.prid_o(cp0_prid),
-    
-    
+
+
             .timer_int_o(timer_int_o)
         );
 
-	/*wishbone_bus_if dwishbone_bus_if(
-		.clk(clk),
-		.rst(rst),
-
-		//ï¿½ï¿½ï¿½Ô¿ï¿½ï¿½ï¿½Ä£ï¿½ï¿½ctrl
-		.stall_i(stall),
-		.flush_i(flush),
-
-
-		//CPUï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
-		.cpu_ce_i(ram_ce_o),
-		.cpu_data_i(ram_data_o),
-		.cpu_addr_i(ram_addr_o),
-		.cpu_we_i(ram_we_o),
-		.cpu_sel_i(ram_sel_o),
-		.cpu_data_o(ram_data_i),
-
-		//Wishboneï¿½ï¿½ï¿½ß²ï¿½ï¿½Ó¿ï¿½
-		.wishbone_data_i(dwishbone_data_i),
-		.wishbone_ack_i(dwishbone_ack_i),
-		.wishbone_addr_o(dwishbone_addr_o),
-		.wishbone_data_o(dwishbone_data_o),
-		.wishbone_we_o(dwishbone_we_o),
-		.wishbone_sel_o(dwishbone_sel_o),
-		.wishbone_stb_o(dwishbone_stb_o),
-		.wishbone_cyc_o(dwishbone_cyc_o),
-
-		.stallreq(stallreq_from_mem)
-
-);
-
-	wishbone_bus_if iwishbone_bus_if(
-		.clk(clk),
-		.rst(rst),
-
-		//ï¿½ï¿½ï¿½Ô¿ï¿½ï¿½ï¿½Ä£ï¿½ï¿½ctrl
-		.stall_i(stall),
-		.flush_i(flush),
-
-		//CPUï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
-		.cpu_ce_i(rom_ce),
-		.cpu_data_i(32'h00000000),
-		.cpu_addr_i(pc),
-		.cpu_we_i(1'b0),
-		.cpu_sel_i(4'b1111),
-		.cpu_data_o(inst_i),
-
-		//Wishboneï¿½ï¿½ï¿½ß²ï¿½ï¿½Ó¿ï¿½
-		.wishbone_data_i(iwishbone_data_i),
-		.wishbone_ack_i(iwishbone_ack_i),
-		.wishbone_addr_o(iwishbone_addr_o),
-		.wishbone_data_o(iwishbone_data_o),
-		.wishbone_we_o(iwishbone_we_o),
-		.wishbone_sel_o(iwishbone_sel_o),
-		.wishbone_stb_o(iwishbone_stb_o),
-		.wishbone_cyc_o(iwishbone_cyc_o),
-
-		.stallreq(stallreq_from_if)
-
-);*/
-
 //Êµï¿½ï¿½ï¿½ï¿½data_sram
-sram dsram(
+/*sram dsram(
     .clk(clk_ram),
 	.rst(rst),
 	.mem_we_i(ram_we_o_2),
@@ -817,7 +748,7 @@ sram dsram(
     .bitEnable_o(base_bitEnable_o),
     .ramAddr_o(base_ramAddr_o),
     .ramData_io(base_ramData_io)
-);
+);*/
 
 sram isram (
     .clk(clk_ram),
@@ -849,11 +780,11 @@ tlb tlb0(
         .entryHi(latest_entryhi),  //              from mem
         .entryLo0(latest_entrylo0), //     from mem
         .entryLo1(latest_entrylo1), //     from mem
-        
+
         .ValidAddress(tlb_addr_valid), //  for address error
         .isMiss(tlb_isMiss), // miss tlb error
         .PhysicalAddress(ram_addr_o) // real address
-        
+
     );
 
 endmodule
