@@ -2,7 +2,7 @@ module tlb(
     input wire clock,
     input wire reset,
     input wire[31:0] VirtualAddress,
-    
+
     input wire WriteEnable,
     input wire WriteTLB,
     input wire[31:0] index,
@@ -12,13 +12,13 @@ module tlb(
     output reg ValidAddress,
     output reg isMiss,//miss or wrong privilege?
     output reg[31:0] PhysicalAddress
-    
-    // ÐèÒª Ìí¼ÓÒ»¸öÐ´Ê¹ÄÜÊä³ö£¬µ±TLB³ö´íµÄÊ±ºò²»ÄÜÐ´¶«Î÷
+
+    // ï¿½ï¿½Òª ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ð´Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½TLBï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½
 );
     reg[63:0] TLB[0:15];
     reg[3:0] matchIndex;
     reg isMatch;
-    always @(*) begin
+    always @(posedge clock) begin
         if(reset == 1'b1) begin
             TLB[0] <= 64'h4000000000000000;
             TLB[1] <= 64'h4000000000000000;
@@ -48,7 +48,7 @@ module tlb(
             end
         end
     end
-    
+
     always @(*) begin
         if(reset == 1'b1) begin
             PhysicalAddress <= 32'b0;
@@ -62,7 +62,7 @@ module tlb(
             isMiss <= 1'b0;
             isMatch <= 1'b0;
             matchIndex <= 4'b0000;
-        end else begin 
+        end else begin
             if(VirtualAddress[31:13] == TLB[0][62:44]) begin
                 isMatch <= 1'b1;
                 matchIndex <= 4'b0000;
