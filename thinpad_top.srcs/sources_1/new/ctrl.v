@@ -3,26 +3,26 @@
 module ctrl(
 
 	input wire										rst,
-	
+
 	input wire[31:0] excepttype_i,
     input wire[`RegBus] cp0_epc_i,
     input wire[`RegBus] cp0_ebase_i,
 
 	input wire                   stallreq_from_id,
 
-  //À´×ÔÖ´ÐÐ½×¶ÎµÄÔÝÍ£ÇëÇó
+  //ï¿½ï¿½ï¿½ï¿½Ö´ï¿½Ð½×¶Îµï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½ï¿½
 	input wire                   stallreq_from_ex,
 	output reg                   flush,
 	output reg[5:0]              stall,
-	
-	output reg[`RegBus] new_pc
 
-	//À´×ÔÈ¡Ö¸½×¶ÎµÄÔÝÍ£ÇëÇó
-	//input wire					 stallreq_from_if,
+	output reg[`RegBus] new_pc,
 
-	//À´×Ô·Ã´æ½×¶ÎµÄÔÝÍ£ÇëÇó
+	//ï¿½ï¿½ï¿½ï¿½È¡Ö¸ï¿½×¶Îµï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½ï¿½
+	input wire					 stallreq_from_if
+
+	//ï¿½ï¿½ï¿½Ô·Ã´ï¿½ï¿½×¶Îµï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½ï¿½
 	//input wire					 stallreq_from_mem
-	
+
 );
 
 	always @ (*) begin
@@ -35,7 +35,7 @@ module ctrl(
                     stall <= 6'b000000;
                     case (excepttype_i)
                         // set pc value according to the type of exception
-                        32'h00000001: begin // ÖÐ¶Ï
+                        32'h00000001: begin // ï¿½Ð¶ï¿½
                             new_pc <= {cp0_ebase_i[31:12], 12'h000};
                             //new_pc <= 32'h00000020;
                         end
@@ -43,7 +43,7 @@ module ctrl(
                             new_pc <= {cp0_ebase_i[31:12], 12'h180};
                             //new_pc <= 32'h00000040;
                         end
-                        32'h0000000a: begin // ÎÞÐ§Ö¸Áî
+                        32'h0000000a: begin // ï¿½ï¿½Ð§Ö¸ï¿½ï¿½
                             new_pc <= {cp0_ebase_i[31:12], 12'h180};
                             //new_pc <= 32'h00000040;
                         end
@@ -81,10 +81,10 @@ module ctrl(
 		end else if(stallreq_from_id == `Stop) begin
 			stall <= 6'b000111;
 			flush <= 1'b0;
-		/*end else if(stallreq_from_if == `Stop) begin
+		end else if(stallreq_from_if == `Stop) begin
 			stall <= 6'b000111;
 			flush <= 1'b0;
-		end else if(stallreq_from_mem == `Stop) begin
+		/*end else if(stallreq_from_mem == `Stop) begin
 			stall <= 6'b011111;
 			flush <= 1'b0;*/
 		end else begin

@@ -3,7 +3,6 @@
 module openmips(
 
 	input	wire										clk,
-	input wire 										clk_ram,
 	input wire										rst,
 
   input wire[5:0]                int_i,
@@ -17,7 +16,12 @@ module openmips(
 	output wire 									cpu_ce,
 	output wire[31:0]							cpu_addr,
 	output wire[31:0]							cpu_write,
-	output wire[31:0]							cpu_read,
+	input wire[31:0]							cpu_read,
+	input wire 										cpu_pause,
+
+	output wire[31:0]							cpu_pc,
+	output wire 									cpu_inst_ce,
+	input wire[31:0]							cpu_inst_i
 
 	/*inout wire[31:0] base_ramData_io,
         // to SRAM
@@ -29,7 +33,7 @@ module openmips(
         // To MMU
         //output wire[`RegBus] base_ramData_o,*/
 
-    inout wire[31:0] ext_ramData_io,
+    /*inout wire[31:0] ext_ramData_io,
             // to SRAM
             output wire [19:0] ext_ramAddr_o,
             output wire [3:0]  ext_bitEnable_o,
@@ -37,7 +41,7 @@ module openmips(
             output wire ext_writeEnable_o,
             output wire ext_readEnable_o
             // To MMU
-            //output wire[`RegBus] ext_ramData_o
+            //output wire[`RegBus] ext_ramData_o*/
 );
 
 	wire[`InstAddrBus] pc;
@@ -210,7 +214,7 @@ module openmips(
      wire[`RegBus] latest_entrylo0;
      wire[`RegBus] latest_entrylo1;
 
-	wire rom_ce;
+	//wire rom_ce;
 
 	  wire[31:0] virtual_addr;
 	wire[31:0] ram_addr_o;
@@ -225,7 +229,6 @@ module openmips(
   wire[3:0] ram_sel_o;
 	wire[`RegBus] ram_data_o;
 	wire ram_ce_o;
-  wire[`RegBus] ram_data_i;
 
   assign ram_we_o_2 = ram_we_o;
 	assign cpu_we = ram_we_o_2;
@@ -233,7 +236,8 @@ module openmips(
 	assign cpu_ce = ram_ce_o;
 	assign cpu_addr = ram_addr_o;
 	assign cpu_write = ram_data_o;
-	assign cpu_read = ram_data_i;
+	assign cpu_pc = pc;
+	assign inst_i = cpu_inst_i;
 
   //pc_reg����
 	pc_reg pc_reg0(
@@ -245,7 +249,7 @@ module openmips(
 		.branch_flag_i(id_branch_flag_o),
 		.branch_target_address_i(branch_target_address),
 		.pc(pc),
-		.ce(rom_ce)
+		.ce(cpu_inst_ce)
 
 	);
 
@@ -520,7 +524,7 @@ module openmips(
           .reg2_i(mem_reg2_i),
 
           //????memory?????
-          .mem_data_i(ram_data_i),
+          .mem_data_i(cpu_read),
 
           //LLbit_i??LLbit????????
           .LLbit_i(LLbit_o),
@@ -653,7 +657,7 @@ module openmips(
             .cp0_epc_i(latest_epc),
             .cp0_ebase_i(latest_ebase),
 
-            //.stallreq_from_if(stallreq_from_if),
+            .stallreq_from_if(cpu_pause),
             .stallreq_from_id(stallreq_from_id),
 
             //??????��?��????????
@@ -750,7 +754,7 @@ module openmips(
     .ramData_io(base_ramData_io)
 );*/
 
-sram isram (
+/*sram isram (
     .clk(clk_ram),
     .rst(rst),
     .mem_we_i(1'b0),
@@ -768,7 +772,7 @@ sram isram (
     .bitEnable_o(ext_bitEnable_o),
     .ramAddr_o(ext_ramAddr_o),
     .ramData_io(ext_ramData_io)
-);
+);*/
 
 tlb tlb0(
         .clock(clk),

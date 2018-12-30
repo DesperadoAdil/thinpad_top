@@ -87,6 +87,10 @@ wire 									cpu_ce;
 wire[31:0]						cpu_addr;
 wire[31:0]						cpu_write;
 wire[31:0]						cpu_read;
+wire[31:0]            cpu_pc;
+wire                  cpu_inst_ce;
+wire[31:0]            cpu_inst_i;
+wire                  bus_pause;
 
 wire[5:0] int;
 wire timer_int;
@@ -101,7 +105,6 @@ wire[31:0] current;
 //ʵ����cpu
 openmips openmips0(
   .clk(clk_10M),
-  .clk_ram(clk_20M),
 	.rst(reset_btn),
 	.int_i(int),
 	.timer_int_o(timer_int),
@@ -115,6 +118,11 @@ openmips openmips0(
 	.cpu_addr(cpu_addr),
 	.cpu_write(cpu_write),
 	.cpu_read(cpu_read),
+  .cpu_pause(bus_pause),
+
+  .cpu_pc(cpu_pc),
+  .cpu_inst_ce(cpu_inst_ce),
+  .cpu_inst_i(cpu_inst_i)
 	/*.base_readEnable_o(base_ram_oe_n),
         .base_writeEnable_o(base_ram_we_n),
         .base_sramEnable_o(base_ram_ce_n),
@@ -122,33 +130,44 @@ openmips openmips0(
         .base_ramAddr_o(base_ram_addr),
         .base_ramData_io(base_ram_data),*/
 
-  .ext_readEnable_o(ext_ram_oe_n),
+  /*.ext_readEnable_o(ext_ram_oe_n),
   .ext_writeEnable_o(ext_ram_we_n),
   .ext_sramEnable_o(ext_ram_ce_n),
   .ext_bitEnable_o(ext_ram_be_n),
   .ext_ramAddr_o(ext_ram_addr),
-  .ext_ramData_io(ext_ram_data)
+  .ext_ramData_io(ext_ram_data)*/
 );
 
 bus bus0 (
-  .clk(clk_10M),
-  .clk_ram(clk_20M),
+  .clk(clk_20M),
   .rst(reset_btn),
+  .bus_enable(1'b1),
 
-  .bus_we_i(cpu_we),
-  .bus_sel_i(cpu_sel),
-  .bus_ce_i(cpu_ce),
-  .bus_addr_i(cpu_addr),
+  .bus_data_we_i(cpu_we),
+  .bus_data_sel_i(cpu_sel),
+  .bus_data_ce_i(cpu_ce),
+  .bus_data_addr_i(cpu_addr),
   .bus_data_i(cpu_write),
   .bus_data_o(cpu_read),
+  .bus_inst_addr_i(cpu_pc),
+  .bus_inst_ce(cpu_inst_ce),
+  .bus_inst_data_o(cpu_inst_i),
+  .bus_pause(bus_pause),
   //.bus_ready,
 
-  .sram_oe_o(base_ram_oe_n), //sram
-  .sram_we_o(base_ram_we_n),
-  .sram_sel_o(base_ram_be_n),
-  .sram_ce_o(base_ram_ce_n),
-  .sram_addr_o(base_ram_addr),
-  .sram_data(base_ram_data)
+  .base_ram_oe_o(base_ram_oe_n), //sram
+  .base_ram_we_o(base_ram_we_n),
+  .base_ram_sel_o(base_ram_be_n),
+  .base_ram_ce_o(base_ram_ce_n),
+  .base_ram_addr_o(base_ram_addr),
+  .base_ram_data(base_ram_data),
+
+  .ext_ram_oe_o(ext_ram_oe_n),
+  .ext_ram_we_o(ext_ram_we_n),
+  .ext_ram_sel_o(ext_ram_be_n),
+  .ext_ram_ce_o(ext_ram_ce_n),
+  .ext_ram_addr_o(ext_ram_addr),
+  .ext_ram_data(ext_ram_data)
 
   /*.RxD, //串口
   .TxD,
