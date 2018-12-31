@@ -29,7 +29,7 @@ module if_id(
 	        if (if_pc[1:0] != 2'b00) begin
 	           id_inst = `ZeroWord;
 	        end else begin
-	           id_inst <= {if_inst[7:0], if_inst[15:8], if_inst[23:16], if_inst[31:24]};   
+	           id_inst <= if_inst;//{if_inst[7:0], if_inst[15:8], if_inst[23:16], if_inst[31:24]};   
 	        end
 		    id_pc <= if_pc;
 		    //id_inst <= if_inst;

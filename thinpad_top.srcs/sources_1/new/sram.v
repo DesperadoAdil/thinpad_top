@@ -33,7 +33,7 @@ module sram(
     reg[`RegBus] ramData_reg;
     //reg[31:0] ramAddr_reg;
     
-    assign ramData_o = {ramData_io[7:0], ramData_io[15:8], ramData_io[23:16], ramData_io[31:24]};
+    assign ramData_o = ramData_io;//{ramData_io[7:0], ramData_io[15:8], ramData_io[23:16], ramData_io[31:24]};
     assign ramData_io = (STATE == READ1 || STATE == READ2) ? 32'hzzzzzzzz: ramData_reg;
     assign Hready = (STATE != READ1) & (STATE != WRITE1);
     
@@ -64,10 +64,10 @@ module sram(
                             STATE <= WRITE1;
                             // save a word to SRAM
                             ramAddr_o <= mem_addr_i[21:2];
-                            ramData_reg <= {mem_data_i[7:0], mem_data_i[15:8], mem_data_i[23:16], mem_data_i[31:24]};
+                            ramData_reg <= mem_data_i;//{mem_data_i[7:0], mem_data_i[15:8], mem_data_i[23:16], mem_data_i[31:24]};
                             writeEnable_o <= 1'b0;
                             readEnable_o <= 1'b1;
-                            bitEnable_o <= {~mem_sel_i[0], ~mem_sel_i[1], ~mem_sel_i[2], ~mem_sel_i[3]};
+                            bitEnable_o <= ~mem_sel_i;//{~mem_sel_i[0], ~mem_sel_i[1], ~mem_sel_i[2], ~mem_sel_i[3]};
                             sramEnable_o <= mem_ce_i ==`ChipEnable ? 1'b0: 1'b1;
                         end
                         default: begin

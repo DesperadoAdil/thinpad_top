@@ -287,14 +287,36 @@ async_transmitter #(.ClkFrequency(50000000),.Baud(9600)) //发�?�模块，96
 */
 //图像输出演示，分辨率800x600@75Hz，像素时钟为50MHz
 wire [11:0] hdata;
-assign video_red = hdata < 266 ? 3'b111 : 0; //红色竖条
-assign video_green = hdata < 532 && hdata >= 266 ? 3'b111 : 0; //绿色竖条
-assign video_blue = hdata >= 532 ? 2'b11 : 0; //蓝色竖条
+wire [11:0] vdata;
+wire [13:0] unitnum;
+wire [31:0] unitdata;
+wire [1:0] gray;
+
+//assign video_red = hdata < 266 ? 3'b111 : 0; //红色竖条
+//assign video_green = hdata < 532 && hdata >= 266 ? 3'b111 : 0; //绿色竖条
+//assign video_blue = hdata >= 532 ? 2'b11 : 0; //蓝色竖条
 assign video_clk = clk_50M;
+
+assign video_red = {gray, 1'b0};
+assign video_green = {gray, 1'b0};
+assign video_blue = gray;
+
+vga_rom vga_mem (
+    
+);
+
+vga_reader vga_mem_reader(
+    .hdata(hdata),
+    .vdata(vdata),
+    .unitnum(unitnum),
+    .unitdata(unitdata),
+    .gray(gray)
+);
+
 vga #(12, 800, 856, 976, 1040, 600, 637, 643, 666, 1, 1) vga800x600at75 (
     .clk(clk_50M),
     .hdata(hdata), //横坐��?
-    .vdata(),      //纵坐��?
+    .vdata(vdata),      //纵坐��?
     .hsync(video_hsync),
     .vsync(video_vsync),
     .data_enable(video_de)
