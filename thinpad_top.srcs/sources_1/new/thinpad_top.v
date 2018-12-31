@@ -167,13 +167,13 @@ bus bus0 (
   .ext_ram_sel_o(ext_ram_be_n),
   .ext_ram_ce_o(ext_ram_ce_n),
   .ext_ram_addr_o(ext_ram_addr),
-  .ext_ram_data(ext_ram_data)
+  .ext_ram_data(ext_ram_data),
 
-  /*.RxD, //串口
-  .TxD,
-  .Break,
+  .RxD(rxd), //串口
+  .TxD(txd)
+  //.Break,
 
-  .vs, //VGA
+  /*.vs, //VGA
   .hs,
   .r,
   .g,
@@ -245,7 +245,7 @@ always@(posedge clock_btn or posedge reset_btn) begin
 end
 
 //直连串口接收发�?�演示，从直连串口收到的数据再发送出��?
-wire [7:0] ext_uart_rx;
+/*wire [7:0] ext_uart_rx;
 reg  [7:0] ext_uart_buffer, ext_uart_tx;
 wire ext_uart_ready, ext_uart_busy;
 reg ext_uart_start, ext_uart_avai;
@@ -269,7 +269,7 @@ always @(posedge clk_50M) begin //接收到缓冲区ext_uart_buffer
 end
 always @(posedge clk_50M) begin //将缓冲区ext_uart_buffer发�?�出��?
     if(!ext_uart_busy && ext_uart_avai)begin
-        ext_uart_tx <= ext_uart_buffer;
+        ext_uart_tx <= ext_uart_buffer & 8'b00001111;
         ext_uart_start <= 1;
     end else begin
         ext_uart_start <= 0;
@@ -284,7 +284,7 @@ async_transmitter #(.ClkFrequency(50000000),.Baud(9600)) //发�?�模块，96
         .TxD_start(ext_uart_start),    //��?始发送信��?
         .TxD_data(ext_uart_tx)        //待发送的数据
     );
-
+*/
 //图像输出演示，分辨率800x600@75Hz，像素时钟为50MHz
 wire [11:0] hdata;
 assign video_red = hdata < 266 ? 3'b111 : 0; //红色竖条

@@ -99,24 +99,24 @@ wire ext_uart_ready;
 wire ext_uart_busy;
 reg[7:0] uart_input_data;
 wire[7:0] uart_output_data;
-reg uart_write_or_read;
+reg uart_we;
 reg uart_enable;
-// wire uart_write_finished;
-wire uart_read_finished;
+wire uart_ready;
 /* uart module */
-/*uart directUart(
-  .clk_50M(ps2clk),
-  .rxd(rxd),
-  .txd(txd),
-  .ext_uart_ready(ext_uart_ready),
-  .ext_uart_busy(ext_uart_busy),
-  .input_data(uart_input_data),
-  .output_data(uart_output_data),
-  .write_or_read(uart_write_or_read),//write = 1, read = 0
-  .enable(uart_enable),
-  .write_finished(uart_write_finished),
-  .read_finished(uart_read_finished)
-  );*/
+  direct_uart uart (
+    .clk(clk),
+    .rst(rst),
+    .rxd(RxD),
+    .txd(TxD),
+    .Hready(uart_ready),
+    .ext_uart_ready(ext_uart_ready),
+    .ext_uart_busy(ext_uart_busy),
+    .input_data(uart_input_data),
+    .output_data(uart_output_data),
+    .ext_uart_we(uart_we),//write = 1, read = 0
+    .ext_uart_en(uart_enable),
+    .Break(Break)
+  );
 
   always @ (*) begin
     if (bus_enable && ~rst) begin
@@ -147,11 +147,11 @@ wire uart_read_finished;
           ext_ram_addr <= bus_data_addr_i;
           ext_ram_write <= bus_data_i;
           uart_enable <= 1'b0;
-        end else if (bus_data_addr_i[31:4] == 28'hBFD003F) begin
+        end else if (bus_data_addr_i[31:4] == 28'h1FD003F) begin
           if(bus_data_addr_i[3:0] == 4'h8) begin
               uart_enable <= 1'b1;
               uart_input_data <= bus_data_i[7:0];
-              uart_write_or_read <= bus_data_we_i;
+              uart_we <= bus_data_we_i;
           end
           else begin
               uart_enable <= 1'b0;
@@ -177,7 +177,7 @@ wire uart_read_finished;
 
       uart_enable <= 1'b0;
       uart_input_data <= {8{1'b0}};
-      uart_write_or_read <= 1'b0;
+      uart_we <= 1'b0;
       bus_pause <= 1'b0;
     end
   end
@@ -191,7 +191,7 @@ wire uart_read_finished;
         bus_inst_data_o <= base_ram_read;
         if (bus_data_addr_i >= 32'h00400000 && bus_data_addr_i <= 32'h007FFFFF) begin
           bus_data_o <= ext_ram_read;
-        end else if (bus_data_addr_i[31:4] == 28'hBFD003F) begin
+        end else if (bus_data_addr_i[31:4] == 28'h1FD003F) begin
           if (bus_data_addr_i[3:0] == 4'h8) begin
             bus_data_o = {24'h000000, uart_output_data};
           end else if (bus_data_addr_i[3:0] == 4'hC) begin
