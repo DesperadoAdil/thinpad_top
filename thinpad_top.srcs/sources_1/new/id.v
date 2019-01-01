@@ -2,17 +2,17 @@
 
 module id(
 
-	input wire										rst,
-	input wire[`InstAddrBus]			pc_i,
-	input wire[`InstBus]          inst_i,
+	input wire                     rst,
+	input wire[`InstAddrBus]       pc_i,
+	input wire[`InstBus]           inst_i,
 
     //����ִ�н׶ε�ָ���һЩ��Ϣ�����ڽ��load���?
-    input wire[`AluOpBus]					ex_aluop_i,
+    input wire[`AluOpBus]          ex_aluop_i,
 
 	//����ִ�н׶ε�ָ��Ҫд���Ŀ�ļĴ������?
-	input wire										ex_wreg_i,
-	input wire[`RegBus]						ex_wdata_i,
-	input wire[`RegAddrBus]       ex_wd_i,
+	input wire                     ex_wreg_i,
+	input wire[`RegBus]            ex_wdata_i,
+	input wire[`RegAddrBus]        ex_wd_i,
 	
 	//���ڷô�׶ε�ָ��Ҫд���Ŀ�ļĴ�����Ϣ
 	input wire										mem_wreg_i,

@@ -103,100 +103,104 @@ wire[31:0] current;
 //assign dpy1 = counter[15:8];
 
 //ʵ����cpu
+wire cpu_clk;
+assign cpu_clk = clk_10M;
 openmips openmips0(
-  .clk(clk_10M),
-	.rst(reset_btn),
-	.int_i(int),
-	.timer_int_o(timer_int),
-
-	.counter_reg(counter),
-	.current_reg(current),
-
-  .cpu_we(cpu_we),
-	.cpu_sel(cpu_sel),
-	.cpu_ce(cpu_ce),
-	.cpu_addr(cpu_addr),
-	.cpu_write(cpu_write),
-	.cpu_read(cpu_read),
-  .cpu_pause(bus_pause),
-
-  .cpu_pc(cpu_pc),
-  .cpu_inst_ce(cpu_inst_ce),
-  .cpu_inst_i(cpu_inst_i)
-	/*.base_readEnable_o(base_ram_oe_n),
-        .base_writeEnable_o(base_ram_we_n),
-        .base_sramEnable_o(base_ram_ce_n),
-        .base_bitEnable_o(base_ram_be_n),
-        .base_ramAddr_o(base_ram_addr),
-        .base_ramData_io(base_ram_data),*/
-
-  /*.ext_readEnable_o(ext_ram_oe_n),
-  .ext_writeEnable_o(ext_ram_we_n),
-  .ext_sramEnable_o(ext_ram_ce_n),
-  .ext_bitEnable_o(ext_ram_be_n),
-  .ext_ramAddr_o(ext_ram_addr),
-  .ext_ramData_io(ext_ram_data)*/
+    // .clk(clk_10M),
+    .clk(cpu_clk),
+    .rst(reset_btn),
+    .int_i(int),
+    .timer_int_o(timer_int),
+    
+    .counter_reg(counter),
+    .current_reg(current),
+    
+    .cpu_we(cpu_we),
+    .cpu_sel(cpu_sel),
+    .cpu_ce(cpu_ce),
+    .cpu_addr(cpu_addr),
+    .cpu_write(cpu_write),
+    .cpu_read(cpu_read),
+    .cpu_pause(bus_pause),
+    
+    .cpu_pc(cpu_pc),
+    .cpu_inst_ce(cpu_inst_ce),
+    .cpu_inst_i(cpu_inst_i)
+    /*.base_readEnable_o(base_ram_oe_n),
+    .base_writeEnable_o(base_ram_we_n),
+    .base_sramEnable_o(base_ram_ce_n),
+    .base_bitEnable_o(base_ram_be_n),
+    .base_ramAddr_o(base_ram_addr),
+    .base_ramData_io(base_ram_data),*/
+    
+    /*.ext_readEnable_o(ext_ram_oe_n),
+    .ext_writeEnable_o(ext_ram_we_n),
+    .ext_sramEnable_o(ext_ram_ce_n),
+    .ext_bitEnable_o(ext_ram_be_n),
+    .ext_ramAddr_o(ext_ram_addr),
+    .ext_ramData_io(ext_ram_data)*/
 );
 
+wire bus_clk;
+assign bus_clk = clk_20M;
 bus bus0 (
-  .clk(clk_20M),
-  .rst(reset_btn),
-  .bus_enable(1'b1),
-
-  .bus_data_we_i(cpu_we),
-  .bus_data_sel_i(cpu_sel),
-  .bus_data_ce_i(cpu_ce),
-  .bus_data_addr_i(cpu_addr),
-  .bus_data_i(cpu_write),
-  .bus_data_o(cpu_read),
-  .bus_inst_addr_i(cpu_pc),
-  .bus_inst_ce(cpu_inst_ce),
-  .bus_inst_data_o(cpu_inst_i),
-  .bus_pause(bus_pause),
-  //.bus_ready,
-
-  .base_ram_oe_o(base_ram_oe_n), //sram
-  .base_ram_we_o(base_ram_we_n),
-  .base_ram_sel_o(base_ram_be_n),
-  .base_ram_ce_o(base_ram_ce_n),
-  .base_ram_addr_o(base_ram_addr),
-  .base_ram_data(base_ram_data),
-
-  .ext_ram_oe_o(ext_ram_oe_n),
-  .ext_ram_we_o(ext_ram_we_n),
-  .ext_ram_sel_o(ext_ram_be_n),
-  .ext_ram_ce_o(ext_ram_ce_n),
-  .ext_ram_addr_o(ext_ram_addr),
-  .ext_ram_data(ext_ram_data),
-
-  .RxD(rxd), //串口
-  .TxD(txd)
-  //.Break,
-
-  /*.vs, //VGA
-  .hs,
-  .r,
-  .g,
-  .b,
-  .ps2clk,
-  .ps2data*/
+    .clk(clk_20M),
+    .rst(reset_btn),
+    .bus_enable(1'b1),
+    
+    .bus_data_we_i(cpu_we),
+    .bus_data_sel_i(cpu_sel),
+    .bus_data_ce_i(cpu_ce),
+    .bus_data_addr_i(cpu_addr),
+    .bus_data_i(cpu_write),
+    .bus_data_o(cpu_read),
+    .bus_inst_addr_i(cpu_pc),
+    .bus_inst_ce(cpu_inst_ce),
+    .bus_inst_data_o(cpu_inst_i),
+    .bus_pause(bus_pause),
+    //.bus_ready,
+    
+    .base_ram_oe_o(base_ram_oe_n), //sram
+    .base_ram_we_o(base_ram_we_n),
+    .base_ram_sel_o(base_ram_be_n),
+    .base_ram_ce_o(base_ram_ce_n),
+    .base_ram_addr_o(base_ram_addr),
+    .base_ram_data(base_ram_data),
+    
+    .ext_ram_oe_o(ext_ram_oe_n),
+    .ext_ram_we_o(ext_ram_we_n),
+    .ext_ram_sel_o(ext_ram_be_n),
+    .ext_ram_ce_o(ext_ram_ce_n),
+    .ext_ram_addr_o(ext_ram_addr),
+    .ext_ram_data(ext_ram_data),
+    
+    .RxD(rxd), //串口
+    .TxD(txd)
+    //.Break,
+    
+    /*.vs, //VGA
+    .hs,
+    .r,
+    .g,
+    .b,
+    .ps2clk,
+    .ps2data*/
 );
 
 /* =========== Demo code begin =========== */
 
 // PLL分频示例
 wire locked, clk_10M, clk_20M;
-pll_example clock_gen
- (
-  // Clock out ports
-  .clk_out1(clk_10M), // 时钟输出1，频率在IP配置界面中设��?
-  .clk_out2(clk_20M), // 时钟输出2，频率在IP配置界面中设��?
-  // Status and control signals
-  .reset(reset_btn), // PLL复位输入
-  .locked(locked), // 锁定输出��?"1"表示时钟稳定，可作为后级电路复位
- // Clock in ports
-  .clk_in1(clk_50M) // 外部时钟输入
- );
+pll_example clock_gen(
+    // Clock out ports
+    .clk_out1(clk_10M), // 时钟输出1，频率在IP配置界面中设��?
+    .clk_out2(clk_20M), // 时钟输出2，频率在IP配置界面中设��?
+    // Status and control signals
+    .reset(reset_btn), // PLL复位输入
+    .locked(locked), // 锁定输出��?"1"表示时钟稳定，可作为后级电路复位
+    // Clock in ports
+    .clk_in1(clk_50M) // 外部时钟输入
+);
 
 reg reset_of_clk10M;
 // 异步复位，同步释��?
@@ -302,14 +306,19 @@ assign video_green = {gray, 1'b0};
 assign video_blue = gray;
 
 vga_rom vga_mem (
-    
+    .a(unitnum),
+    .clk(bus_clk),
+    .dpo(unitdata)
 );
 
 vga_reader vga_mem_reader(
+    .rst(reset_btn),
+    .vga_clk(video_clk),
     .hdata(hdata),
     .vdata(vdata),
     .unitnum(unitnum),
     .unitdata(unitdata),
+    .data_enable(video_de),
     .gray(gray)
 );
 
