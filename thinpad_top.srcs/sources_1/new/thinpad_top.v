@@ -305,7 +305,7 @@ assign video_red = {gray, 1'b0};
 assign video_green = {gray, 1'b0};
 assign video_blue = gray;
 
-vga_rom vga_mem (
+vga_mem vga_rom (
     .a(unitnum),
     .clk(bus_clk),
     .dpo(unitdata)
