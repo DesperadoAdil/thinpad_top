@@ -2,9 +2,9 @@
 
 module id(
 
-	input wire										rst,
-	input wire[`InstAddrBus]			pc_i,
-	input wire[`InstBus]          inst_i,
+	input wire                     rst,
+	input wire[`InstAddrBus]       pc_i,
+	input wire[`InstBus]           inst_i,
 
     //����ִ�н׶ε�ָ���һЩ��Ϣ�����ڽ��load����?
     input wire[`AluOpBus]					ex_aluop_i,

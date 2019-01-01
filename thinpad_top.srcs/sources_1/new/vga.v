@@ -1,4 +1,5 @@
 `timescale 1ns / 1ps
+
 //
 // WIDTH: bits in register hdata & vdata
 // HSIZE: horizontal size of visible field 
@@ -12,6 +13,7 @@
 // HSPP: horizontal synchro pulse polarity (0 - negative, 1 - positive)
 // VSPP: vertical synchro pulse polarity (0 - negative, 1 - positive)
 //
+
 module vga
 #(parameter WIDTH = 0, HSIZE = 0, HFP = 0, HSP = 0, HMAX = 0, VSIZE = 0, VFP = 0, VSP = 0, VMAX = 0, HSPP = 0, VSPP = 0)
 (

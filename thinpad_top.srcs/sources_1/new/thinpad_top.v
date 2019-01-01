@@ -104,6 +104,8 @@ wire[31:0] current;
 //assign dpy1 = counter[15:8];
 
 //ʵ����cpu
+wire cpu_clk;
+assign cpu_clk = clk_10M;
 openmips openmips0(
   .clk(clk_10M),
 	.rst(reset_btn),
@@ -127,6 +129,8 @@ openmips openmips0(
   .uart_ready(uart_ready)
 );
 
+wire bus_clk;
+assign bus_clk = clk_20M;
 bus bus0 (
   .clk(clk_20M),
   .rst(reset_btn),
@@ -175,17 +179,16 @@ bus bus0 (
 
 // PLL分频示例
 wire locked, clk_10M, clk_20M;
-pll_example clock_gen
- (
-  // Clock out ports
-  .clk_out1(clk_10M), // 时钟输出1，频率在IP配置界面中设��?
-  .clk_out2(clk_20M), // 时钟输出2，频率在IP配置界面中设��?
-  // Status and control signals
-  .reset(reset_btn), // PLL复位输入
-  .locked(locked), // 锁定输出��?"1"表示时钟稳定，可作为后级电路复位
- // Clock in ports
-  .clk_in1(clk_50M) // 外部时钟输入
- );
+pll_example clock_gen(
+    // Clock out ports
+    .clk_out1(clk_10M), // 时钟输出1，频率在IP配置界面中设��?
+    .clk_out2(clk_20M), // 时钟输出2，频率在IP配置界面中设��?
+    // Status and control signals
+    .reset(reset_btn), // PLL复位输入
+    .locked(locked), // 锁定输出��?"1"表示时钟稳定，可作为后级电路复位
+    // Clock in ports
+    .clk_in1(clk_50M) // 外部时钟输入
+);
 
 reg reset_of_clk10M;
 // 异步复位，同步释��?
@@ -276,14 +279,41 @@ async_transmitter #(.ClkFrequency(50000000),.Baud(9600)) //发�?�模块，96
 */
 //图像输出演示，分辨率800x600@75Hz，像素时钟为50MHz
 wire [11:0] hdata;
-assign video_red = hdata < 266 ? 3'b111 : 0; //红色竖条
-assign video_green = hdata < 532 && hdata >= 266 ? 3'b111 : 0; //绿色竖条
-assign video_blue = hdata >= 532 ? 2'b11 : 0; //蓝色竖条
+wire [11:0] vdata;
+wire [13:0] unitnum;
+wire [31:0] unitdata;
+wire [1:0] gray;
+
+//assign video_red = hdata < 266 ? 3'b111 : 0; //红色竖条
+//assign video_green = hdata < 532 && hdata >= 266 ? 3'b111 : 0; //绿色竖条
+//assign video_blue = hdata >= 532 ? 2'b11 : 0; //蓝色竖条
 assign video_clk = clk_50M;
+
+assign video_red = {gray, 1'b0};
+assign video_green = {gray, 1'b0};
+assign video_blue = gray;
+
+vga_rom vga_mem (
+    .a(unitnum),
+    .clk(bus_clk),
+    .dpo(unitdata)
+);
+
+vga_reader vga_mem_reader(
+    .rst(reset_btn),
+    .vga_clk(video_clk),
+    .hdata(hdata),
+    .vdata(vdata),
+    .unitnum(unitnum),
+    .unitdata(unitdata),
+    .data_enable(video_de),
+    .gray(gray)
+);
+
 vga #(12, 800, 856, 976, 1040, 600, 637, 643, 666, 1, 1) vga800x600at75 (
     .clk(clk_50M),
     .hdata(hdata), //横坐��?
-    .vdata(),      //纵坐��?
+    .vdata(vdata),      //纵坐��?
     .hsync(video_hsync),
     .vsync(video_vsync),
     .data_enable(video_de)

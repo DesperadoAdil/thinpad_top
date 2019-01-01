@@ -41,8 +41,8 @@ wire flash_we_n;         //Flash写使能信号，低有�?
 wire flash_byte_n;       //Flash 8bit模式选择，低有效。在使用flash�?16位模式时请设�?1
 
 //Windows�?要注意路径分隔符的转义，例如"D:\\foo\\bar.bin"
-parameter BASE_RAM_INIT_FILE = "";//D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sim_1/new/main_5253.bin"; //BaseRAM初始化文件，请修改为实际的绝对路�?
-parameter EXT_RAM_INIT_FILE = "D:/code/thinpad_top/thinpad_top/thinpad_top.srcs/sim_1/new/main_fast.bin";    //ExtRAM初始化文件，请修改为实际的绝对路�?
+parameter BASE_RAM_INIT_FILE = "D:/code/thinpad_top/thinpad_top/thinpad_top.srcs/sim_1/new/main_fast.bin";//D:/MIPS32CPU/thinpad_top/thinpad_top.srcs/sim_1/new/main_5253.bin"; //BaseRAM初始化文件，请修改为实际的绝对路�?
+parameter EXT_RAM_INIT_FILE = "";//"D:/code/thinpad_top/thinpad_top/thinpad_top.srcs/sim_1/new/main_fast.bin";    //ExtRAM初始化文件，请修改为实际的绝对路�?
 parameter FLASH_INIT_FILE = "/tmp/kernel.elf";    //Flash初始化文件，请修改为实际的绝对路�?
 
 assign rxd = 1'b1; //idle state
