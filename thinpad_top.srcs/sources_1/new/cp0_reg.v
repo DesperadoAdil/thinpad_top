@@ -60,7 +60,7 @@ module cp0_reg(
             random_o <= 32'b0;
             context_o <= 32'b0;
             
-			ebase_o <= 32'b10000000000000000000000000000000;
+			ebase_o <= 32'b10000000000000000001000000000000;
             timer_int_o <= `InterruptNotAssert;
 		end else begin
 		    count_o <= count_o + 1 ;
@@ -135,6 +135,7 @@ module cp0_reg(
 					status_o[1] <= 1'b1;
 					status_o[4] <= 1'b1;
 					cause_o[6:2] <= 5'b00000;
+					cause_o[12] <= 1'b1;
 					
 				end
 				32'h00000008: begin // syscall

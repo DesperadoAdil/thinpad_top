@@ -81,16 +81,17 @@ module thinpad_top(
     output wire video_de           //行数据有效信号，用于区分消隐��?
 );
 
-wire                  cpu_we;
-wire[3:0]							cpu_sel;
-wire 									cpu_ce;
-wire[31:0]						cpu_addr;
-wire[31:0]						cpu_write;
-wire[31:0]						cpu_read;
-wire[31:0]            cpu_pc;
-wire                  cpu_inst_ce;
-wire[31:0]            cpu_inst_i;
-wire                  bus_pause;
+(*MARK_DEBUG="TRUE"*)wire                  cpu_we;
+(*MARK_DEBUG="TRUE"*)wire[3:0]							cpu_sel;
+(*MARK_DEBUG="TRUE"*)wire 									cpu_ce;
+(*MARK_DEBUG="TRUE"*)wire[31:0]						cpu_addr;
+(*MARK_DEBUG="TRUE"*)wire[31:0]						cpu_write;
+(*MARK_DEBUG="TRUE"*)wire[31:0]						cpu_read;
+(*MARK_DEBUG="TRUE"*)wire[31:0]            cpu_pc;
+(*MARK_DEBUG="TRUE"*)wire                  cpu_inst_ce;
+(*MARK_DEBUG="TRUE"*)wire[31:0]            cpu_inst_i;
+(*MARK_DEBUG="TRUE"*)wire                  bus_pause;
+(*MARK_DEBUG="TRUE"*)wire                  uart_ready;
 
 wire[5:0] int;
 wire timer_int;
@@ -122,20 +123,8 @@ openmips openmips0(
 
   .cpu_pc(cpu_pc),
   .cpu_inst_ce(cpu_inst_ce),
-  .cpu_inst_i(cpu_inst_i)
-	/*.base_readEnable_o(base_ram_oe_n),
-        .base_writeEnable_o(base_ram_we_n),
-        .base_sramEnable_o(base_ram_ce_n),
-        .base_bitEnable_o(base_ram_be_n),
-        .base_ramAddr_o(base_ram_addr),
-        .base_ramData_io(base_ram_data),*/
-
-  /*.ext_readEnable_o(ext_ram_oe_n),
-  .ext_writeEnable_o(ext_ram_we_n),
-  .ext_sramEnable_o(ext_ram_ce_n),
-  .ext_bitEnable_o(ext_ram_be_n),
-  .ext_ramAddr_o(ext_ram_addr),
-  .ext_ramData_io(ext_ram_data)*/
+  .cpu_inst_i(cpu_inst_i),
+  .uart_ready(uart_ready)
 );
 
 bus bus0 (
@@ -170,8 +159,8 @@ bus bus0 (
   .ext_ram_data(ext_ram_data),
 
   .RxD(rxd), //串口
-  .TxD(txd)
-  //.Break,
+  .TxD(txd),
+  .ext_uart_ready(uart_ready)
 
   /*.vs, //VGA
   .hs,
@@ -235,12 +224,12 @@ assign leds = led_bits;
 
 always@(posedge clock_btn or posedge reset_btn) begin
     if(reset_btn)begin //复位按下，设置LED和数码管为初始�??
-        number<=0;
-        led_bits <= 16'h1;
+        number <= 0;
+        led_bits <= 16'h0;
     end
     else begin //每次按下时钟按钮，数码管显示值加1，LED循环左移
-        number <= counter[7:0];
-        led_bits <= current[15:0];
+        number <= cpu_read[7:0];
+        led_bits <= cpu_pc[15:0];//{uart_ready, 8'b0, current[6:0]};
     end
 end
 
