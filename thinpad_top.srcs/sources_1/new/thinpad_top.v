@@ -81,16 +81,17 @@ module thinpad_top(
     output wire video_de           //行数据有效信号，用于区分消隐��?
 );
 
-wire                  cpu_we;
-wire[3:0]							cpu_sel;
-wire 									cpu_ce;
-wire[31:0]						cpu_addr;
-wire[31:0]						cpu_write;
-wire[31:0]						cpu_read;
-wire[31:0]            cpu_pc;
-wire                  cpu_inst_ce;
-wire[31:0]            cpu_inst_i;
-wire                  bus_pause;
+(*MARK_DEBUG="TRUE"*)wire                  cpu_we;
+(*MARK_DEBUG="TRUE"*)wire[3:0]							cpu_sel;
+(*MARK_DEBUG="TRUE"*)wire 									cpu_ce;
+(*MARK_DEBUG="TRUE"*)wire[31:0]						cpu_addr;
+(*MARK_DEBUG="TRUE"*)wire[31:0]						cpu_write;
+(*MARK_DEBUG="TRUE"*)wire[31:0]						cpu_read;
+(*MARK_DEBUG="TRUE"*)wire[31:0]            cpu_pc;
+(*MARK_DEBUG="TRUE"*)wire                  cpu_inst_ce;
+(*MARK_DEBUG="TRUE"*)wire[31:0]            cpu_inst_i;
+(*MARK_DEBUG="TRUE"*)wire                  bus_pause;
+(*MARK_DEBUG="TRUE"*)wire                  uart_ready;
 
 wire[5:0] int;
 wire timer_int;
@@ -106,85 +107,72 @@ wire[31:0] current;
 wire cpu_clk;
 assign cpu_clk = clk_10M;
 openmips openmips0(
-    // .clk(clk_10M),
-    .clk(cpu_clk),
-    .rst(reset_btn),
-    .int_i(int),
-    .timer_int_o(timer_int),
-    
-    .counter_reg(counter),
-    .current_reg(current),
-    
-    .cpu_we(cpu_we),
-    .cpu_sel(cpu_sel),
-    .cpu_ce(cpu_ce),
-    .cpu_addr(cpu_addr),
-    .cpu_write(cpu_write),
-    .cpu_read(cpu_read),
-    .cpu_pause(bus_pause),
-    
-    .cpu_pc(cpu_pc),
-    .cpu_inst_ce(cpu_inst_ce),
-    .cpu_inst_i(cpu_inst_i)
-    /*.base_readEnable_o(base_ram_oe_n),
-    .base_writeEnable_o(base_ram_we_n),
-    .base_sramEnable_o(base_ram_ce_n),
-    .base_bitEnable_o(base_ram_be_n),
-    .base_ramAddr_o(base_ram_addr),
-    .base_ramData_io(base_ram_data),*/
-    
-    /*.ext_readEnable_o(ext_ram_oe_n),
-    .ext_writeEnable_o(ext_ram_we_n),
-    .ext_sramEnable_o(ext_ram_ce_n),
-    .ext_bitEnable_o(ext_ram_be_n),
-    .ext_ramAddr_o(ext_ram_addr),
-    .ext_ramData_io(ext_ram_data)*/
+  .clk(clk_10M),
+	.rst(reset_btn),
+	.int_i(int),
+	.timer_int_o(timer_int),
+
+	.counter_reg(counter),
+	.current_reg(current),
+
+  .cpu_we(cpu_we),
+	.cpu_sel(cpu_sel),
+	.cpu_ce(cpu_ce),
+	.cpu_addr(cpu_addr),
+	.cpu_write(cpu_write),
+	.cpu_read(cpu_read),
+  .cpu_pause(bus_pause),
+
+  .cpu_pc(cpu_pc),
+  .cpu_inst_ce(cpu_inst_ce),
+  .cpu_inst_i(cpu_inst_i),
+  .uart_ready(uart_ready)
 );
 
 wire bus_clk;
 assign bus_clk = clk_20M;
 bus bus0 (
-    .clk(clk_20M),
-    .rst(reset_btn),
-    .bus_enable(1'b1),
-    
-    .bus_data_we_i(cpu_we),
-    .bus_data_sel_i(cpu_sel),
-    .bus_data_ce_i(cpu_ce),
-    .bus_data_addr_i(cpu_addr),
-    .bus_data_i(cpu_write),
-    .bus_data_o(cpu_read),
-    .bus_inst_addr_i(cpu_pc),
-    .bus_inst_ce(cpu_inst_ce),
-    .bus_inst_data_o(cpu_inst_i),
-    .bus_pause(bus_pause),
-    //.bus_ready,
-    
-    .base_ram_oe_o(base_ram_oe_n), //sram
-    .base_ram_we_o(base_ram_we_n),
-    .base_ram_sel_o(base_ram_be_n),
-    .base_ram_ce_o(base_ram_ce_n),
-    .base_ram_addr_o(base_ram_addr),
-    .base_ram_data(base_ram_data),
-    
-    .ext_ram_oe_o(ext_ram_oe_n),
-    .ext_ram_we_o(ext_ram_we_n),
-    .ext_ram_sel_o(ext_ram_be_n),
-    .ext_ram_ce_o(ext_ram_ce_n),
-    .ext_ram_addr_o(ext_ram_addr),
-    .ext_ram_data(ext_ram_data),
-    
-    .RxD(rxd), //串口
-    .TxD(txd)
-    //.Break,
-    
-    /*.vs, //VGA
-    .hs,
-    .r,
-    .g,
-    .b,
-    .ps2clk,
-    .ps2data*/
+  .clk(clk_20M),
+  .rst(reset_btn),
+  .bus_enable(1'b1),
+
+  .bus_data_we_i(cpu_we),
+  .bus_data_sel_i(cpu_sel),
+  .bus_data_ce_i(cpu_ce),
+  .bus_data_addr_i(cpu_addr),
+  .bus_data_i(cpu_write),
+  .bus_data_o(cpu_read),
+  .bus_inst_addr_i(cpu_pc),
+  .bus_inst_ce(cpu_inst_ce),
+  .bus_inst_data_o(cpu_inst_i),
+  .bus_pause(bus_pause),
+  //.bus_ready,
+
+  .base_ram_oe_o(base_ram_oe_n), //sram
+  .base_ram_we_o(base_ram_we_n),
+  .base_ram_sel_o(base_ram_be_n),
+  .base_ram_ce_o(base_ram_ce_n),
+  .base_ram_addr_o(base_ram_addr),
+  .base_ram_data(base_ram_data),
+
+  .ext_ram_oe_o(ext_ram_oe_n),
+  .ext_ram_we_o(ext_ram_we_n),
+  .ext_ram_sel_o(ext_ram_be_n),
+  .ext_ram_ce_o(ext_ram_ce_n),
+  .ext_ram_addr_o(ext_ram_addr),
+  .ext_ram_data(ext_ram_data),
+
+  .RxD(rxd), //串口
+  .TxD(txd),
+  .ext_uart_ready(uart_ready)
+
+  /*.vs, //VGA
+  .hs,
+  .r,
+  .g,
+  .b,
+  .ps2clk,
+  .ps2data*/
 );
 
 /* =========== Demo code begin =========== */
@@ -239,12 +227,12 @@ assign leds = led_bits;
 
 always@(posedge clock_btn or posedge reset_btn) begin
     if(reset_btn)begin //复位按下，设置LED和数码管为初始�??
-        number<=0;
-        led_bits <= 16'h1;
+        number <= 0;
+        led_bits <= 16'h0;
     end
     else begin //每次按下时钟按钮，数码管显示值加1，LED循环左移
-        number <= counter[7:0];
-        led_bits <= current[15:0];
+        number <= cpu_read[7:0];
+        led_bits <= cpu_pc[15:0];//{uart_ready, 8'b0, current[6:0]};
     end
 end
 

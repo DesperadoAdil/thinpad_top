@@ -4,7 +4,7 @@ module sram(
     input wire rst,
     input wire ready,
     output wire Hready,
-    
+
     input wire[`RegBus] mem_addr_i,
     input wire mem_we_i,
     input wire[3:0] mem_sel_i,
@@ -21,22 +21,22 @@ module sram(
     // To MMU
     output wire[`RegBus] ramData_o
     );
-    
-    
+
+
     parameter IDLE = 3'b000;
     parameter READ1 = 3'b001;
     parameter READ2 = 3'b010;
     parameter WRITE1 = 3'b011;
     parameter WRITE2 = 3'b100;
-    
+
     reg[2:0] STATE;
     reg[`RegBus] ramData_reg;
     //reg[31:0] ramAddr_reg;
-    
-    assign ramData_o = ramData_io;//{ramData_io[7:0], ramData_io[15:8], ramData_io[23:16], ramData_io[31:24]};
+
+    assign ramData_o = ramData_io;
     assign ramData_io = (STATE == READ1 || STATE == READ2) ? 32'hzzzzzzzz: ramData_reg;
     assign Hready = (STATE != READ1) & (STATE != WRITE1);
-    
+
     always @(posedge clk or posedge rst) begin
         if (rst) begin
             STATE <= IDLE;
@@ -64,10 +64,10 @@ module sram(
                             STATE <= WRITE1;
                             // save a word to SRAM
                             ramAddr_o <= mem_addr_i[21:2];
-                            ramData_reg <= mem_data_i;//{mem_data_i[7:0], mem_data_i[15:8], mem_data_i[23:16], mem_data_i[31:24]};
+                            ramData_reg <= mem_data_i;
                             writeEnable_o <= 1'b0;
                             readEnable_o <= 1'b1;
-                            bitEnable_o <= ~mem_sel_i;//{~mem_sel_i[0], ~mem_sel_i[1], ~mem_sel_i[2], ~mem_sel_i[3]};
+                            bitEnable_o <= ~mem_sel_i;
                             sramEnable_o <= mem_ce_i ==`ChipEnable ? 1'b0: 1'b1;
                         end
                         default: begin

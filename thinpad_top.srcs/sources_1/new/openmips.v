@@ -21,7 +21,8 @@ module openmips(
 
 	output wire[31:0]							cpu_pc,
 	output wire 									cpu_inst_ce,
-	input wire[31:0]							cpu_inst_i
+	input wire[31:0]							cpu_inst_i,
+	input wire 										uart_ready
 
 	/*inout wire[31:0] base_ramData_io,
         // to SRAM
@@ -287,6 +288,7 @@ module openmips(
 		.mem_wd_i(mem_wd_o),
 
 	  .is_in_delayslot_i(is_in_delayslot_i),
+		.uart_ready(uart_ready),
 
 		//�͵�regfile����Ϣ
 		.reg1_read_o(reg1_read),

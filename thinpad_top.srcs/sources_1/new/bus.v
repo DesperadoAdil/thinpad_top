@@ -31,15 +31,15 @@ module bus (
 
   input wire RxD, //串口
   output wire TxD,
-  output wire Break,
+  output wire ext_uart_ready
 
-  output wire vs, //VGA
+  /*output wire vs, //VGA
   output wire hs,
   output wire[2:0] r,
   output wire[2:0] g,
   output wire[2:0] b,
   input wire ps2clk,
-  input wire ps2data
+  input wire ps2data*/
   );
 
 reg base_ram_enable;
@@ -95,7 +95,6 @@ wire ext_ram_ready;
   );
 
 /* uart variables */
-wire ext_uart_ready;
 wire ext_uart_busy;
 reg[7:0] uart_input_data;
 wire[7:0] uart_output_data;
@@ -105,21 +104,18 @@ wire uart_ready;
 /* uart module */
   direct_uart uart (
     .clk(clk),
-    .rst(rst),
     .rxd(RxD),
     .txd(TxD),
-    .Hready(uart_ready),
     .ext_uart_ready(ext_uart_ready),
     .ext_uart_busy(ext_uart_busy),
     .input_data(uart_input_data),
     .output_data(uart_output_data),
     .ext_uart_we(uart_we),//write = 1, read = 0
-    .ext_uart_en(uart_enable),
-    .Break(Break)
+    .ext_uart_en(uart_enable)
   );
 
   always @ (*) begin
-    if (bus_enable && ~rst) begin
+    if (bus_enable) begin
       if (bus_data_addr_i > 32'h00000000 && bus_data_addr_i <= 32'h003FFFFF) begin
         bus_pause <= 1'b1;
         base_ram_we <= bus_data_we_i;
@@ -185,7 +181,6 @@ wire uart_ready;
   always @ (*) begin
     if (bus_enable) begin
       if (bus_pause) begin
-        //pause means IM is used for data
         bus_data_o <= base_ram_read;
       end else begin
         bus_inst_data_o <= base_ram_read;
@@ -193,9 +188,9 @@ wire uart_ready;
           bus_data_o <= ext_ram_read;
         end else if (bus_data_addr_i[31:4] == 28'h1FD003F) begin
           if (bus_data_addr_i[3:0] == 4'h8) begin
-            bus_data_o = {24'h000000, uart_output_data};
+            bus_data_o <= {24'h000000, uart_output_data};
           end else if (bus_data_addr_i[3:0] == 4'hC) begin
-            bus_data_o = {{30{1'b0}}, ext_uart_ready, ~ext_uart_busy};
+            bus_data_o <= {{30{1'b0}}, ext_uart_ready, ~ext_uart_busy};
           end
         end
       end

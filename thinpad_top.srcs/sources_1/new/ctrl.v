@@ -36,7 +36,7 @@ module ctrl(
                     case (excepttype_i)
                         // set pc value according to the type of exception
                         32'h00000001: begin // �ж�
-                            new_pc <= {cp0_ebase_i[31:12], 12'h000};
+                            new_pc <= {cp0_ebase_i[31:12], 12'h180};
                             //new_pc <= 32'h00000020;
                         end
                         32'h00000008: begin // syscall
