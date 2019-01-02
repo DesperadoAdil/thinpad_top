@@ -5,19 +5,19 @@ module cp0_reg(
 
 	input wire clk,
 	input wire rst,
-	
-	
+
+
 	input wire we_i,
 	input wire[4:0] waddr_i,
 	input wire[4:0] raddr_i,
 	input wire[`RegBus] data_i,
-	
+
 	input wire[31:0] excepttype_i,
 	input wire[5:0] int_i,
 	input wire[`RegBus] current_inst_addr_i,
 	input wire is_in_delayslot_i,
 	input wire[`RegBus] badvaddr_i,
-	
+
 	output reg[`RegBus] data_o,
 	output reg[`RegBus] count_o,
 	output reg[`RegBus] compare_o,
@@ -27,7 +27,7 @@ module cp0_reg(
 	output reg[`RegBus] config_o,
 	output reg[`RegBus] ebase_o,
 	output reg[`RegBus] badvaddr_o,
-	
+
 	output reg[`RegBus] entryhi_o,
 	output reg[`RegBus] entrylo0_o,
 	output reg[`RegBus] entrylo1_o,
@@ -35,43 +35,43 @@ module cp0_reg(
 	output reg[`RegBus] index_o,
 	output reg[`RegBus] random_o,
 	output reg[`RegBus] context_o,
-	
-	output reg timer_int_o    
-	
+
+	output reg timer_int_o
+
 );
 
 	always @ (posedge clk) begin
 		if(rst == `RstEnable) begin
 			count_o <= `ZeroWord;
 			compare_o <= `ZeroWord;
-			
+
 			status_o <= 32'b00010000000000000000000000000000;
 			cause_o <= `ZeroWord;
 			epc_o <= `ZeroWord;
-			
+
 			// config_o <= 32'b00000000000000001000000000000000;
-			//config_o <= 32'b  
+			//config_o <= 32'b
 			entryhi_o <= 32'bxxxxxxxxxxxxxxxxxxx000xxxxxxxxxx;//config_o[28]
 			entrylo0_o <= 32'b00xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx;
 			entrylo1_o <= 32'b00xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx;
-			
+
 			pagemask_o <= 32'b000xxxxxxxxxxxxxxxx0000000000000;
             index_o <= 32'b0;
             random_o <= 32'b0;
             context_o <= 32'b0;
-            
+
 			ebase_o <= 32'b10000000000000000001000000000000;
             timer_int_o <= `InterruptNotAssert;
 		end else begin
 		    count_o <= count_o + 1 ;
 		    cause_o[15:10] <= int_i;
-		
+
 			if(compare_o != `ZeroWord && count_o == compare_o) begin
 				timer_int_o <= `InterruptAssert;
 			end
-					
+
 			if(we_i == `WriteEnable) begin
-				case (waddr_i) 
+				case (waddr_i)
 					`CP0_REG_COUNT:		begin
 						count_o <= data_i;
 					end
@@ -97,8 +97,8 @@ module cp0_reg(
                         end else begin
                             ebase_o[31:12] <= data_i[31:12];
                         end
-                        ebase_o[11] <= data_i[11];           
-                    end	
+                        ebase_o[11] <= data_i[11];
+                    end
                     `CP0_REG_ENTRYHI: begin
                         entryhi_o <= data_i;
                     end
@@ -118,7 +118,7 @@ module cp0_reg(
                         random_o <= data_i;
                     end
                     `CP0_REG_CONTEXT: begin
-                        
+
                     end
 				endcase  //case addr_i
 			end
@@ -135,8 +135,8 @@ module cp0_reg(
 					status_o[1] <= 1'b1;
 					status_o[4] <= 1'b1;
 					cause_o[6:2] <= 5'b00000;
-					cause_o[12] <= 1'b1;
-					
+
+
 				end
 				32'h00000008: begin // syscall
 					if(status_o[1] == 1'b0) begin
@@ -150,7 +150,7 @@ module cp0_reg(
 					end
 					status_o[1] <= 1'b1;
 					status_o[4] <= 1'b1;
-					cause_o[6:2] <= 5'b01000;			
+					cause_o[6:2] <= 5'b01000;
 				end
 				32'h0000000a: begin // inst valid
 					if(status_o[1] == 1'b0) begin
@@ -164,7 +164,7 @@ module cp0_reg(
 					end
 					status_o[1] <= 1'b1;
 					status_o[4] <= 1'b1;
-					cause_o[6:2] <= 5'b01010;					
+					cause_o[6:2] <= 5'b01010;
 				end
 				32'h0000000d: begin // trap
 					if(status_o[1] == 1'b0) begin
@@ -178,7 +178,7 @@ module cp0_reg(
 					end
 					status_o[1] <= 1'b1;
 					status_o[4] <= 1'b1;
-					cause_o[6:2] <= 5'b01101;					
+					cause_o[6:2] <= 5'b01101;
 				end
 				32'h0000000c: begin // overflow
 					if(status_o[1] == 1'b0) begin
@@ -192,8 +192,8 @@ module cp0_reg(
 					end
 					status_o[1] <= 1'b1;
 					status_o[4] <= 1'b1;
-					cause_o[6:2] <= 5'b01100;					
-				end				
+					cause_o[6:2] <= 5'b01100;
+				end
 				32'h0000000e: begin // eret
 					status_o[1] <= 1'b0;
 					status_o[4] <= 1'b0;
@@ -269,7 +269,7 @@ module cp0_reg(
                     end
                     status_o[1] = 1'b1;
                     status_o[4] <= 1'b1;
-                    cause_o[6:2] <= 5'b00010; // ?????§Ö?§³????
+                    cause_o[6:2] <= 5'b00010; // ?????ï¿½ï¿½?ï¿½ï¿½????
                     badvaddr_o <= badvaddr_i;
 				end
 				32'h00000014: begin // TLB invalid exception
@@ -284,21 +284,21 @@ module cp0_reg(
                     end
                     status_o[1] = 1'b1;
                     status_o[4] <= 1'b1;
-                    cause_o[6:2] <= 5'b00010; // ?????§Ö?§³????
+                    cause_o[6:2] <= 5'b00010; // ?????ï¿½ï¿½?ï¿½ï¿½????
                     badvaddr_o <= badvaddr_i;
 				end
 				default: begin
 				end
-			endcase			
-			
+			endcase
+
 		end    //if
 	end      //always
-			
+
 	always @ (*) begin
 		if(rst == `RstEnable) begin
 			data_o <= `ZeroWord;
 		end else begin
-            case (raddr_i) 
+            case (raddr_i)
                 `CP0_REG_COUNT:		begin
                     data_o <= count_o ;
                 end
@@ -345,8 +345,8 @@ module cp0_reg(
                     data_o <= context_o;
                 end
                 default: 	begin
-                end			
-            endcase  //case addr_i			
+                end
+            endcase  //case addr_i
 		end    //if
 	end      //always
 

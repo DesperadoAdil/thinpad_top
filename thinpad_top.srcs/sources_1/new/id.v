@@ -24,7 +24,7 @@ module id(
 
 	//�����һ��ָ����ת��ָ���ô��һ��ָ���������ʱ��is_in_delayslotΪtrue
 	input wire                    is_in_delayslot_i,
-	input wire 										uart_ready,
+	input wire 										uart_break,
 
 	//�͵�regfile����Ϣ
 	output reg                    reg1_read_o,
@@ -89,7 +89,7 @@ module id(
     assign inst_o = inst_i;
 
     assign excepttype_o = {17'b0,excepttype_is_inst_addr_error, excepttype_is_break, excepttype_is_eret,2'b0,
-                                                instvalid, excepttype_is_syscall,8'b0};//,uart_ready};
+                                                instvalid, excepttype_is_syscall,8'b0};//*/uart_break,7'b0};
     //assign excepttye_is_trapinst = 1'b0;
 
 	assign current_inst_address_o = pc_i;

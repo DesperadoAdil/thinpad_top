@@ -91,30 +91,27 @@ wire[31:0]            cpu_pc;
 wire                  cpu_inst_ce;
 wire[31:0]            cpu_inst_i;
 wire                  bus_pause;
+wire                  uart_break;
+reg [13:0]           addra;
+reg [63:0]           dina;
+reg                  wea;
+wire[5:0]             int;
+wire                  timer_int;
 
-wire[5:0] int;
-wire timer_int;
-//assign int = {5'b00000, timer_int, gpio_int, uart_int};
-assign int = {5'b00000, timer_int};
+assign int = {3'b000, uart_break, 1'b0, timer_int};
 
 wire[15:0] counter;
 wire[31:0] current;
-//assign dpy0 = counter[7:0];
-//assign dpy1 = counter[15:8];
 
-//ʵ����cpu
-wire cpu_clk;
-assign cpu_clk = clk_10M;
-openmips openmips0(
-    // .clk(clk_10M),
-    .clk(cpu_clk),
+openmips openmips0 (
+    .clk(clk_10M),
     .rst(reset_btn),
     .int_i(int),
     .timer_int_o(timer_int),
-    
+
     .counter_reg(counter),
     .current_reg(current),
-    
+
     .cpu_we(cpu_we),
     .cpu_sel(cpu_sel),
     .cpu_ce(cpu_ce),
@@ -122,32 +119,18 @@ openmips openmips0(
     .cpu_write(cpu_write),
     .cpu_read(cpu_read),
     .cpu_pause(bus_pause),
-    
+
     .cpu_pc(cpu_pc),
     .cpu_inst_ce(cpu_inst_ce),
-    .cpu_inst_i(cpu_inst_i)
-    /*.base_readEnable_o(base_ram_oe_n),
-    .base_writeEnable_o(base_ram_we_n),
-    .base_sramEnable_o(base_ram_ce_n),
-    .base_bitEnable_o(base_ram_be_n),
-    .base_ramAddr_o(base_ram_addr),
-    .base_ramData_io(base_ram_data),*/
-    
-    /*.ext_readEnable_o(ext_ram_oe_n),
-    .ext_writeEnable_o(ext_ram_we_n),
-    .ext_sramEnable_o(ext_ram_ce_n),
-    .ext_bitEnable_o(ext_ram_be_n),
-    .ext_ramAddr_o(ext_ram_addr),
-    .ext_ramData_io(ext_ram_data)*/
+    .cpu_inst_i(cpu_inst_i),
+    .uart_break(uart_break)
 );
 
-wire bus_clk;
-assign bus_clk = clk_20M;
 bus bus0 (
     .clk(clk_20M),
     .rst(reset_btn),
     .bus_enable(1'b1),
-    
+
     .bus_data_we_i(cpu_we),
     .bus_data_sel_i(cpu_sel),
     .bus_data_ce_i(cpu_ce),
@@ -158,26 +141,25 @@ bus bus0 (
     .bus_inst_ce(cpu_inst_ce),
     .bus_inst_data_o(cpu_inst_i),
     .bus_pause(bus_pause),
-    //.bus_ready,
-    
+
     .base_ram_oe_o(base_ram_oe_n), //sram
     .base_ram_we_o(base_ram_we_n),
     .base_ram_sel_o(base_ram_be_n),
     .base_ram_ce_o(base_ram_ce_n),
     .base_ram_addr_o(base_ram_addr),
     .base_ram_data(base_ram_data),
-    
+
     .ext_ram_oe_o(ext_ram_oe_n),
     .ext_ram_we_o(ext_ram_we_n),
     .ext_ram_sel_o(ext_ram_be_n),
     .ext_ram_ce_o(ext_ram_ce_n),
     .ext_ram_addr_o(ext_ram_addr),
     .ext_ram_data(ext_ram_data),
-    
+
     .RxD(rxd), //串口
-    .TxD(txd)
-    //.Break,
-    
+    .TxD(txd),
+    .ext_uart_break(uart_break)
+
     /*.vs, //VGA
     .hs,
     .r,
@@ -240,55 +222,14 @@ assign leds = led_bits;
 always@(posedge clock_btn or posedge reset_btn) begin
     if(reset_btn)begin //复位按下，设置LED和数码管为初始�??
         number<=0;
-        led_bits <= 16'h1;
+        led_bits <= 16'h0;
     end
     else begin //每次按下时钟按钮，数码管显示值加1，LED循环左移
-        number <= counter[7:0];
-        led_bits <= current[15:0];
+        number <= {3'b0, uart_break, cpu_read[3:0]};
+        led_bits <= cpu_pc[15:0];//{uart_break, 8'b0, current[6:0]};
     end
 end
 
-//直连串口接收发�?�演示，从直连串口收到的数据再发送出��?
-/*wire [7:0] ext_uart_rx;
-reg  [7:0] ext_uart_buffer, ext_uart_tx;
-wire ext_uart_ready, ext_uart_busy;
-reg ext_uart_start, ext_uart_avai;
-
-async_receiver #(.ClkFrequency(50000000),.Baud(9600)) //接收模块��?9600无检验位
-    ext_uart_r(
-        .clk(clk_50M),                       //外部时钟信号
-        .RxD(rxd),                           //外部串行信号输入
-        .RxD_data_ready(ext_uart_ready),  //数据接收到标��?
-        .RxD_clear(ext_uart_ready),       //清除接收标志
-        .RxD_data(ext_uart_rx)             //接收到的��?字节数据
-    );
-
-always @(posedge clk_50M) begin //接收到缓冲区ext_uart_buffer
-    if(ext_uart_ready)begin
-        ext_uart_buffer <= ext_uart_rx;
-        ext_uart_avai <= 1;
-    end else if(!ext_uart_busy && ext_uart_avai)begin
-        ext_uart_avai <= 0;
-    end
-end
-always @(posedge clk_50M) begin //将缓冲区ext_uart_buffer发�?�出��?
-    if(!ext_uart_busy && ext_uart_avai)begin
-        ext_uart_tx <= ext_uart_buffer & 8'b00001111;
-        ext_uart_start <= 1;
-    end else begin
-        ext_uart_start <= 0;
-    end
-end
-
-async_transmitter #(.ClkFrequency(50000000),.Baud(9600)) //发�?�模块，9600无检验位
-    ext_uart_t(
-        .clk(clk_50M),                  //外部时钟信号
-        .TxD(txd),                      //串行信号输出
-        .TxD_busy(ext_uart_busy),       //发�?�器忙状态指��?
-        .TxD_start(ext_uart_start),    //��?始发送信��?
-        .TxD_data(ext_uart_tx)        //待发送的数据
-    );
-*/
 //图像输出演示，分辨率800x600@75Hz，像素时钟为50MHz
 wire [11:0] hdata;
 wire [11:0] vdata;
@@ -299,21 +240,26 @@ wire [1:0] gray;
 //assign video_red = hdata < 266 ? 3'b111 : 0; //红色竖条
 //assign video_green = hdata < 532 && hdata >= 266 ? 3'b111 : 0; //绿色竖条
 //assign video_blue = hdata >= 532 ? 2'b11 : 0; //蓝色竖条
-assign video_clk = clk_50M;
 
-assign video_red = {gray, 1'b0};
+assign video_red = 3'b111;//{gray, 1'b0};
 assign video_green = {gray, 1'b0};
 assign video_blue = gray;
+assign video_clk = clk_50M;
 
 vga_mem vga_rom (
-    .addra(unitnum),
-    .clka(clk_20M),
-    .dina(unitdata)
+    .clka(clk_50M),
+    .addra(addra),
+    .dina(dina),
+    .wea(wea),
+
+    .clkb(clk_50M),
+    .addrb(unitnum),
+    .doutb(unitdata)
 );
 
 vga_reader vga_mem_reader(
     .rst(reset_btn),
-    .vga_clk(video_clk),
+    .vga_clk(clk_50M),
     .hdata(hdata),
     .vdata(vdata),
     .unitnum(unitnum),

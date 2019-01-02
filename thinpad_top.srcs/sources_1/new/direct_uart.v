@@ -1,14 +1,15 @@
 `include "defines.v"
 module direct_uart (
-  (*MARK_DEBUG="TRUE"*)input wire clk,
-  (*MARK_DEBUG="TRUE"*)input wire rxd,
-  (*MARK_DEBUG="TRUE"*)output wire txd,
-  (*MARK_DEBUG="TRUE"*)output wire ext_uart_ready,//Hready
-  (*MARK_DEBUG="TRUE"*)output wire ext_uart_busy,//
-  (*MARK_DEBUG="TRUE"*)input wire[7:0] input_data,//Hwritedata
-  (*MARK_DEBUG="TRUE"*)output reg[7:0] output_data,//receiveData
-  (*MARK_DEBUG="TRUE"*)input wire ext_uart_we,//Hwrite
-  (*MARK_DEBUG="TRUE"*)input wire ext_uart_en//Hselect
+  input wire clk,
+  input wire rxd,
+  output wire txd,
+  output wire ext_uart_ready,//Hready
+  output wire ext_uart_break,
+  output wire ext_uart_busy,//
+  input wire[7:0] input_data,//Hwritedata
+  output reg[7:0] output_data,//receiveData
+  input wire ext_uart_we,//Hwrite
+  input wire ext_uart_en//Hselect
   );
 
   wire [7:0] ext_uart_rx;
@@ -17,6 +18,10 @@ module direct_uart (
   reg ext_uart_clear;
   reg write_finished;
   reg read_finished;
+  reg[7:0] indata[15:0];
+  reg[3:0] count;
+  reg[3:0] current;
+  assign ext_uart_break = (current != count);
 
   async_receiver #(.ClkFrequency(50000000),.Baud(9600)) //接收模块��?9600无检验位
     ext_uart_r (
@@ -36,15 +41,15 @@ module direct_uart (
       .TxD_data(ext_uart_tx)        //待发送的数据
       );
 
-  always @ (negedge clk) begin
+  always @ (posedge clk) begin
     if (ext_uart_en) begin
       if (ext_uart_we) begin
         if (~ext_uart_busy) begin
           if(~ext_uart_start) begin
             if(~write_finished) begin
-                ext_uart_tx <= input_data;
-                ext_uart_start <= 1'b1;
-                write_finished <= 1'b0;
+              ext_uart_tx <= input_data;
+              ext_uart_start <= 1'b1;
+              write_finished <= 1'b0;
             end
           end
         end else begin
@@ -52,11 +57,8 @@ module direct_uart (
           write_finished <= 1'b1;
         end
       end else begin
-        if (ext_uart_ready) begin
-          output_data <= ext_uart_rx;
-          read_finished <= 1'b1;
-          ext_uart_clear <= 1'b1;
-        end
+        output_data <= indata[current];
+        current <= (current + 1'b1) & {4{1'b1}};
       end
     end else begin
       write_finished <= 1'b0;
@@ -64,6 +66,12 @@ module direct_uart (
       ext_uart_start <= 1'b0;
       ext_uart_clear <= 1'b0;
       output_data <= 8'h00;
+    end
+    if (ext_uart_ready) begin
+      indata[count] <= ext_uart_rx;
+      count <= (count + 1'b1) & {4{1'b1}};
+      read_finished <= 1'b1;
+      ext_uart_clear <= 1'b1;
     end
   end
 endmodule //direct_uart

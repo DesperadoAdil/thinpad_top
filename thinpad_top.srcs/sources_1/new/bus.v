@@ -31,7 +31,7 @@ module bus (
 
   input wire RxD, //串口
   output wire TxD,
-  output wire ext_uart_ready
+  output wire ext_uart_break
 
   /*output wire vs, //VGA
   output wire hs,
@@ -95,6 +95,7 @@ wire ext_ram_ready;
   );
 
 /* uart variables */
+wire ext_uart_ready;
 wire ext_uart_busy;
 reg[7:0] uart_input_data;
 wire[7:0] uart_output_data;
@@ -107,6 +108,7 @@ wire uart_ready;
     .rxd(RxD),
     .txd(TxD),
     .ext_uart_ready(ext_uart_ready),
+    .ext_uart_break(ext_uart_break),
     .ext_uart_busy(ext_uart_busy),
     .input_data(uart_input_data),
     .output_data(uart_output_data),
@@ -190,7 +192,7 @@ wire uart_ready;
           if (bus_data_addr_i[3:0] == 4'h8) begin
             bus_data_o <= {24'h000000, uart_output_data};
           end else if (bus_data_addr_i[3:0] == 4'hC) begin
-            bus_data_o <= {{30{1'b0}}, ext_uart_ready, ~ext_uart_busy};
+            bus_data_o <= {{30{1'b0}}, ext_uart_break, ~ext_uart_busy};
           end
         end
       end
