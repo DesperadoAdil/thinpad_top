@@ -22,7 +22,6 @@
 
 module vga_reader(
     input wire rst,
-    input wire vga_clk,
     input wire[11:0] hdata,
     input wire[11:0] vdata,
     

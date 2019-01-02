@@ -241,25 +241,24 @@ wire [1:0] gray;
 //assign video_green = hdata < 532 && hdata >= 266 ? 3'b111 : 0; //绿色竖条
 //assign video_blue = hdata >= 532 ? 2'b11 : 0; //蓝色竖条
 
-assign video_red = 3'b111;//{gray, 1'b0};
+assign video_red = {gray, 1'b0};
 assign video_green = {gray, 1'b0};
 assign video_blue = gray;
-assign video_clk = clk_50M;
+assign video_clk = clk_20M;
 
 vga_mem vga_rom (
-    .clka(clk_50M),
+    .clka(clk_20M),
     .addra(addra),
     .dina(dina),
     .wea(wea),
 
-    .clkb(clk_50M),
+    .clkb(clk_20M),
     .addrb(unitnum),
     .doutb(unitdata)
 );
 
 vga_reader vga_mem_reader(
     .rst(reset_btn),
-    .vga_clk(clk_50M),
     .hdata(hdata),
     .vdata(vdata),
     .unitnum(unitnum),
@@ -269,7 +268,7 @@ vga_reader vga_mem_reader(
 );
 
 vga #(12, 800, 856, 976, 1040, 600, 637, 643, 666, 1, 1) vga800x600at75 (
-    .clk(clk_50M),
+    .clk(clk_20M),
     .hdata(hdata), //横坐��?
     .vdata(vdata),      //纵坐��?
     .hsync(video_hsync),
