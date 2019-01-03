@@ -31,15 +31,14 @@ module bus (
 
   input wire RxD, //串口
   output wire TxD,
-  output wire ext_uart_break
+  output wire ext_uart_break,
 
-  /*output wire vs, //VGA
   output wire hs,
+  output wire vs,
   output wire[2:0] r,
   output wire[2:0] g,
-  output wire[2:0] b,
-  input wire ps2clk,
-  input wire ps2data*/
+  output wire[1:0] b,
+  output wire de
   );
 
 reg base_ram_enable;
@@ -116,6 +115,25 @@ wire uart_ready;
     .ext_uart_en(uart_enable)
   );
 
+/* vga variables*/
+reg vga_enable;
+reg vga_we;
+reg[18:0] vga_addr;
+reg[7:0] vga_data;
+  vga_ctrl vga0 (
+    .clk(clk),
+    .vga_enable_i(vga_enable),
+    .vga_we_i(vga_we),
+    .vga_addr_i(vga_addr),
+    .vga_data_i(vga_data),
+    .video_red(r),
+    .video_green(g),
+    .video_blue(b),
+    .video_hsync(hs),
+    .video_vsync(vs),
+    .video_de(de)
+  );
+
   always @ (*) begin
     if (bus_enable) begin
       if (bus_data_addr_i > 32'h00000000 && bus_data_addr_i <= 32'h003FFFFF) begin
@@ -128,6 +146,7 @@ wire uart_ready;
         //read_sram <= bus_data_o;
         ext_ram_enable = 1'b0;
         uart_enable <= 1'b0;
+        vga_enable <= 1'b0;
       end else begin
         bus_pause <= 1'b0;
         if (bus_inst_addr_i >= 32'h80000000 && bus_inst_addr_i <= 32'h803FFFFF) begin
@@ -145,19 +164,28 @@ wire uart_ready;
           ext_ram_addr <= bus_data_addr_i;
           ext_ram_write <= bus_data_i;
           uart_enable <= 1'b0;
+          vga_enable <= 1'b0;
         end else if (bus_data_addr_i[31:4] == 28'h1FD003F) begin
-          if(bus_data_addr_i[3:0] == 4'h8) begin
-              uart_enable <= 1'b1;
-              uart_input_data <= bus_data_i[7:0];
-              uart_we <= bus_data_we_i;
+          if (bus_data_addr_i[3:0] == 4'h8) begin
+            uart_enable <= 1'b1;
+            uart_input_data <= bus_data_i[7:0];
+            uart_we <= bus_data_we_i;
+          end else begin
+            uart_enable <= 1'b0;
           end
-          else begin
-              uart_enable <= 1'b0;
-          end
+          ext_ram_enable <= 1'b0;
+          vga_enable <= 1'b0;
+        end else if (bus_data_addr_i >= 32'h10000000 && bus_data_addr_i <= 32'h10080000) begin
+          vga_we <= 1'b1;
+          vga_enable <= 1'b1;
+          vga_addr <= bus_data_addr_i[18:0];
+          vga_data <= bus_data_i[7:0];
+          uart_enable <= 1'b0;
           ext_ram_enable <= 1'b0;
         end else begin
           uart_enable <= 1'b0;
           ext_ram_enable <= 1'b0;
+          vga_enable <= 1'b0;
         end
       end
     end else begin
@@ -176,6 +204,12 @@ wire uart_ready;
       uart_enable <= 1'b0;
       uart_input_data <= {8{1'b0}};
       uart_we <= 1'b0;
+
+      vga_we <= 1'b0;
+      vga_enable <= 1'b0;
+      vga_addr <= {19{1'b0}};
+      vga_data <= {8{1'b0}};
+
       bus_pause <= 1'b0;
     end
   end

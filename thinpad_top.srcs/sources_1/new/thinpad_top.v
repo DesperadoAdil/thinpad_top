@@ -92,9 +92,10 @@ wire                  cpu_inst_ce;
 wire[31:0]            cpu_inst_i;
 wire                  bus_pause;
 wire                  uart_break;
-reg [13:0]           addra;
-reg [63:0]           dina;
-reg                  wea;
+wire                  vga_enable;
+wire                  vga_we;
+wire[18:0]            vga_addr;
+wire[7:0]             vga_data;
 wire[5:0]             int;
 wire                  timer_int;
 
@@ -158,15 +159,14 @@ bus bus0 (
 
     .RxD(rxd), //串口
     .TxD(txd),
-    .ext_uart_break(uart_break)
+    .ext_uart_break(uart_break),
 
-    /*.vs, //VGA
-    .hs,
-    .r,
-    .g,
-    .b,
-    .ps2clk,
-    .ps2data*/
+    .hs(video_hsync),
+    .vs(video_vsync),
+    .r(video_red),
+    .g(video_green),
+    .b(video_blue),
+    .de(video_de)
 );
 
 /* =========== Demo code begin =========== */
@@ -184,6 +184,7 @@ pll_example clock_gen(
     .clk_in1(clk_50M) // 外部时钟输入
 );
 
+assign video_clk = clk_20M;
 reg reset_of_clk10M;
 // 异步复位，同步释��?
 always@(posedge clk_10M or negedge locked) begin
@@ -212,14 +213,15 @@ end
 //           // ---d---  p
 
 // 7段数码管译码器演示，将number��?16进制显示在数码管上面
-reg[7:0] number;
+wire[7:0] number;
 SEG7_LUT segL(.oSEG1(dpy0), .iDIG(number[3:0])); //dpy0是低位数码管
 SEG7_LUT segH(.oSEG1(dpy1), .iDIG(number[7:4])); //dpy1是高位数码管
 
 reg[15:0] led_bits;
-assign leds = led_bits;
+assign leds = cpu_pc[15:0];
+assign number = {3'b0, uart_break, cpu_read[3:0]};
 
-always@(posedge clock_btn or posedge reset_btn) begin
+/*always@(posedge clock_btn or posedge reset_btn) begin
     if(reset_btn)begin //复位按下，设置LED和数码管为初始�??
         number<=0;
         led_bits <= 16'h0;
@@ -228,43 +230,43 @@ always@(posedge clock_btn or posedge reset_btn) begin
         number <= {3'b0, uart_break, cpu_read[3:0]};
         led_bits <= cpu_pc[15:0];//{uart_break, 8'b0, current[6:0]};
     end
-end
+end*/
 
 //图像输出演示，分辨率800x600@75Hz，像素时钟为50MHz
-wire [11:0] hdata;
+/*wire [11:0] hdata;
 wire [11:0] vdata;
-wire [13:0] unitnum;
-wire [63:0] unitdata;
-wire [1:0] gray;
+wire[7:0] unitdata;
+wire [18:0] addra;
+wire [7:0] dina;
+wire wea;
 
-//assign video_red = hdata < 266 ? 3'b111 : 0; //红色竖条
-//assign video_green = hdata < 532 && hdata >= 266 ? 3'b111 : 0; //绿色竖条
-//assign video_blue = hdata >= 532 ? 2'b11 : 0; //蓝色竖条
+assign addra = vga_enable ? vga_addr : 19'b0;
+assign dina = vga_enable ? vga_data : 8'b0;
+assign wea = vga_enable ? vga_we : 1'b0;
 
-assign video_red = {gray, 1'b0};
-assign video_green = {gray, 1'b0};
-assign video_blue = gray;
+assign video_red = unitdata[7:5];
+assign video_green = unitdata[4:2];
+assign video_blue = unitdata[1:0];
 assign video_clk = clk_20M;
+
+wire[18:0] mul_tmp;
+wire[9:0] vdatatmp;
+wire[9:0] hdatatmp;
+
+assign vdatatmp = vdata[9:0];
+assign hdatatmp = hdata[9:0];
+assign mul_tmp = {vdatatmp, 9'b0} + {1'b0, vdatatmp, 8'b0} + {4'b0, vdatatmp, 5'b0} + {9'b0, hdatatmp};
 
 vga_mem vga_rom (
     .clka(clk_20M),
-    .addra(addra),
-    .dina(dina),
-    .wea(wea),
+    .addra(vga_addr),
+    .dina(vga_data),
+    .wea(vga_we),
+    .ena(vga_enable),
 
     .clkb(clk_20M),
-    .addrb(unitnum),
+    .addrb(mul_tmp),
     .doutb(unitdata)
-);
-
-vga_reader vga_mem_reader(
-    .rst(reset_btn),
-    .hdata(hdata),
-    .vdata(vdata),
-    .unitnum(unitnum),
-    .unitdata(unitdata),
-    .data_enable(video_de),
-    .gray(gray)
 );
 
 vga #(12, 800, 856, 976, 1040, 600, 637, 643, 666, 1, 1) vga800x600at75 (
@@ -274,7 +276,7 @@ vga #(12, 800, 856, 976, 1040, 600, 637, 643, 666, 1, 1) vga800x600at75 (
     .hsync(video_hsync),
     .vsync(video_vsync),
     .data_enable(video_de)
-);
+);*/
 /* =========== Demo code end =========== */
 
 endmodule
