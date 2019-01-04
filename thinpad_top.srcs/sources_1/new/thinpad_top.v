@@ -213,15 +213,14 @@ end
 //           // ---d---  p
 
 // 7段数码管译码器演示，将number��?16进制显示在数码管上面
-wire[7:0] number;
+reg[7:0] number;
 SEG7_LUT segL(.oSEG1(dpy0), .iDIG(number[3:0])); //dpy0是低位数码管
 SEG7_LUT segH(.oSEG1(dpy1), .iDIG(number[7:4])); //dpy1是高位数码管
 
 reg[15:0] led_bits;
-assign leds = cpu_pc[15:0];
-assign number = {3'b0, uart_break, cpu_read[3:0]};
+assign leds = led_bits;
 
-/*always@(posedge clock_btn or posedge reset_btn) begin
+always@(posedge clock_btn or posedge reset_btn) begin
     if(reset_btn)begin //复位按下，设置LED和数码管为初始�??
         number<=0;
         led_bits <= 16'h0;
@@ -230,7 +229,7 @@ assign number = {3'b0, uart_break, cpu_read[3:0]};
         number <= {3'b0, uart_break, cpu_read[3:0]};
         led_bits <= cpu_pc[15:0];//{uart_break, 8'b0, current[6:0]};
     end
-end*/
+end
 
 //图像输出演示，分辨率800x600@75Hz，像素时钟为50MHz
 /*wire [11:0] hdata;

@@ -206,13 +206,11 @@ module openmips(
 	wire write_tlb;
 
 	wire ram_we_o;
-	wire ram_we_o_2;
   wire[3:0] ram_sel_o;
 	wire[`RegBus] ram_data_o;
 	wire ram_ce_o;
 
-  assign ram_we_o_2 = ram_we_o;
-	assign cpu_we = ram_we_o_2;
+	assign cpu_we = ram_we_o;
 	assign cpu_sel = ram_sel_o;
 	assign cpu_ce = ram_ce_o;
 	assign cpu_addr = ram_addr_o;

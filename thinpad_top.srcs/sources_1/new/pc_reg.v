@@ -11,7 +11,7 @@ module pc_reg(
 
 	input wire branch_flag_i,
 	input wire[`RegBus] branch_target_address_i,
-	
+
 	output reg[`InstAddrBus] pc,
 	output reg ce
 );

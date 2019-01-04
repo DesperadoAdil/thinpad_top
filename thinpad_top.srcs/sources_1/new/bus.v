@@ -122,6 +122,7 @@ reg[18:0] vga_addr;
 reg[7:0] vga_data;
   vga_ctrl vga0 (
     .clk(clk),
+    .rst(rst),
     .vga_enable_i(vga_enable),
     .vga_we_i(vga_we),
     .vga_addr_i(vga_addr),
@@ -144,9 +145,18 @@ reg[7:0] vga_data;
         base_ram_addr <= bus_data_addr_i;
         base_ram_write <= bus_data_i;
         //read_sram <= bus_data_o;
-        ext_ram_enable = 1'b0;
+        ext_ram_enable <= 1'b0;
+        ext_ram_we <= 1'b0;
+        ext_ram_addr <= {32{1'b0}};
+        ext_ram_write <= {32{1'b0}};
+        ext_ram_be <= 4'b1111;
         uart_enable <= 1'b0;
+        uart_input_data <= {8{1'b0}};
+        uart_we <= 1'b0;
         vga_enable <= 1'b0;
+        vga_we <= 1'b0;
+        vga_addr <= {19{1'b0}};
+        vga_data <= {8{1'b0}};
       end else begin
         bus_pause <= 1'b0;
         if (bus_inst_addr_i >= 32'h80000000 && bus_inst_addr_i <= 32'h803FFFFF) begin
@@ -154,8 +164,13 @@ reg[7:0] vga_data;
           base_ram_enable <= bus_inst_ce;
           base_ram_be <= 4'b1111;
           base_ram_addr <= bus_inst_addr_i;
+          base_ram_write <= 32'b0;
         end else begin
           base_ram_enable <= 1'b0;
+          base_ram_we <= 1'b0;
+          base_ram_addr <= {32{1'b0}};
+          base_ram_write <= {32{1'b0}};
+          base_ram_be <= 4'b1111;
         end
         if (bus_data_addr_i >= 32'h00400000 && bus_data_addr_i <= 32'h007FFFFF) begin
           ext_ram_we <= bus_data_we_i;
@@ -164,7 +179,12 @@ reg[7:0] vga_data;
           ext_ram_addr <= bus_data_addr_i;
           ext_ram_write <= bus_data_i;
           uart_enable <= 1'b0;
+          uart_input_data <= {8{1'b0}};
+          uart_we <= 1'b0;
           vga_enable <= 1'b0;
+          vga_we <= 1'b0;
+          vga_addr <= {19{1'b0}};
+          vga_data <= {8{1'b0}};
         end else if (bus_data_addr_i[31:4] == 28'h1FD003F) begin
           if (bus_data_addr_i[3:0] == 4'h8) begin
             uart_enable <= 1'b1;
@@ -172,20 +192,44 @@ reg[7:0] vga_data;
             uart_we <= bus_data_we_i;
           end else begin
             uart_enable <= 1'b0;
+            uart_input_data <= {8{1'b0}};
+            uart_we <= 1'b0;
           end
           ext_ram_enable <= 1'b0;
+          ext_ram_we <= 1'b0;
+          ext_ram_addr <= {32{1'b0}};
+          ext_ram_write <= {32{1'b0}};
+          ext_ram_be <= 4'b1111;
           vga_enable <= 1'b0;
+          vga_we <= 1'b0;
+          vga_addr <= {19{1'b0}};
+          vga_data <= {8{1'b0}};
         end else if (bus_data_addr_i >= 32'h10000000 && bus_data_addr_i <= 32'h10080000) begin
           vga_we <= 1'b1;
           vga_enable <= 1'b1;
           vga_addr <= bus_data_addr_i[18:0];
           vga_data <= bus_data_i[7:0];
           uart_enable <= 1'b0;
+          uart_input_data <= {8{1'b0}};
+          uart_we <= 1'b0;
           ext_ram_enable <= 1'b0;
+          ext_ram_we <= 1'b0;
+          ext_ram_addr <= {32{1'b0}};
+          ext_ram_write <= {32{1'b0}};
+          ext_ram_be <= 4'b1111;
         end else begin
-          uart_enable <= 1'b0;
           ext_ram_enable <= 1'b0;
+          ext_ram_we <= 1'b0;
+          ext_ram_addr <= {32{1'b0}};
+          ext_ram_write <= {32{1'b0}};
+          ext_ram_be <= 4'b1111;
+          uart_enable <= 1'b0;
+          uart_input_data <= {8{1'b0}};
+          uart_we <= 1'b0;
           vga_enable <= 1'b0;
+          vga_we <= 1'b0;
+          vga_addr <= {19{1'b0}};
+          vga_data <= {8{1'b0}};
         end
       end
     end else begin
@@ -194,22 +238,18 @@ reg[7:0] vga_data;
       base_ram_addr <= {32{1'b0}};
       base_ram_write <= {32{1'b0}};
       base_ram_be <= 4'b1111;
-
       ext_ram_enable <= 1'b0;
       ext_ram_we <= 1'b0;
       ext_ram_addr <= {32{1'b0}};
       ext_ram_write <= {32{1'b0}};
       ext_ram_be <= 4'b1111;
-
       uart_enable <= 1'b0;
       uart_input_data <= {8{1'b0}};
       uart_we <= 1'b0;
-
-      vga_we <= 1'b0;
       vga_enable <= 1'b0;
+      vga_we <= 1'b0;
       vga_addr <= {19{1'b0}};
       vga_data <= {8{1'b0}};
-
       bus_pause <= 1'b0;
     end
   end
@@ -218,6 +258,7 @@ reg[7:0] vga_data;
     if (bus_enable) begin
       if (bus_pause) begin
         bus_data_o <= base_ram_read;
+        bus_inst_data_o <= {32{1'b0}};
       end else begin
         bus_inst_data_o <= base_ram_read;
         if (bus_data_addr_i >= 32'h00400000 && bus_data_addr_i <= 32'h007FFFFF) begin
@@ -227,7 +268,11 @@ reg[7:0] vga_data;
             bus_data_o <= {24'h000000, uart_output_data};
           end else if (bus_data_addr_i[3:0] == 4'hC) begin
             bus_data_o <= {{30{1'b0}}, ext_uart_break, ~ext_uart_busy};
+          end else begin
+            bus_data_o <= {32{1'b0}};
           end
+        end else begin
+          bus_data_o <= {32{1'b0}};
         end
       end
     end else begin

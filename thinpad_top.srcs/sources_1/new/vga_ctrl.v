@@ -1,6 +1,7 @@
 `include "defines.v"
 module vga_ctrl (
   input wire clk,
+  input wire rst,
 
   input wire vga_enable_i,
   input wire vga_we_i,
@@ -16,16 +17,16 @@ module vga_ctrl (
   );
   wire [11:0] hdata, vdata;
   wire[7:0] unitdata;
-  wire[18:0] mul_tmp;
+  wire[18:0] unitnum;
   reg vga_enable;
   reg vga_we;
   reg[18:0] vga_addr;
   reg[7:0] vga_data;
 
-  assign video_red = unitdata[7:5];
+  /*assign video_red = unitdata[7:5];
   assign video_green = unitdata[4:2];
   assign video_blue = unitdata[1:0];
-  assign mul_tmp = {vdata[9:0], 9'b0} + {1'b0, vdata[9:0], 8'b0} + {4'b0, vdata[9:0], 5'b0} + {9'b0, hdata[9:0]};
+  assign mul_tmp = {vdata[9:0], 9'b0} + {1'b0, vdata[9:0], 8'b0} + {4'b0, vdata[9:0], 5'b0} + {9'b0, hdata[9:0]};*/
 
   vga_mem vga_rom (
       .clka(clk),
@@ -35,8 +36,20 @@ module vga_ctrl (
       .ena(vga_enable),
 
       .clkb(clk),
-      .addrb(mul_tmp),
+      .addrb(unitnum),
       .doutb(unitdata)
+  );
+
+  vga_reader vga_reader0 (
+    .rst(rst),
+    .hdata(hdata),
+    .vdata(vdata),
+    .unitnum(unitnum),
+    .data_enable(video_de),
+    .unitdata(unitdata),
+    .r(video_red),
+    .g(video_green),
+    .b(video_blue)
   );
 
   vga #(12, 800, 856, 976, 1040, 600, 637, 643, 666, 1, 1) vga800x600at75 (

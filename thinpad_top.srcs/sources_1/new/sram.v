@@ -2,7 +2,6 @@
 module sram(
     input wire clk,
     input wire rst,
-    input wire ready,
     output wire Hready,
 
     input wire[`RegBus] mem_addr_i,

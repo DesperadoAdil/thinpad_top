@@ -1,4 +1,3 @@
-
 `include "defines.v"
 
 module cp0_reg(
@@ -208,7 +207,7 @@ module cp0_reg(
 				            cause_o[31] <= 1'b0;
 				        end
 				    end
-                    status_o[1] = 1'b1;
+                    status_o[1] <= 1'b1;
                     status_o[4] <= 1'b1;
                     cause_o[6:2] <= 5'b01001;
 				end
@@ -223,7 +222,7 @@ module cp0_reg(
                         end
                     end
                     badvaddr_o <= current_inst_addr_i;
-                    status_o[1] = 1'b1;
+                    status_o[1] <= 1'b1;
                     status_o[4] <= 1'b1;
                     cause_o[6:2] <= 5'b00100;
 				end
@@ -237,7 +236,7 @@ module cp0_reg(
                             cause_o[31] <= 1'b0;
                         end
                     end
-                    status_o[1] = 1'b1;
+                    status_o[1] <= 1'b1;
                     status_o[4] <= 1'b1;
                     cause_o[6:2] <= 5'b00100;
                     badvaddr_o <= badvaddr_i;
@@ -252,7 +251,7 @@ module cp0_reg(
                             cause_o[31] <= 1'b0;
                         end
                     end
-                    status_o[1] = 1'b1;
+                    status_o[1] <= 1'b1;
                     status_o[4] <= 1'b1;
                     cause_o[6:2] <= 5'b00101;
                     badvaddr_o <= badvaddr_i;
@@ -267,7 +266,7 @@ module cp0_reg(
                             cause_o[31] <= 1'b0;
                         end
                     end
-                    status_o[1] = 1'b1;
+                    status_o[1] <= 1'b1;
                     status_o[4] <= 1'b1;
                     cause_o[6:2] <= 5'b00010; // ?????��?��????
                     badvaddr_o <= badvaddr_i;
@@ -282,7 +281,7 @@ module cp0_reg(
                             cause_o[31] <= 1'b0;
                         end
                     end
-                    status_o[1] = 1'b1;
+                    status_o[1] <= 1'b1;
                     status_o[4] <= 1'b1;
                     cause_o[6:2] <= 5'b00010; // ?????��?��????
                     badvaddr_o <= badvaddr_i;
